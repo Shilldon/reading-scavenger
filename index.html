@@ -17,8 +17,8 @@
         ({key: "", v: "weekly"});</script>
 
       <script type="module">
-        const mK = Netlify.env.get("MAP");
-        console.log(mK)
+        const { MAP } = process.env;
+        console.log(MAP)
       </script>
 
   </body>
