@@ -16,13 +16,12 @@
         ({key: "", v: "weekly"});</script>
 
       <script>
-        exports.handler = async function (event, context) {
-  const value = process.env.MAP_KEY;
-console.log("value "+value);
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: `Value of MY_IMPORTANT_VARIABLE is ${value}.` }),
-  };  
+export default async (request, context) => {
+  const value = Netlify.env.get("MAP_API");
+console.log("value "+value)
+  return new Response(`Value of MY_IMPORTANT_VARIABLE for ${context.site.name} is ${value}.`, {
+    headers: { "content-type": "text/html" },
+  });
 };
       </script>
   </body>
