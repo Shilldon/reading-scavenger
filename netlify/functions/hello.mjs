@@ -1,14 +1,8 @@
-/*
-export default async (req, context) => {
-    return new Response("Hello, world!");
-  };
-  */
-
-  export const handler = async () => {
-    return {
+exports.handler = async (event, context) => {
+  return {
       statusCode: 200,
       body: JSON.stringify({
-        message: 'Hello World!',
+      api: process.env.SERVER_API_KEY
       }),
-    }
   }
+}
