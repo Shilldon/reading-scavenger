@@ -4,10 +4,11 @@ export default async (req, context) => {
   };
   */
 
-  exports.handler = async event => {
-    const subject = event.queryStringParameters.name || 'World'
+  export const handler = async () => {
     return {
-        statusCode: 200,
-        body: `Hello ${subject}!`,
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Hello World!',
+      }),
     }
-}
+  }
