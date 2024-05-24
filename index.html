@@ -24,6 +24,7 @@
       const url = './netlify/functions/hello.mjs';
       try {
         const response = await fetch(url);
+        console.log("response ", response)
         const data = await response.json();
         return data;
         console.log("data " + data)
