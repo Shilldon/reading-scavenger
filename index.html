@@ -18,6 +18,7 @@
 
       <script type="module">
         async function apiCall(parameter) {
+          console.log("doing")
           const url = '/.netlify/functions/hello.mjs';
     try {
         const response = await fetch(url);
@@ -25,6 +26,7 @@
         return data;
         console.log("data " +data)
     } catch (err) {
+      console.log("error")
         console.log(err);
     }
 }
