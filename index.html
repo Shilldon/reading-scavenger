@@ -17,21 +17,17 @@
         ({key: "", v: "weekly"});</script>
 
       <script type="module">
-        const API_ENDPOINT = '/.netlify/functions/hello.mjs';
-          console.log("doing?")
-        export default async (request, context) => {
-          try {
-            const response = await fetch(API_ENDPOINT);
-            const data = await response.json();
-            console.log("got something")
-            console.log(Response.json({ data }));
-            return Response.json({ data });
-          } catch (error) {
-            console.log(error);
-            console.log("error")
-            return Response.json({ error: 'Failed fetching data' }, { status: 500 });
-          }
-        };
+        async function apiCall(parameter) {
+          const url = '/.netlify/functions/hello.mjs';
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+        console.log("data " +data)
+    } catch (err) {
+        console.log(err);
+    }
+}
       </script>
 
   </body>
