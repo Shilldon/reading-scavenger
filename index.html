@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script type="module" src="./index.js"></script>
-    <script type="module" src="./request.js"></script>
+    <script type="module" src="./netlify/hello.mjs"></script>
   </head>
   <body>
     <div id="map">
@@ -17,8 +17,19 @@
         ({key: "", v: "weekly"});</script>
 
       <script type="module">
-        const { MAP } = process.env;
-        console.log(MAP)
+        const API_ENDPOINT = 'https://subtle-babka-3ec0d5.netlify.app/';
+
+        export default async (request, context) => {
+          try {
+            const response = await fetch(API_ENDPOINT);
+            const data = await response.json();
+            console.log(Response.json({ data }));
+            return Response.json({ data });
+          } catch (error) {
+            console.log(error);
+            return Response.json({ error: 'Failed fetching data' }, { status: 500 });
+          }
+        };
       </script>
 
   </body>
