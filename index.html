@@ -19,23 +19,25 @@
       ({ key: "", v: "weekly" });</script>
 
   <script type="module">
-    async function apiCall(parameter) {
-      console.log("doing")
-      const url = './netlify/functions/hello.js';
-      try {
-        const response = await fetch(url);
-        console.log("response ", response)
-        const data = await response.json();
-        console.log("data " + data)
-        return data;
-      } catch (err) {
-        console.log("error")
-        console.log(err);
-      }
-
-    }
-    
-    apiCall(1);
+fetch('/.netlify/functions/name/').then(response => {
+  if (response.ok) {
+    return response.json()
+  } else {
+   throw response.status
+  }
+}).then(data => {
+  console.log(data.data)
+  /*
+    data.data is the data that you need in client-side.
+    I had to use data.data, because in your function,
+    you're using JSON.stringify({data: data}),
+    and that is creating an unnecessary object.
+    If you simply write JSON.stringify(data),
+    you can simply use console.log(data) here.
+  */
+}).catch(error => {
+  console.log(error)
+})
   </script>
 
 </body>
