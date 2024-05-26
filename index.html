@@ -26,6 +26,7 @@ fetch('/.netlify/functions/hello').then(response => {
    throw response.status
   }
 }).then(data => {
+  console.log("data received: ")
   console.log(data.data)
   /*
     data.data is the data that you need in client-side.
@@ -36,7 +37,7 @@ fetch('/.netlify/functions/hello').then(response => {
     you can simply use console.log(data) here.
   */
 }).catch(error => {
-  console.log(error)
+  console.log("error ",error)
 })
   </script>
 
