@@ -21,7 +21,7 @@
   <script type="module">
 fetch('/.netlify/functions/hello').then(response => {
   if (response.ok) {
-    return response.json()
+    return response.text()
   } else {
    throw response.status
   }
