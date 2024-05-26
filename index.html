@@ -27,7 +27,7 @@ fetch('/.netlify/functions/hello').then(response => {
   }
 }).then(data => {
   console.log("data received: ")
-  console.log(data.data)
+  console.log(data)
   /*
     data.data is the data that you need in client-side.
     I had to use data.data, because in your function,
