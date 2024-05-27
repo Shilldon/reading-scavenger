@@ -18,7 +18,17 @@ function loadMap(key) {
                 // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
                 // Add other bootstrap parameters as needed, using camel case.
             })
-
-
-    initMap();
 }
+
+let map;
+
+async function initMap() {
+  const { Map } = await google.maps.importLibrary("maps");
+
+  map = new Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+
+initMap();
