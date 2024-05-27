@@ -25,6 +25,7 @@
         throw response.status
       }
     }).then(data => {
+      console.log("calling loadMap")
       loadMap(data);
     }).catch(error => {
       console.log("error ", error)
