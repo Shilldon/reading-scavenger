@@ -1,7 +1,7 @@
 function loadMap(key) {
     (g => {
         console.log("running load map?");
-
+console.log(key)
         var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;
         b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{
             await (a=m.createElement("script"));
@@ -13,7 +13,7 @@ function loadMap(key) {
             m.head.append(a)}));
             d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
             ({
-                key: `"${key}"`,
+                key: `${key}`,
                 v: "weekly",
                 // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
                 // Add other bootstrap parameters as needed, using camel case.
