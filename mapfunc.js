@@ -18,6 +18,7 @@ function loadMap(key) {
                 // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
                 // Add other bootstrap parameters as needed, using camel case.
             })
+    initMap();
 }
 
 let map;
