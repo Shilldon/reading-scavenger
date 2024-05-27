@@ -1,8 +1,7 @@
 let map, infoWindow;
-
+/*
 function initMap() {
   console.log("loading map?")
-  const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 6,
@@ -48,4 +47,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-window.initMap = initMap;
+window.initMap = initMap;*/
