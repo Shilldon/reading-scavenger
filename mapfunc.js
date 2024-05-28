@@ -22,6 +22,7 @@ function loadMap(key) {
 }
 
 //set up map markers
+const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 const currentLocImg = document.createElement("img");
 
 currentLocImg.src =
