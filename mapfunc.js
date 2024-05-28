@@ -1,7 +1,5 @@
 function loadMap(key) {
     (g => {
-        console.log("running load map?");
-console.log(key)
         var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;
         b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{
             await (a=m.createElement("script"));
@@ -33,3 +31,23 @@ async function initMap() {
 }
 
 window.initMap = initMap;
+
+
+window.lat = 37.7850;
+window.lng = -122.4383;
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updatePosition);
+    }
+    return null;
+};
+function updatePosition(position) {
+  if (position) {
+    window.lat = position.coords.latitude;
+    window.lng = position.coords.longitude;
+  }
+}
+setInterval(function(){updatePosition(getLocation());}, 10000);
+function currentLocation() {
+  return {lat:window.lat, lng:window.lng};
+};
