@@ -34,7 +34,6 @@ let map;
 async function initMap() {
   
   const { Map } = await google.maps.importLibrary("maps");
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -42,6 +41,7 @@ async function initMap() {
     zoom: 15,
   });
 
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   //handle user location
   infoWindow = new google.maps.InfoWindow();
