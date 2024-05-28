@@ -5,6 +5,8 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
   <link rel="stylesheet" type="text/css" href="./style.css" />
+  <link rel=”icon” type=”image/x-icon” href=”./icons/favicon.ico”>
+
   <script type="module" src="./netlify/functions/request.js"></script>
   <script type="module" src="./index.js"></script>
   <script src="./mapfunc.js"></script>
@@ -25,7 +27,6 @@
         throw response.status
       }
     }).then(data => {
-      console.log("calling loadMap")
       loadMap(data);
     }).catch(error => {
       console.log("error ", error)

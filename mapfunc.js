@@ -36,18 +36,21 @@ window.initMap = initMap;
 window.lat = 37.7850;
 window.lng = -122.4383;
 function getLocation() {
+  console.log("getting location")
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(updatePosition);
     }
     return null;
 };
 function updatePosition(position) {
+  console.log("updating position")
   if (position) {
     window.lat = position.coords.latitude;
     window.lng = position.coords.longitude;
   }
 }
-setInterval(function(){updatePosition(getLocation());}, 10000);
+setInterval(function(){updatePosition(getLocation());}, 1000);
 function currentLocation() {
+  console.log("finding current position")
   return {lat:window.lat, lng:window.lng};
 };
