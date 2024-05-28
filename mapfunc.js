@@ -22,9 +22,7 @@ function loadMap(key) {
 }
 
 //set up map markers
-const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 const currentLocImg = document.createElement("img");
-
 currentLocImg.src =
   "./icons/location.gif";
 
@@ -34,6 +32,9 @@ let map;
 
 //set up map for first time
 async function initMap() {
+  
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+  
   const { Map } = await google.maps.importLibrary("maps");
 
   //set initial position
