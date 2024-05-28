@@ -33,9 +33,8 @@ let map;
 //set up map for first time
 async function initMap() {
   
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
-  
   const { Map } = await google.maps.importLibrary("maps");
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -74,8 +73,7 @@ async function initMap() {
           var marker = new AdvancedMarkerElement({
             position: pos,
             title: 'Your Location',
-            draggable: true,
-            tcontent: currentLocImg,
+            content: currentLocImg,
             map: map
           });
 
