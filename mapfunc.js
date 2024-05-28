@@ -69,7 +69,7 @@ async function initMap() {
           map.setCenter(pos);
 
           //set marker
-          var marker = new google.maps.marker.AdvancedMarkerElement({
+          var marker = new AdvancedMarkerElement({
             position: pos,
             title: 'Your Location',
             draggable: true,
