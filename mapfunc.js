@@ -1,3 +1,5 @@
+
+//function to submit api key and define map
 function loadMap(key) {
     (g => {
         var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;
@@ -19,15 +21,28 @@ function loadMap(key) {
     initMap();
 }
 
+//set up map markers
+const currentLocImg = document.createElement("img");
+
+currentLocImg.src =
+  "./icons/location.gif";
+
+
+//define the map variable
 let map;
 
+//set up map for first time
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
+  //set initial position
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 20,
+    zoom: 15,
   });
+
+
+  //handle user location
   infoWindow = new google.maps.InfoWindow();
 
   const locationButton = document.createElement("button");
@@ -54,10 +69,11 @@ async function initMap() {
           map.setCenter(pos);
 
           //set marker
-          var marker = new google.maps.Marker({
+          var marker = new google.maps.marker.AdvancedMarkerElement({
             position: pos,
             title: 'Your Location',
             draggable: true,
+            tcontent: currentLocImg,
             map: map
           });
 
