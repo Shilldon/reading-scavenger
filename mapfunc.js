@@ -44,7 +44,6 @@ async function initMap() {
 
           //set marker
           var marker = new AdvancedMarkerElement({
-            position: pos,
             title: 'Your Location',
             content: currentLocImg,
             map: map
@@ -68,7 +67,7 @@ async function initMap() {
 
 //function to update the user's location every second
 function updateLocation(marker) {
-  console.log("called location update 4");
+  console.log("called location update 5");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
