@@ -42,8 +42,15 @@ async function initMap() {
     mapId: "32becf6749a12dee"
   });
 
+          //set marker
+          var marker = new AdvancedMarkerElement({
+            position: pos,
+            title: 'Your Location',
+            content: currentLocImg,
+            map: map
+          });
 
-  const updateLocationInterval = setInterval(updateLocation(), 1000);  
+  const updateLocationInterval = setInterval(updateLocation(marker), 1000);  
   
   //handle user location
 //  infoWindow = new google.maps.InfoWindow();
@@ -60,8 +67,8 @@ async function initMap() {
 }
 
 //function to update the user's location every second
-function updateLocation(AdvancedMarkerElement) {
-  console.log("called location update 3");
+function updateLocation(marker) {
+  console.log("called location update 4");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -71,14 +78,8 @@ function updateLocation(AdvancedMarkerElement) {
         };
 
         map.setCenter(pos);
+        marker.setPosition(pos);
 
-        //set marker
-        var marker = new AdvancedMarkerElement({
-          position: pos,
-          title: 'Your Location',
-          content: currentLocImg,
-          map: map
-        });
 
       },
       () => {
