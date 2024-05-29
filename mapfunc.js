@@ -28,7 +28,7 @@ currentLocImg.src = "./icons/location.gif";
 
 //define the map variable
 let map;
-
+let marker;
 //set up map for first time
 async function initMap() {
   
@@ -43,13 +43,12 @@ async function initMap() {
   });
 
           //set marker
-          var marker = new AdvancedMarkerElement({
+          marker = new AdvancedMarkerElement({
             title: 'Your Location',
             content: currentLocImg,
             map: map
           });
 
-  const updateLocationInterval = setInterval(updateLocation(marker), 1000);  
   
   //handle user location
 //  infoWindow = new google.maps.InfoWindow();
@@ -66,7 +65,7 @@ async function initMap() {
 }
 
 //function to update the user's location every second
-function updateLocation(marker) {
+function updateLocation() {
   console.log("called location update 5");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -103,6 +102,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 window.initMap = initMap;
+const updateLocationInterval = setInterval(updateLocation(), 1000);  
 
 
 
