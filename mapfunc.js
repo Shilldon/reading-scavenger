@@ -43,7 +43,7 @@ async function initMap() {
     zoom: 15,
     mapId: "32becf6749a12dee"
   });
-
+  centreOnUser();
   //set marker
   marker = new AdvancedMarkerElement({
     title: 'Your Location',
