@@ -77,7 +77,7 @@ function updateLocation(marker) {
         };
 
         map.setCenter(pos);
-        marker.setPosition(pos);
+        marker.position(pos);
 
 
       },
