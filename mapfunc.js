@@ -48,7 +48,8 @@ async function initMap() {
             content: currentLocImg,
             map: map
           });
-
+  
+          updateLocation();  
   
   //handle user location
 //  infoWindow = new google.maps.InfoWindow();
@@ -63,6 +64,7 @@ async function initMap() {
     // Try HTML5 geolocation.
 //  });
 }
+
 
 //function to update the user's location every second
 function updateLocation() {
@@ -88,7 +90,9 @@ function updateLocation() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
-
+  setTimeout(function() {
+    updateLocation();
+  },1000)
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -102,7 +106,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 window.initMap = initMap;
-const updateLocationInterval = setInterval(updateLocation(), 1000);  
 
 
 
