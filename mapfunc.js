@@ -43,6 +43,7 @@ async function initMap() {
 
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
+  const updateLocationInterval = setInterval(updateLocation(), 1000);
   //handle user location
   infoWindow = new google.maps.InfoWindow();
 /*
@@ -58,8 +59,8 @@ async function initMap() {
 }
 
 //function to update the user's location every second
-function updateLocation(map) {
-  console.log("called locatoipn update");
+function updateLocation() {
+  console.log("called location update 1");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -102,6 +103,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 window.initMap = initMap;
 
-const updateLocationInterval = setInterval(updateLocation(map), 1000);
 
 
