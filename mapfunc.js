@@ -58,7 +58,7 @@ async function initMap() {
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
   locationButton.addEventListener("click", () => {
     centreOnUser();
-  }
+  })
   //handle user location
 //  infoWindow = new google.maps.InfoWindow();
 /*
