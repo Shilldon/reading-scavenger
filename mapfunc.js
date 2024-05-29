@@ -42,8 +42,6 @@ async function initMap() {
   });
 
   
-
-  const updateLocationInterval = setInterval(updateLocation(), 1000);
   //handle user location
   infoWindow = new google.maps.InfoWindow();
 /*
@@ -104,5 +102,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 window.initMap = initMap;
 
+const updateLocationInterval = setInterval(updateLocation(), 1000);
 
 
