@@ -33,6 +33,7 @@ let map;
 async function initMap() {
   
   const { Map } = await google.maps.importLibrary("maps");
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
 
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -41,9 +42,11 @@ async function initMap() {
     mapId: "32becf6749a12dee"
   });
 
+
+  const updateLocationInterval = setInterval(updateLocation(), 1000);  
   
   //handle user location
-  infoWindow = new google.maps.InfoWindow();
+//  infoWindow = new google.maps.InfoWindow();
 /*
   const locationButton = document.createElement("button");
 
@@ -57,9 +60,8 @@ async function initMap() {
 }
 
 //function to update the user's location every second
-async function updateLocation() {
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
-  console.log("called location update 2");
+function updateLocation(AdvancedMarkerElement) {
+  console.log("called location update 3");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -102,6 +104,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 window.initMap = initMap;
 
-const updateLocationInterval = setInterval(updateLocation(), 1000);
 
 
