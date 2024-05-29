@@ -82,6 +82,7 @@ async function initMap() {
 
 //function to update the user's location every second
 function updateLocation() {
+  console.log("update location")
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
