@@ -51,6 +51,14 @@ async function initMap() {
   
           updateLocation();  
   
+          
+  const locationButton = document.createElement("button");
+  locationButton.textContent = "Pan to Current Location";
+  locationButton.classList.add("custom-map-control-button");
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+  locationButton.addEventListener("click", () => {
+    centreOnUser();
+  }
   //handle user location
 //  infoWindow = new google.maps.InfoWindow();
 /*
@@ -68,7 +76,6 @@ async function initMap() {
 
 //function to update the user's location every second
 function updateLocation() {
-  console.log("called location update 5");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -76,10 +83,7 @@ function updateLocation() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-
-        map.setCenter(pos);
         marker.position = pos;
-
 
       },
       () => {
@@ -105,6 +109,27 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+
+
+function centreOnUser() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        map.setCenter(pos);
+      },
+      () => {
+        handleLocationError(true, infoWindow, map.getCenter());
+      },
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }  
+}
 window.initMap = initMap;
 
 
