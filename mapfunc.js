@@ -58,7 +58,7 @@ async function initMap() {
 }
 
 //function to update the user's location every second
-function updateLocation() {
+function updateLocation(map) {
   console.log("called locatoipn update");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -102,6 +102,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 window.initMap = initMap;
 
-const updateLocationInterval = setInterval(updateLocation(), 1000);
+const updateLocationInterval = setInterval(updateLocation(map), 1000);
 
 
