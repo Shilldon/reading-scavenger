@@ -26,7 +26,7 @@ function loadMap(key) {
 //set up map markers
 const currentLocImg = document.createElement("img");
 currentLocImg.src = "./icons/location.gif";
-//currentLocImg.className = "current-location-img";
+currentLocImg.className = "current-location-img";
 
 
 //define the map variable
@@ -34,10 +34,16 @@ let map;
 let marker;
 let clues = {
   "1" : {
-    "lat":51.410767, 
-    "lng": -1.315621,
+    "lat":51.448272, 
+    "lng": -1.009108,
     "clue":"Some wording"
+  },
+  "1" : {
+    "lat":51.458272, 
+    "lng": -1.059108,
+    "clue":"Some wording too"
   }
+
 }
 //set up map for first time
 async function initMap() {
@@ -57,24 +63,22 @@ async function initMap() {
   let clueMarkers = Object.keys(clues);
   let clueMarker;
   console.log("adding clue markers")
-  for(i=0;i<clueMarkers.length; i++) {
+  for(i=1;i<=clueMarkers.length; i++) {
     console.log("adding clue marker "+i)
 
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
     //clueMarkerImg.className = "current-location-img";
-    let pos = { lat: 51.448272, lng: -1.009108 }
-    console.log(clues[`${i+1}`])
-    console.log(JSON.stringify(clues[`${i+1}`]))
+
+    console.log(clues[`${i}`])
+    console.log(JSON.stringify(clues[`${i}`]))
     clueMarker = new AdvancedMarkerElement({
       title: `Location `,
       content: clueMarkerImg,
-      position: pos/*{
-        
+      position: {
         lat: clues[`${clues[i]}`].lat,
         lng: clues[`${clues[i]}`].lng
-        
-      }*/,
+      },
       map: map
     });
   }  
