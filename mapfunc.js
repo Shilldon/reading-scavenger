@@ -64,7 +64,7 @@ async function initMap() {
   let clueMarker;
   console.log("adding clue markers")
   for(i=1;i<=clueMarkers.length; i++) {
-    console.log("adding styled clue marker "+i)
+    console.log("2 adding styled clue marker "+i)
 
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
