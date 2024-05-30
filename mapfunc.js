@@ -68,7 +68,7 @@ async function initMap() {
 
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
-    //clueMarkerImg.className = "current-location-img";
+    clueMarkerImg.className = "current-location-img";
 
     console.log(clues[`${i}`].lat)
     console.log(JSON.stringify(clues[`${i}`]))
