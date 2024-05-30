@@ -94,8 +94,9 @@ async function initMap() {
 function addMarkers() {
   let clueMarkers = Object.keys(clues);
   let clueMarker;
-
+  console.log("adding clue markers")
   for(i=0;i<clueMarkers.length; i++) {
+    console.log("adding clue marker "+i)
     clueMarker = document.createElement("img");
     clueMarker.src = "./icons/clue-marker.png";
     clueMarker.class = "current-location-img"
