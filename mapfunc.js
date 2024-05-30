@@ -44,7 +44,7 @@ async function initMap() {
 
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-  await addMarkers();
+  addMarkers();
 
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -101,7 +101,7 @@ function addMarkers() {
     clueMarker.src = "./icons/clue-marker.png";
     clueMarker.class = "current-location-img"
     
-    marker = new AdvancedMarkerElement({
+    marker = new google.maps.marker.AdvancedMarkerElement({
       title: `Location ${clueMarkers[i]}`,
       content: clueMarker,
       position: {
