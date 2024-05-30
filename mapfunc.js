@@ -42,6 +42,11 @@ let clues = {
     "lat":51.458272, 
     "lng": -1.059108,
     "clue":"Some wording too"
+  },
+  "3" : {
+    "lat":51.410609, 
+    "lng": -1.316207,
+    "clue":"More wording"
   }
 
 }
