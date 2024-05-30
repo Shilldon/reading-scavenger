@@ -44,7 +44,6 @@ async function initMap() {
 
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-  addMarkers();
 
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -52,6 +51,35 @@ async function initMap() {
     zoom: 15,
     mapId: "32becf6749a12dee"
   });
+
+
+  //add clue markers
+  let clueMarkers = Object.keys(clues);
+  let clueMarker;
+  console.log("adding clue markers")
+  for(i=0;i<clueMarkers.length; i++) {
+    console.log("adding clue marker "+i)
+
+    const clueMarkerImg = document.createElement("img");
+    clueMarkerImg.src = "./icons/clue-marker.png";
+    //clueMarkerImg.className = "current-location-img";
+    let pos = { lat: 51.448272, lng: -1.009108 }
+    console.log(clues[`${i+1}`])
+    console.log(JSON.stringify(clues[`${i+1}`]))
+    clueMarker = new AdvancedMarkerElement({
+      title: `Location `,
+      content: clueMarkerImg,
+      position: pos/*{
+        
+        lat: clues[`${clues[i]}`].lat,
+        lng: clues[`${clues[i]}`].lng
+        
+      }*/,
+      map: map
+    });
+  }  
+
+
   centreOnUser();
   //set marker
   marker = new AdvancedMarkerElement({
@@ -91,35 +119,7 @@ async function initMap() {
 }
 
 
-function addMarkers() {
-  let clueMarkers = Object.keys(clues);
-  let clueMarker;
-  console.log("adding clue markers")
-  for(i=0;i<clueMarkers.length; i++) {
-    console.log("adding clue marker "+i)
 
-   // const currentLocImg = document.createElement("img");
-   // currentLocImg.src = "./icons/location.gif";
-
-    let clueMarkerImg = document.createElement("img");
-    clueMarkerImg.src = "./icons/location.gif";
-    //clueMarkerImg.className = "current-location-img";
-    let pos = { lat: 51.448272, lng: -1.009108 }
-    console.log(clues[`${i+1}`])
-    console.log(JSON.stringify(clues[`${i+1}`]))
-    clueMarker = new AdvancedMarkerElement({
-      title: `Location `,
-      content: clueMarkerImg,
-      position: pos/*{
-        
-        lat: clues[`${clues[i]}`].lat,
-        lng: clues[`${clues[i]}`].lng
-        
-      }*/,
-      map: map
-    });
-  }
-}
 
 //function to update the user's location every second
 function updateLocation() {
