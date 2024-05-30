@@ -76,8 +76,8 @@ async function initMap() {
       title: `Location `,
       content: clueMarkerImg,
       position: {
-        lat: clues[`${clues[i]}`].lat,
-        lng: clues[`${clues[i]}`].lng
+        lat: clues[`${i}`].lat,
+        lng: clues[`${i}`].lng
       },
       map: map
     });
