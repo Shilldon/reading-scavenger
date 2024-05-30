@@ -38,7 +38,7 @@ let clues = {
     "lng": -1.009108,
     "clue":"Some wording"
   },
-  "1" : {
+  "2" : {
     "lat":51.458272, 
     "lng": -1.059108,
     "clue":"Some wording too"
