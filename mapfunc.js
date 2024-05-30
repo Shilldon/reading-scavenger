@@ -97,12 +97,16 @@ function addMarkers() {
   console.log("adding clue markers")
   for(i=0;i<clueMarkers.length; i++) {
     console.log("adding clue marker "+i)
+
+   // const currentLocImg = document.createElement("img");
+   // currentLocImg.src = "./icons/location.gif";
+
     let clueMarkerImg = document.createElement("img");
-    clueMarkerImg.src = "./icons/clue-marker.png";
+    clueMarkerImg.src = "./icons/location.gif";
     //clueMarkerImg.className = "current-location-img";
     let pos = { lat: 51.448272, lng: -1.009108 }
-    console.log(clues[`${i}`])
-    console.log(JSON.stringify(clues[`${i}`]))
+    console.log(clues[`${i+1}`])
+    console.log(JSON.stringify(clues[`${i+1}`]))
     clueMarker = new google.maps.marker.AdvancedMarkerElement({
       title: `Location `,
       content: clueMarkerImg,
