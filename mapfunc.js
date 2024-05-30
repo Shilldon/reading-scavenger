@@ -105,8 +105,8 @@ function addMarkers() {
       title: `Location ${clueMarkers[i]}`,
       content: clueMarker,
       position: {
-        lat: position.clues[`${clueMarkers[i]}`].lat,
-        lng: position.clues[`${clueMarkers[i]}`].lng
+        lat: clues[`${clueMarkers[i]}`].lat,
+        lng: clues[`${clueMarkers[i]}`].lng
       },
       map: map
     });
