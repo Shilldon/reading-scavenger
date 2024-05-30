@@ -128,7 +128,7 @@ function updateLocation() {
           lng: position.coords.longitude,
         };
         marker.position = pos;
-
+        console.log("lat "+pos.lat+" lng "+pos.lng)
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
