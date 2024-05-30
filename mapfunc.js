@@ -100,13 +100,13 @@ function addMarkers() {
     let clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
     //clueMarkerImg.className = "current-location-img";
-    let position = { lat: 51.448272, lng: -1.009108 }
+    let pos = { lat: 51.448272, lng: -1.009108 }
     console.log(clues[`${i}`])
     console.log(JSON.stringify(clues[`${i}`]))
     clueMarker = new google.maps.marker.AdvancedMarkerElement({
-      title: `Location ${clueMarkers[i]}`,
+      title: `Location `,
       content: clueMarkerImg,
-      position: position/*{
+      position: pos/*{
         
         lat: clues[`${clues[i]}`].lat,
         lng: clues[`${clues[i]}`].lng
