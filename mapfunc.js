@@ -70,7 +70,7 @@ async function initMap() {
     clueMarkerImg.src = "./icons/clue-marker.png";
     //clueMarkerImg.className = "current-location-img";
 
-    console.log(clues[`${i}`])
+    console.log(clues[`${i}`].lat)
     console.log(JSON.stringify(clues[`${i}`]))
     clueMarker = new AdvancedMarkerElement({
       title: `Location `,
