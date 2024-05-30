@@ -26,16 +26,25 @@ function loadMap(key) {
 //set up map markers
 const currentLocImg = document.createElement("img");
 currentLocImg.src = "./icons/location.gif";
+currentLocImg.class = "current-location-img"
 
 
 //define the map variable
 let map;
 let marker;
+let clues = {
+  "1" : {
+    "lat":51.410767, 
+    "lng": -1.315621,
+    "clue":"Some wording"
+  }
+}
 //set up map for first time
 async function initMap() {
 
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  await addMarkers();
 
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -60,6 +69,8 @@ async function initMap() {
     centreOnUser();
   })
 
+  
+
   //start updating user location
   updateLocation();
 
@@ -79,6 +90,27 @@ async function initMap() {
   //  });
 }
 
+
+function addMarkers() {
+  let clueMarkers = Object.keys(clues);
+  let clueMarker;
+
+  for(i=0;i<clueMarkers.length; i++) {
+    clueMarker = document.createElement("img");
+    clueMarker.src = "./icons/clue-marker.png";
+    clueMarker.class = "current-location-img"
+    
+    marker = new AdvancedMarkerElement({
+      title: `Location ${clueMarkers[i]}`,
+      content: clueMarker,
+      position: {
+        lat: position.clues[`${clueMarkers[i]}`].lat,
+        lng: position.clues[`${clueMarkers[i]}`].lng
+      },
+      map: map
+    });
+  }
+}
 
 //function to update the user's location every second
 function updateLocation() {
@@ -103,7 +135,7 @@ function updateLocation() {
   }
   setTimeout(function () {
     updateLocation();
-  }, 1000)
+  }, 250)
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
