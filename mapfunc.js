@@ -79,6 +79,7 @@ async function initMap() {
         lat: clues[`${i}`].lat,
         lng: clues[`${i}`].lng
       },
+      anchor: new google.maps.Point(0, 32),
       map: map
     });
   }  
@@ -89,7 +90,8 @@ async function initMap() {
   marker = new AdvancedMarkerElement({
     title: 'Your Location',
     content: currentLocImg,
-    map: map
+    map: map,
+    anchor: new google.maps.Point(0, 32)
   });
 
 
