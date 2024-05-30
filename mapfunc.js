@@ -107,7 +107,7 @@ function addMarkers() {
     let pos = { lat: 51.448272, lng: -1.009108 }
     console.log(clues[`${i+1}`])
     console.log(JSON.stringify(clues[`${i+1}`]))
-    clueMarker = new google.maps.marker.AdvancedMarkerElement({
+    clueMarker = new AdvancedMarkerElement({
       title: `Location `,
       content: clueMarkerImg,
       position: pos/*{
@@ -132,7 +132,7 @@ function updateLocation() {
           lng: position.coords.longitude,
         };
         marker.position = pos;
-        console.log("lat "+pos.lat+" lng "+pos.lng)
+     //   console.log("lat "+pos.lat+" lng "+pos.lng)
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
