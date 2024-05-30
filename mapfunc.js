@@ -26,7 +26,7 @@ function loadMap(key) {
 //set up map markers
 const currentLocImg = document.createElement("img");
 currentLocImg.src = "./icons/location.gif";
-currentLocImg.className = "current-location-img";
+//currentLocImg.className = "current-location-img";
 
 
 //define the map variable
