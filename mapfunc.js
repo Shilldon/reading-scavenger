@@ -26,7 +26,7 @@ function loadMap(key) {
 //set up map markers
 const currentLocImg = document.createElement("img");
 currentLocImg.src = "./icons/location.gif";
-currentLocImg.classList.add("current-location-img");
+currentLocImg.className = "current-location-img";
 
 
 //define the map variable
@@ -97,14 +97,14 @@ function addMarkers() {
   console.log("adding clue markers")
   for(i=0;i<clueMarkers.length; i++) {
     console.log("adding clue marker "+i)
-    clueMarker = document.createElement("img");
-    clueMarker.src = "./icons/clue-marker.png";
-    clueMarker.class = "current-location-img"
+    let clueMarkerImg = document.createElement("img");
+    clueMarkerImg.src = "./icons/clue-marker.png";
+    clueMarkerImg.className = "current-location-img";
     let position = { lat: 51.448272, lng: -1.009108 }
     console.log(JSON.stringify(clues[`${i}`]))
-    marker = new google.maps.marker.AdvancedMarkerElement({
+    clueMarker = new google.maps.marker.AdvancedMarkerElement({
       title: `Location ${clueMarkers[i]}`,
-      content: clueMarker,
+      content: clueMarkerImg,
       position: position/*{
         
         lat: clues[`${clues[i]}`].lat,
