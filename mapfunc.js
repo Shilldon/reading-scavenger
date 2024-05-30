@@ -101,14 +101,14 @@ function addMarkers() {
     clueMarker.src = "./icons/clue-marker.png";
     clueMarker.class = "current-location-img"
     let position = { lat: 51.448272, lng: -1.009108}
-    console.log(JSON.stringify(clueMarkers[i]))
+    console.log(JSON.stringify(clues[i]))
     marker = new google.maps.marker.AdvancedMarkerElement({
       title: `Location ${clueMarkers[i]}`,
       content: clueMarker,
       position: position/*{
         
-        lat: clues[`${clueMarkers[i]}`].lat,
-        lng: clues[`${clueMarkers[i]}`].lng
+        lat: clues[`${clues[i]}`].lat,
+        lng: clues[`${clues[i]}`].lng
         
       }*/,
       map: map
