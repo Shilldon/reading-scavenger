@@ -16,6 +16,7 @@
 
   .border {
     position: absolute;
+    z-index: 50;
     height: 100%;
     width: 100%;
     background-image: url("../icons/border.png");
