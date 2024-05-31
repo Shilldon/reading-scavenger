@@ -24,4 +24,62 @@ html, body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   pointer-events: none;
+}
+
+#wrapper {
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.waiting-screen {
+  position: absolute;
+  z-index: 49;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background-color: black;
+  font-size: 3em;
+  font-family: "Orbitron", sans-serif;
+  color: #00c100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot_one {
+  animation: flash_one 3s linear infinite;
+}
+
+.dot_two {
+  animation: flash_two 3s linear infinite;
+}
+
+.dot_three {
+  animation: flash_three 3s linear infinite;
+}
+
+@keyframes flash_one {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+}
+@keyframes flash_two {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+@keyframes flash_three {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=style.css.map */

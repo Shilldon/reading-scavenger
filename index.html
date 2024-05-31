@@ -7,17 +7,24 @@
   <link rel="stylesheet" type="text/css" href="./style/style.css" />
   <link rel=”icon” type=”image/x-icon” href=”./favicon.ico”>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
   <script type="module" src="./netlify/functions/request.js"></script>
   <script type="module" src="./index.js"></script>
   <script src="./mapfunc.js"></script>
 </head>
 
 <body>
-  <div class="border"></div>
-  <div id="map">
+  <div id="wrapper">
+    <div class="border"></div>
+    <div class="waiting-screen">
+      <span>Finding location</span><span class="dot_one">.</span><span class="dot_two">.</span><span class="dot_three">.</span>
+    </div>
+    <div id="map">
+    </div>
   </div>
-
-  <!-- prettier-ignore -->
 
   <script type="module">
     fetch('/.netlify/functions/request').then(response => {

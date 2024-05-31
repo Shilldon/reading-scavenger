@@ -25,12 +25,13 @@ function loadMap(key) {
 }
 
 function goFullScreen() {
-  if (document.body.requestFullscreen) {
-    document.body.requestFullscreen();
+  var elem = document.getElementById("wrapper");
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) { /* Safari */
-  document.body.webkitRequestFullscreen();
+    elem.webkitRequestFullscreen();
   } else if (elem.msRequestFullscreen) { /* IE11 */
-  document.body.msRequestFullscreen();
+    elem.msRequestFullscreen();
   }
 }
 
@@ -187,6 +188,8 @@ function centreOnUser() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
+        let waitScreen = document.getElementsByClassName("waiting-screen");
+        waitScreen.style.display = "none";
         map.setCenter(pos);
       },
       () => {
