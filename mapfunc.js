@@ -20,12 +20,12 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  goFullScreen();
   initMap();
 }
 
+
 function goFullScreen() {
-  var elem = document.getElementById("wrapper");
+  var elem = document.body;
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
   } else if (elem.webkitRequestFullscreen) { /* Safari */

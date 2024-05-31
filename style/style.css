@@ -32,6 +32,23 @@ html, body {
   pointer-events: none;
 }
 
+.btn {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.control-buttons {
+  position: absolute;
+  left: 17.5%;
+  top: 10%;
+  z-index: 51;
+}
+.control-buttons .material-symbols-outlined {
+  font-size: 3em;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
 .waiting-screen {
   position: absolute;
   z-index: 49;
