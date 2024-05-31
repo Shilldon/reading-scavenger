@@ -26,7 +26,7 @@ function loadMap(key) {
 //set up map markers
 const currentLocImg = document.createElement("img");
 currentLocImg.src = "./icons/location.gif";
-currentLocImg.className = "current-location-img";
+currentLocImg.className = "marker-img";
 
 
 //define the map variable
@@ -56,11 +56,268 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
+
+  
   //set initial position
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 15,
-    mapId: "32becf6749a12dee"
+    zoom: 4,
+    mapId: "32becf6749a12dee",
+    mapTypeControl: false,
+    streetViewControl: false,
+    styles: [
+      {
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#212121"
+          }
+        ]
+      },
+      {
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#131e3f"
+          }
+        ]
+      },
+      {
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#131e3f"
+          }
+        ]
+      },
+      {
+        "elementType": "labels",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#212121"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#131e3f"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "stylers": [
+          {
+            "color": "#13183f"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#326d1d"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#253b7e"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural.landcover",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#1c1b69"
+          }
+        ]
+      },
+      {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#1c1b69"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#131e3f"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "stylers": [
+          {
+            "color": "#6dff38"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#1c1b69"
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#373737"
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#6dff38"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#3c3c3c"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#6dff38"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway.controlled_access",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#4e4e4e"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway.controlled_access",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#6dff38"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#6dff38"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#616161"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#3d3d3d"
+          }
+        ]
+      }
+    ]
   });
 
 
@@ -73,7 +330,7 @@ async function initMap() {
 
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
-    clueMarkerImg.className = "current-location-img";
+    clueMarkerImg.className = "marker-img";
 
     console.log(clues[`${i}`].lat)
     console.log(JSON.stringify(clues[`${i}`]))
@@ -157,6 +414,7 @@ function updateLocation() {
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  alert("no location")
   infoWindow.setPosition(pos);
   infoWindow.setContent(
     browserHasGeolocation

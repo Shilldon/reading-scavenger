@@ -8,14 +8,7 @@ html, body {
   padding: 0;
 }
 
-.current-location-img {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  transform: translate(-1.8em, -1.8em);
-}
-
-.clue-location-img {
+.marker-img {
   width: 100px;
   height: 100px;
   position: absolute;
