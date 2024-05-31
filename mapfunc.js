@@ -20,8 +20,20 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
+  goFullScreen();
   initMap();
 }
+
+function goFullScreen() {
+  if (document.body.requestFullscreen) {
+    document.body.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+  document.body.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+  document.body.msRequestFullscreen();
+  }
+}
+
 
 //set up map markers
 const currentLocImg = document.createElement("img");
@@ -61,7 +73,7 @@ async function initMap() {
   //set initial position
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16,
+    zoom: 18,
     mapId: "32becf6749a12dee",
     mapTypeControl: false,
     streetViewControl: false,
