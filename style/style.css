@@ -13,4 +13,14 @@ html, body {
   height: 100px;
   position: absolute;
   transform: translate(-1.8em, -1.8em);
+}
+
+.border {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url("../icons/border.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  pointer-events: none;
 }/*# sourceMappingURL=style.css.map */

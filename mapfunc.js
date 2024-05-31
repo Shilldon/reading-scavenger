@@ -61,7 +61,7 @@ async function initMap() {
   //set initial position
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 4,
+    zoom: 16,
     mapId: "32becf6749a12dee",
     mapTypeControl: false,
     streetViewControl: false,
@@ -71,16 +71,10 @@ async function initMap() {
   //add clue markers
   let clueMarkers = Object.keys(clues);
   let clueMarker;
-  console.log("adding clue markers")
   for(i=1;i<=clueMarkers.length; i++) {
-    console.log("2 adding styled clue marker "+i)
-
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
     clueMarkerImg.className = "marker-img";
-
-    console.log(clues[`${i}`].lat)
-    console.log(JSON.stringify(clues[`${i}`]))
     clueMarker = new AdvancedMarkerElement({
       title: `Location `,
       content: clueMarkerImg,
