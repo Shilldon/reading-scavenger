@@ -28,7 +28,6 @@
   #wrapper {
     height:100%;
     width: 100%;
-    pointer-events: none;
   }
 
 
@@ -41,10 +40,10 @@
   .control-buttons {
     position: absolute;
     left: 17.5%;
-    top: 10%;
+    top: 7.5%;
     z-index: 51;
     .material-symbols-outlined {
-      font-size: 3em;
+      font-size: 3vh;
       font-variation-settings:
       'FILL' 0,
       'wght' 400,
@@ -62,7 +61,7 @@
     width: 100%;
     pointer-events: none;
     background-color: black;
-    font-size: 3em;
+    font-size: 5vw;
     font-family: "Orbitron", sans-serif;
     color: #00c100;
     display: flex;
