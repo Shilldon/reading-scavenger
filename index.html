@@ -22,11 +22,16 @@
 
   <div id="wrapper">
     <div class="control-buttons">
-      <button class="btn" onclick="goFullScreen()">
-        <span class="material-symbols-outlined">
+      <button class="btn" onclick="fullScreenToggle()">
+        <span id="fullscreen-toggler" class="material-symbols-outlined">
           fullscreen
           </span>
       </button>
+      <button class="btn" onclick="centreOnUser()">
+        <span id="centre-map" class="material-symbols-outlined">
+          adjust
+          </span>
+      </button>      
     </div>   
     <div class="border"></div>
     <div class="waiting-screen">

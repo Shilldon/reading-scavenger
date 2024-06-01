@@ -24,16 +24,25 @@ function loadMap(key) {
 }
 
 
-function goFullScreen() {
-
+function fullScreenToggle() {
   var elem = document.body;
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
+  var button = document.getElementById("fullscreen-toggler");
+  if (document.fullscreenElement) { 
+    document.exitFullscreen();
+    button.innerHTML = "fullscreen";
+  } 
+  else { 
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+      button.innerHTML = "fullscreen_exit";
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+      button.innerHTML = "fullscreen_exit";
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+      button.innerHTML = "fullscreen_exit";
+    }
+  } 
 }
 
 
@@ -110,14 +119,14 @@ async function initMap() {
   });
 
 
-  const locationButton = document.createElement("button");
+/*  const locationButton = document.createElement("button");
   locationButton.textContent = "Pan to Current Location";
   locationButton.classList.add("custom-map-control-button");
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
   locationButton.addEventListener("click", () => {
     centreOnUser();
   })
-
+*/
   
 
   //start updating user location
