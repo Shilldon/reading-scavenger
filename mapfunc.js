@@ -188,7 +188,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+function geoError() {
+  console.log("Sorry, no position available.");
+}
 
+var geoOptions = {
+  enableHighAccuracy: true,
+  maximumAge: 30000,
+  timeout: 27000
+};
 
 function centreOnUser() {
   if (navigator.geolocation) {
@@ -205,7 +213,7 @@ function centreOnUser() {
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
-      },
+      },geoError, geoOptions
     );
   } else {
     // Browser doesn't support Geolocation
