@@ -9,8 +9,8 @@ html, body {
 }
 
 .marker-img {
-  width: 100px;
-  height: 100px;
+  width: 3vh;
+  height: 3vh;
   position: absolute;
   transform: translate(-1.8em, -1.8em);
 }
