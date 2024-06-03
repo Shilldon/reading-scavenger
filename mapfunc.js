@@ -109,14 +109,15 @@ async function initMap() {
     });
   }  
 
-
-  centreOnUser();
   //set marker
   marker = new AdvancedMarkerElement({
     title: 'Your Location',
     content: currentLocImg,
     map: map,
   });
+
+  centreOnUser();
+  follow(marker);
 
 
 /*  const locationButton = document.createElement("button");
@@ -150,7 +151,7 @@ async function initMap() {
 
 
 
-
+/*
 //function to update the user's location every second
 function updateLocation() {
   console.log("update location")
@@ -176,7 +177,7 @@ function updateLocation() {
     updateLocation();
   }, 250)
 }
-
+*/
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   alert("no location")
   infoWindow.setPosition(pos);
@@ -223,4 +224,39 @@ function centreOnUser() {
 window.initMap = initMap;
 
 
+function follow() {
+  var win = function(position) {
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+/*
+    var iconimage = {
+      url: 'assets/images/user-position.png',
+      size: new google.maps.Size(384, 720),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 0),
+      scaledSize: new google.maps.Size(0, 0)
+      //anchor: new google.maps.Point(17, 34),
+//      scaledSize: new google.maps.Size(20, 27)
+    };*/
+    var myLatlng = new google.maps.LatLng(lat, long);
+    /*
+    $(document).attr('lat',lat);
+    $(document).attr('lon',long);
+    if (marker) {
+      marker.setMap(null);
 
+    }*/
+    marker.position = myLatlng;
+    /*
+    marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: iconimage
+    });*/
+
+
+    marker.setMap(map);
+  };
+
+  var watchID = navigator.geolocation.watchPosition(win);
+}
