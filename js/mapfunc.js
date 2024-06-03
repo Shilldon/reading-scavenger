@@ -82,13 +82,11 @@ let clues = {
   }
 
 }
-
-const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+const { AdvancedMarkerElement } = google.maps.importLibrary("marker");
 
 //load libraries
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
-  
 
   //set up map for first time
   //set initial position
