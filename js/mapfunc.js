@@ -27,11 +27,14 @@ function loadMap(key) {
 function fullScreenToggle() {
   var elem = document.body;
   var button = document.getElementById("fullscreen-toggler");
+  
   if (document.fullscreenElement) { 
+    //full screen mode is active so take us out of fullscreen    
     document.exitFullscreen();
     button.innerHTML = "fullscreen";
   } 
   else { 
+    //fullscreen mode is not active so put us in fullscreen
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
       button.innerHTML = "fullscreen_exit";
@@ -73,14 +76,21 @@ let clues = {
   }
 
 }
-//set up map for first time
-async function initMap() {
 
+//load libraries
+async function loadLibaries() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
+  initMap();
+  centreOnUser();
+  follow();
+  positionClueMarkers();
+}
 
-  
+//set up map for first time
+function initMap() {
+
   //set initial position
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
@@ -90,25 +100,6 @@ async function initMap() {
     streetViewControl: false,
   });
 
-
-  //add clue markers
-  let clueMarkers = Object.keys(clues);
-  let clueMarker;
-  for(i=1;i<=clueMarkers.length; i++) {
-    const clueMarkerImg = document.createElement("img");
-    clueMarkerImg.src = "./icons/clue-marker.png";
-    clueMarkerImg.className = "marker-img";
-    clueMarker = new AdvancedMarkerElement({
-      title: `Location `,
-      content: clueMarkerImg,
-      position: {
-        lat: clues[`${i}`].lat,
-        lng: clues[`${i}`].lng
-      },
-      map: map
-    });
-  }  
-
   //set marker
   marker = new AdvancedMarkerElement({
     title: 'Your Location',
@@ -116,68 +107,10 @@ async function initMap() {
     map: map,
   });
 
-  centreOnUser();
-  follow(marker);
 
-
-/*  const locationButton = document.createElement("button");
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    centreOnUser();
-  })
-*/
-  
-
-  //start updating user location
-  //updateLocation();
-
-
-
-  //handle user location
-  //  infoWindow = new google.maps.InfoWindow();
-  /*
-    const locationButton = document.createElement("button");
-  
-    locationButton.textContent = "Pan to Current Location";
-    locationButton.classList.add("custom-map-control-button");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  
-    locationButton.addEventListener("click", () => {*/
-  // Try HTML5 geolocation.
-  //  });
 }
 
 
-
-/*
-//function to update the user's location every second
-function updateLocation() {
-  console.log("update location")
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        marker.position = pos;
-     //   console.log("lat "+pos.lat+" lng "+pos.lng)
-      },
-      () => {
-        handleLocationError(true, infoWindow, map.getCenter());
-      },
-    );
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-  setTimeout(function () {
-    updateLocation();
-  }, 250)
-}
-*/
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   alert("no location")
   infoWindow.setPosition(pos);
@@ -199,6 +132,8 @@ var geoOptions = {
   timeout: 27000
 };
 
+
+//centre the map on the user - run on load and on button push
 function centreOnUser() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -208,6 +143,7 @@ function centreOnUser() {
           lng: position.coords.longitude,
         };
 
+        //when the location is found hide the 'wait screen'
         let waitScreen = document.getElementsByClassName("waiting-screen")[0];
         waitScreen.style.display = "none";
         map.setCenter(pos);
@@ -228,35 +164,29 @@ function follow() {
   var win = function(position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
-/*
-    var iconimage = {
-      url: 'assets/images/user-position.png',
-      size: new google.maps.Size(384, 720),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 0),
-      scaledSize: new google.maps.Size(0, 0)
-      //anchor: new google.maps.Point(17, 34),
-//      scaledSize: new google.maps.Size(20, 27)
-    };*/
+
     var myLatlng = new google.maps.LatLng(lat, long);
-    /*
-    $(document).attr('lat',lat);
-    $(document).attr('lon',long);
-    if (marker) {
-      marker.setMap(null);
-
-    }*/
     marker.position = myLatlng;
-    /*
-    marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      icon: iconimage
-    });*/
-
-
     marker.setMap(map);
   };
 
   var watchID = navigator.geolocation.watchPosition(win);
 }
+
+function positionClueMarkers() {
+  let clueMarkers = Object.keys(clues);
+  let clueMarker;
+  for(i=1;i<=clueMarkers.length; i++) {
+    const clueMarkerImg = document.createElement("img");
+    clueMarkerImg.src = "./icons/clue-marker.png";
+    clueMarkerImg.className = "marker-img";
+    clueMarker.title = `Location ${i}`;
+    clueMarker.content = clueMarkerImg
+    clueMarker.position = {
+        lat: clues[`${i}`].lat,
+        lng: clues[`${i}`].lng
+      }
+    };
+  }  
+ 
+
