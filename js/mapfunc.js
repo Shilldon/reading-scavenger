@@ -82,10 +82,7 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-
-//set up map for first time
-
-
+  //set up map for first time
   //set initial position
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
@@ -99,6 +96,12 @@ async function initMap() {
   userMarker = new AdvancedMarkerElement({
     title: 'Your Location',
     content: currentLocImg,
+    map: map,
+  });
+
+
+  clueMarker = new AdvancedMarkerElement({
+    title: 'Clue',
     map: map,
   });
 
