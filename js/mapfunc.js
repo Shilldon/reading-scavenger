@@ -20,7 +20,7 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  loadLibraries();
+  initMap();
 }
 
 
@@ -78,15 +78,13 @@ let clues = {
 }
 
 //load libraries
-async function loadLibraries() {
+async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
-  initMap();
-}
 
 //set up map for first time
-function initMap() {
+
 
   //set initial position
   map = new Map(document.getElementById("map"), {
