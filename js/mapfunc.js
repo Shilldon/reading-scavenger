@@ -58,6 +58,7 @@ currentLocImg.className = "marker-img";
 //define the map variable
 let map;
 let userMarker;
+let clueMarker;
 let clues = {
   "1" : {
     "lat":51.448272, 
@@ -176,7 +177,6 @@ function follow() {
 
 function positionClueMarkers() {
   let clueMarkers = Object.keys(clues);
-  let clueMarker;
   for(i=1;i<=clueMarkers.length; i++) {
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
