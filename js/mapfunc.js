@@ -20,7 +20,7 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  initMap();
+  loadLibraries();
 }
 
 
@@ -57,7 +57,7 @@ currentLocImg.className = "marker-img";
 
 //define the map variable
 let map;
-let marker;
+let userMarker;
 let clues = {
   "1" : {
     "lat":51.448272, 
@@ -83,9 +83,6 @@ async function loadLibaries() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
   initMap();
-  centreOnUser();
-  follow();
-  positionClueMarkers();
 }
 
 //set up map for first time
@@ -101,18 +98,20 @@ function initMap() {
   });
 
   //set marker
-  marker = new AdvancedMarkerElement({
+  userMarker = new AdvancedMarkerElement({
     title: 'Your Location',
     content: currentLocImg,
     map: map,
   });
 
+  centreOnUser();
+  follow();
+  positionClueMarkers();
 
 }
 
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  alert("no location")
   infoWindow.setPosition(pos);
   infoWindow.setContent(
     browserHasGeolocation
@@ -146,6 +145,7 @@ function centreOnUser() {
         //when the location is found hide the 'wait screen'
         let waitScreen = document.getElementsByClassName("waiting-screen")[0];
         waitScreen.style.display = "none";
+        userMarker.position = pos;
         map.setCenter(pos);
       },
       () => {
@@ -166,8 +166,8 @@ function follow() {
     var long = position.coords.longitude;
 
     var myLatlng = new google.maps.LatLng(lat, long);
-    marker.position = myLatlng;
-    marker.setMap(map);
+    userMarker.position = myLatlng;
+    //marker.setMap(map);
   };
 
   var watchID = navigator.geolocation.watchPosition(win);
