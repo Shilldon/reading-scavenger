@@ -78,7 +78,7 @@ let clues = {
 }
 
 //load libraries
-async function loadLibaries() {
+async function loadLibraries() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
