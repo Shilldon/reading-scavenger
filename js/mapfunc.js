@@ -100,12 +100,6 @@ async function initMap() {
     map: map,
   });
 
-
-  clueMarker = new AdvancedMarkerElement({
-    title: 'Clue',
-    map: map,
-  });
-
   centreOnUser();
   follow();
   positionClueMarkers();
@@ -181,6 +175,10 @@ function positionClueMarkers() {
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
     clueMarkerImg.className = "marker-img";
+    let clueMarker = new AdvancedMarkerElement({
+      title: 'Clue',
+      map: map,
+    });    
     clueMarker.title = `Location ${i}`;
     clueMarker.content = clueMarkerImg
     clueMarker.position = {
