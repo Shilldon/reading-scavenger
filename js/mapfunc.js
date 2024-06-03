@@ -20,7 +20,12 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  initMap();
+  initMap().then(function() {
+      centreOnUser();
+      follow();
+      positionClueMarkers();
+    }
+  );
 }
 
 
@@ -99,11 +104,6 @@ async function initMap() {
     content: currentLocImg,
     map: map,
   });
-
-  centreOnUser();
-  follow();
-  positionClueMarkers();
-
 }
 
 
