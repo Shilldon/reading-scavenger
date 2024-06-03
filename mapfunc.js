@@ -131,7 +131,7 @@ async function initMap() {
   
 
   //start updating user location
-  updateLocation();
+  //updateLocation();
 
 
 
