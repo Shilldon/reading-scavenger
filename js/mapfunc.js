@@ -60,6 +60,15 @@ currentLocImg.src = "./icons/location.gif";
 currentLocImg.className = "marker-img";
 
 
+    //define our active and inactive marker images
+    const clueMarkerImg = document.createElement("img");
+    clueMarkerImg.src = "./icons/clue-marker.png";
+    clueMarkerImg.className = "marker-img";
+
+    const clueMarkerActiveImg = document.createElement("img");
+    clueMarkerImg.src = "./icons/clue-marker-active.png";
+    clueMarkerImg.className = "clue-marker-img";
+
 //define the map variable
 let map;
 let userMarker;
@@ -179,13 +188,15 @@ function follow() {
 function positionClueMarkers(AdvancedMarkerElement) {
   let clueMarkers = Object.keys(clues);
   for(i=1;i<=clueMarkers.length; i++) {
-    const clueMarkerImg = document.createElement("img");
-    clueMarkerImg.src = "./icons/clue-marker.png";
-    clueMarkerImg.className = "clue-marker-img";
+
+
+    //create the marker
     let clueMarker = new AdvancedMarkerElement({
       title: 'Clue',
       map: map,
+      gmpClickable: true,
     });    
+    //add inactive marker properties
     clueMarker.title = `Location ${i}`;
     clueMarker.content = clueMarkerImg
     clueMarker.position = {
@@ -193,6 +204,46 @@ function positionClueMarkers(AdvancedMarkerElement) {
         lng: clues[`${i}`].lng
       }
     };
+
+    //add listeners
+    marker.content.addEventListener('click', function(){
+      //check if previous infowindow is open and, if so, close it
+      lon2=$(document).attr('lon');
+      lat2=$(document).attr('lat');
+      if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
+        marker.content = clueMarkerActiveImg;
+      }
+    });
+
   }  
  
+
+  function getDistanceBetween(lat1, lon1) {
+    var lat2 = userMarker.position.lat;
+    var lon2 = userMarker.position.lon;
+
+    var R = 6371000; // metres
+    var φ1 = toRad(lat1);
+    var φ2 = toRad(lat2);
+    var Δφ = toRad(lat2 - lat1);
+    var Δλ = toRad(lon2 - lon1);
+    //alert("φ1 " + φ1 + "φ2 " + φ2)
+    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+      Math.cos(φ1) * Math.cos(φ2) *
+      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  
+    var d = R * c;
+  
+  
+    var clueRange = $(document).attr("Range");
+    if (clueRange == undefined) { clueRange = 200; };
+    //var clueRange=20;
+    if (d <= clueRange) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 
