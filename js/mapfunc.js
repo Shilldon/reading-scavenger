@@ -20,10 +20,10 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  initMap().then(function() {
+  initMap().then(function(AdvancedMarkerElement) {
       centreOnUser();
       follow();
-      positionClueMarkers();
+      positionClueMarkers(AdvancedMarkerElement);
     }
   );
 }
@@ -82,12 +82,15 @@ let clues = {
   }
 
 }
-const { AdvancedMarkerElement } = google.maps.importLibrary("marker");
+
+let clueMarkerTemp;
 
 //load libraries
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  
   //set up map for first time
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -104,6 +107,9 @@ async function initMap() {
     content: currentLocImg,
     map: map,
   });
+
+  return AdvancedMarkerElement;
+
 }
 
 
@@ -169,7 +175,7 @@ function follow() {
   var watchID = navigator.geolocation.watchPosition(win);
 }
 
-function positionClueMarkers() {
+function positionClueMarkers(AdvancedMarkerElement) {
   let clueMarkers = Object.keys(clues);
   for(i=1;i<=clueMarkers.length; i++) {
     const clueMarkerImg = document.createElement("img");
