@@ -175,12 +175,13 @@ function follow() {
   var watchID = navigator.geolocation.watchPosition(win);
 }
 
+//draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
   let clueMarkers = Object.keys(clues);
   for(i=1;i<=clueMarkers.length; i++) {
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
-    clueMarkerImg.className = "marker-img";
+    clueMarkerImg.className = "clue-marker-img";
     let clueMarker = new AdvancedMarkerElement({
       title: 'Clue',
       map: map,

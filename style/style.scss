@@ -14,6 +14,17 @@
     transform: translate(-1.8em,-1.8em);
   }
 
+  .clue-marker-img {
+    width: 3vh;
+    height: 3vh;
+    position: absolute;
+    transform: translate(-1.8em,-1.8em);
+  }
+
+  .clue-marker-pulse {
+    animation: pulse_target 1s linear infinite alternate;
+  }
+
   .border {
     position: absolute;
     z-index: 50;
@@ -106,5 +117,14 @@
     }    
     60% {
       opacity: 1;
+    }
+  }
+
+  @keyframes pulse_target {
+    0% {
+      transform: translate(-1.8em,-1.8em) scale(1);      
+    }
+    100% {
+      transform: translate(-1.8em,-1.8em) scale(0.25);      
     }
   }
