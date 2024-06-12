@@ -208,7 +208,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     });    
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
-    clueMarker.content = clueMarkerImg
+    clueMarker.content = clueMarkerImg;
     clueMarker.position = {
         lat: clues[`${i}`].lat,
         lng: clues[`${i}`].lng
