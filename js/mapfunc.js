@@ -247,7 +247,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     var d = R * c;
   
   
-    var clueRange = $(document).attr("Range");
+    var clueRange;// = $(document).attr("Range");
     if (clueRange == undefined) { clueRange = 200; };
     //var clueRange=20;
     if (d <= clueRange) {
