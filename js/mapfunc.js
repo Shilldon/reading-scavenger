@@ -89,8 +89,9 @@ let clues = {
     "lng": -1.316207,
     "clue":"More wording"
   }
-
 }
+
+let clueMarkers = Object.keys(clues);
 
 let clueMarkerTemp;
 
@@ -179,6 +180,15 @@ function follow() {
     var myLatlng = new google.maps.LatLng(lat, long);
     userMarker.position = myLatlng;
     //marker.setMap(map);
+    for(i=1;i<clueMarkers.length;i++) {
+      if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
+        console.log(`marker ${i} within scope`)
+        clueMarker.content = clueMarkerActiveImg;
+      }
+      else {
+        console.log(`marker ${i} outside scope`)
+      }
+    }
   };
 
   var watchID = navigator.geolocation.watchPosition(win);
@@ -186,7 +196,7 @@ function follow() {
 
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
-  let clueMarkers = Object.keys(clues);
+  
   for(i=1;i<=clueMarkers.length; i++) {
 
 
@@ -206,12 +216,10 @@ function positionClueMarkers(AdvancedMarkerElement) {
     };
 
     //add listeners
-    marker.content.addEventListener('click', function(){
+    clueMarker.content.addEventListener('click', function(){
       //check if previous infowindow is open and, if so, close it
-      lon2=$(document).attr('lon');
-      lat2=$(document).attr('lat');
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
-        marker.content = clueMarkerActiveImg;
+        clueMarker.content = clueMarkerActiveImg;
       }
     });
 
