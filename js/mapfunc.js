@@ -216,15 +216,18 @@ function positionClueMarkers(AdvancedMarkerElement) {
     };
 
     //add listeners
-    clueMarker.content.addEventListener('click', function(){
+   /* clueMarker.content.addEventListener('click', function(){
       //check if previous infowindow is open and, if so, close it
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
         clueMarker.content = clueMarkerActiveImg;
       }
-    });
+    });*/
 
   }  
  
+  function toRad(Value) {
+    return Value * Math.PI / 180;
+  }
 
   function getDistanceBetween(lat1, lon1) {
     var lat2 = userMarker.position.lat;
