@@ -60,11 +60,11 @@ currentLocImg.src = "./icons/location.gif";
 currentLocImg.className = "marker-img";
 
 
-
+/*
     const clueMarkerActiveImg = document.createElement("img");
     clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
     clueMarkerActiveImg.className = "clue-marker-img";
-
+*/
 //define the map variable
 let map;
 let userMarker;
@@ -87,8 +87,8 @@ let clues = {
   }
 }
 
-let clueMarkers = Object.keys(clues);
-
+let clueMarkersKeys = Object.keys(clues);
+let clueMarkers = [];
 let clueMarkerTemp;
 
 //load libraries
@@ -176,12 +176,13 @@ function follow() {
     var myLatlng = new google.maps.LatLng(lat, long);
     userMarker.position = myLatlng;
     //marker.setMap(map);
-    for(i=1;i<clueMarkers.length;i++) {
+    for(i=1;i<=clueMarkersKeys.length;i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
         console.log(`marker ${i} within scope`)
+        const clueMarkerActiveImg = document.createElement("img");
         clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
         clueMarkerActiveImg.className = "clue-marker-img";        
-        clueMarker.content = clueMarkerActiveImg;
+        clueMarkers[i-1].content = clueMarkerActiveImg;
       }
       else {
         console.log(`marker ${i} outside scope`)
@@ -195,7 +196,7 @@ function follow() {
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
   
-  for(i=1;i<=clueMarkers.length; i++) {
+  for (i = 1; i <= clueMarkersKeys.length; i++) {
     //define our active and inactive marker images
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
@@ -206,15 +207,18 @@ function positionClueMarkers(AdvancedMarkerElement) {
       title: 'Clue',
       map: map,
       gmpClickable: true,
-    });    
+    });
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
     clueMarker.content = clueMarkerImg;
     clueMarker.position = {
-        lat: clues[`${i}`].lat,
-        lng: clues[`${i}`].lng
-      }
-    };
+      lat: clues[`${i}`].lat,
+      lng: clues[`${i}`].lng
+    }
+    console.log("creating marker "+i)
+    clueMarkers.push(clueMarker);
+
+  };
 
     //add listeners
    /* clueMarker.content.addEventListener('click', function(){
