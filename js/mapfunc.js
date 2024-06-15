@@ -20,11 +20,11 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  initMap().then(function(AdvancedMarkerElement) {
-      centreOnUser();
-      follow();
-      positionClueMarkers(AdvancedMarkerElement);
-    }
+  initMap().then(function (AdvancedMarkerElement) {
+    centreOnUser();
+    follow();
+    positionClueMarkers(AdvancedMarkerElement);
+  }
   );
 }
 
@@ -32,13 +32,13 @@ function loadMap(key) {
 function fullScreenToggle() {
   var elem = document.body;
   var button = document.getElementById("fullscreen-toggler");
-  
-  if (document.fullscreenElement) { 
+
+  if (document.fullscreenElement) {
     //full screen mode is active so take us out of fullscreen    
     document.exitFullscreen();
     button.innerHTML = "fullscreen";
-  } 
-  else { 
+  }
+  else {
     //fullscreen mode is not active so put us in fullscreen
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
@@ -50,7 +50,7 @@ function fullScreenToggle() {
       elem.msRequestFullscreen();
       button.innerHTML = "fullscreen_exit";
     }
-  } 
+  }
 }
 
 
@@ -70,20 +70,20 @@ let map;
 let userMarker;
 let clueMarker;
 let clues = {
-  "1" : {
-    "lat":51.448272, 
+  "1": {
+    "lat": 51.448272,
     "lng": -1.009108,
-    "clue":"Some wording"
+    "clue": "Some wording"
   },
-  "2" : {
-    "lat":51.458272, 
+  "2": {
+    "lat": 51.458272,
     "lng": -1.059108,
-    "clue":"Some wording too"
+    "clue": "Some wording too"
   },
-  "3" : {
-    "lat":51.410609, 
+  "3": {
+    "lat": 51.410609,
     "lng": -1.316207,
-    "clue":"More wording"
+    "clue": "More wording"
   }
 }
 
@@ -96,7 +96,7 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-  
+
   //set up map for first time
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -105,6 +105,7 @@ async function initMap() {
     mapId: "32becf6749a12dee",
     mapTypeControl: false,
     streetViewControl: false,
+    scaleControl: true,
   });
 
   //set marker
@@ -158,7 +159,7 @@ function centreOnUser() {
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
-      },geoError, geoOptions
+      }, geoError, geoOptions
     );
   } else {
     // Browser doesn't support Geolocation
@@ -169,20 +170,20 @@ window.initMap = initMap;
 
 
 function follow() {
-  var win = function(position) {
+  var win = function (position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
 
     var myLatlng = new google.maps.LatLng(lat, long);
     userMarker.position = myLatlng;
     //marker.setMap(map);
-    for(i=1;i<=clueMarkersKeys.length;i++) {
+    for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
         console.log(`marker ${i} within scope`)
         const clueMarkerActiveImg = document.createElement("img");
         clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
-        clueMarkerActiveImg.className = "clue-marker-img";        
-        clueMarkers[i-1].content = clueMarkerActiveImg;
+        clueMarkerActiveImg.className = "clue-marker-img";
+        clueMarkers[i - 1].content = clueMarkerActiveImg;
       }
       else {
         console.log(`marker ${i} outside scope`)
@@ -195,7 +196,7 @@ function follow() {
 
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
-  
+
   for (i = 1; i <= clueMarkersKeys.length; i++) {
     //define our active and inactive marker images
     const clueMarkerImg = document.createElement("img");
@@ -215,51 +216,44 @@ function positionClueMarkers(AdvancedMarkerElement) {
       lat: clues[`${i}`].lat,
       lng: clues[`${i}`].lng
     }
-    console.log("creating marker "+i)
+    console.log("creating marker " + i)
     clueMarkers.push(clueMarker);
 
   };
 
-    //add listeners
-   /* clueMarker.content.addEventListener('click', function(){
-      //check if previous infowindow is open and, if so, close it
-      if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
-        clueMarker.content = clueMarkerActiveImg;
-      }
-    });*/
+}
 
-  }  
- 
-  function toRad(Value) {
-    return Value * Math.PI / 180;
+function toRad(Value) {
+  return Value * Math.PI / 180;
+}
+
+function getDistanceBetween(lat1, lon1) {
+  var lat2 = userMarker.position.lat;
+  var lon2 = userMarker.position.lon;
+
+  var R = 6371000; // metres
+  var φ1 = toRad(lat1);
+  var φ2 = toRad(lat2);
+  var Δφ = toRad(lat2 - lat1);
+  var Δλ = toRad(lon2 - lon1);
+  //alert("φ1 " + φ1 + "φ2 " + φ2)
+  var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) *
+    Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  var d = R * c;
+
+
+  var clueRange;// = $(document).attr("Range");
+  if (clueRange == undefined) { clueRange = 200; };
+  //var clueRange=20;
+  console.log("clue range "+d)
+  if (d <= clueRange) {
+    return true;
   }
-
-  function getDistanceBetween(lat1, lon1) {
-    var lat2 = userMarker.position.lat;
-    var lon2 = userMarker.position.lon;
-
-    var R = 6371000; // metres
-    var φ1 = toRad(lat1);
-    var φ2 = toRad(lat2);
-    var Δφ = toRad(lat2 - lat1);
-    var Δλ = toRad(lon2 - lon1);
-    //alert("φ1 " + φ1 + "φ2 " + φ2)
-    var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  
-    var d = R * c;
-  
-  
-    var clueRange;// = $(document).attr("Range");
-    if (clueRange == undefined) { clueRange = 200; };
-    //var clueRange=20;
-    if (d <= clueRange) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  else {
+    return false;
   }
+}
 
