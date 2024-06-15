@@ -106,6 +106,7 @@ async function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     scaleControl: false,
+    backgroundColor: "black"
   });
 
   //set marker
@@ -248,7 +249,7 @@ console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
 
   var clueRange;// = $(document).attr("Range");
-  if (clueRange == undefined) { clueRange = 200; };
+  if (clueRange == undefined) { clueRange = 20; };
   //var clueRange=20;
   console.log("clue range "+d)
   if (d <= clueRange) {
