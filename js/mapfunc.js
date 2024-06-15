@@ -60,14 +60,10 @@ currentLocImg.src = "./icons/location.gif";
 currentLocImg.className = "marker-img";
 
 
-    //define our active and inactive marker images
-    const clueMarkerImg = document.createElement("img");
-    clueMarkerImg.src = "./icons/clue-marker.png";
-    clueMarkerImg.className = "marker-img";
 
     const clueMarkerActiveImg = document.createElement("img");
-    clueMarkerImg.src = "./icons/clue-marker-active.png";
-    clueMarkerImg.className = "clue-marker-img";
+    clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
+    clueMarkerActiveImg.className = "clue-marker-img";
 
 //define the map variable
 let map;
@@ -183,6 +179,8 @@ function follow() {
     for(i=1;i<clueMarkers.length;i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
         console.log(`marker ${i} within scope`)
+        clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
+        clueMarkerActiveImg.className = "clue-marker-img";        
         clueMarker.content = clueMarkerActiveImg;
       }
       else {
@@ -198,7 +196,10 @@ function follow() {
 function positionClueMarkers(AdvancedMarkerElement) {
   
   for(i=1;i<=clueMarkers.length; i++) {
-
+    //define our active and inactive marker images
+    const clueMarkerImg = document.createElement("img");
+    clueMarkerImg.src = "./icons/clue-marker.png";
+    clueMarkerImg.className = "marker-img";
 
     //create the marker
     let clueMarker = new AdvancedMarkerElement({
