@@ -105,7 +105,7 @@ async function initMap() {
     mapId: "32becf6749a12dee",
     mapTypeControl: false,
     streetViewControl: false,
-    scaleControl: true,
+    scaleControl: false,
   });
 
   //set marker
@@ -230,6 +230,8 @@ function toRad(Value) {
 function getDistanceBetween(lat1, lon1) {
   var lat2 = userMarker.position.lat;
   var lon2 = userMarker.position.lon;
+
+console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
   var R = 6371000; // metres
   var φ1 = toRad(lat1);
