@@ -106,7 +106,7 @@ async function initMap() {
     mapTypeControl: false,
     streetViewControl: false,
     scaleControl: false,
-    backgroundColor: "black"
+    backgroundColor: "#3d55af"
   });
 
   //set marker
