@@ -229,7 +229,7 @@ function toRad(Value) {
 
 function getDistanceBetween(lat1, lon1) {
   var lat2 = userMarker.position.lat;
-  var lon2 = userMarker.position.lon;
+  var lon2 = userMarker.position.lng;
 
 console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
