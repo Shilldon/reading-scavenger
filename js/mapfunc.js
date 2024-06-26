@@ -68,7 +68,7 @@ currentLocImg.className = "marker-img";
 //define the map variable
 let map;
 let userMarker;
-let infowindow;
+let infoWindow;
 let clueMarker;
 let clues = {
   "1": {
@@ -223,9 +223,9 @@ function positionClueMarkers(AdvancedMarkerElement) {
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
     
-      infowindow.close();
-      infowindow.setContent(marker.title);
-      infowindow.open(marker.map, marker);
+      infoWindow.close();
+      infoWindow.setContent(clueMarker.title);
+      infoWindow.open(clueMarker.map, clueMarker);
     });
 
     console.log("creating marker " + i)
