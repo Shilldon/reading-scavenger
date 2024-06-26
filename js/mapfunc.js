@@ -68,6 +68,7 @@ currentLocImg.className = "marker-img";
 //define the map variable
 let map;
 let userMarker;
+let infowindow;
 let clueMarker;
 let clues = {
   "1": {
@@ -114,6 +115,11 @@ async function initMap() {
     title: 'Your Location',
     content: currentLocImg,
     map: map,
+  });
+
+  infowindow = new google.maps.InfoWindow({
+    content: contentString,
+    ariaLabel: "Uluru",
   });
 
   return AdvancedMarkerElement;
@@ -220,9 +226,9 @@ function positionClueMarkers(AdvancedMarkerElement) {
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
     
-      infoWindow.close();
-      infoWindow.setContent(marker.title);
-      infoWindow.open(marker.map, marker);
+      infowindow.close();
+      infowindow.setContent(marker.title);
+      infowindow.open(marker.map, marker);
     });
 
     console.log("creating marker " + i)
