@@ -117,10 +117,7 @@ async function initMap() {
     map: map,
   });
 
-  infowindow = new google.maps.InfoWindow({
-    content: contentString,
-    ariaLabel: "Uluru",
-  });
+  infoWindow = new google.maps.InfoWindow();
 
   return AdvancedMarkerElement;
 
