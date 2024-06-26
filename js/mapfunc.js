@@ -187,6 +187,7 @@ function follow() {
         const clueMarkerActiveImg = document.createElement("img");
         clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
         clueMarkerActiveImg.className = "clue-marker-img";
+        clueMarkers[i - 1].gmpClickable = true;
         clueMarkers[i - 1].content = clueMarkerActiveImg;
       }
       else {
@@ -211,7 +212,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     let clueMarker = new AdvancedMarkerElement({
       title: 'Clue',
       map: map,
-      gmpClickable: true,
+      gmpClickable: false,
     });
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
@@ -260,7 +261,7 @@ console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
 
   var clueRange;// = $(document).attr("Range");
-  if (clueRange == undefined) { clueRange = 20; };
+  if (clueRange == undefined) { clueRange = 300; };
   //var clueRange=20;
   console.log("clue range "+d)
   if (d <= clueRange) {
