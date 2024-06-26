@@ -217,6 +217,14 @@ function positionClueMarkers(AdvancedMarkerElement) {
       lat: clues[`${i}`].lat,
       lng: clues[`${i}`].lng
     }
+    marker.addListener("click", ({ domEvent, latLng }) => {
+      const { target } = domEvent;
+    
+      infoWindow.close();
+      infoWindow.setContent(marker.title);
+      infoWindow.open(marker.map, marker);
+    });
+    
     console.log("creating marker " + i)
     clueMarkers.push(clueMarker);
 
