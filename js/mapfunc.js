@@ -208,7 +208,9 @@ function follow() {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
 
-    var myLatlng = new google.maps.LatLng(lat, long);
+    //var myLatlng = new google.maps.LatLng(lat, long);
+  //  var myLatlng = GeoMarker.getPosition();
+   // console.log(myLatlng)
     //userMarker.position = myLatlng;
     //marker.setMap(map);
     for (i = 1; i <= clueMarkersKeys.length; i++) {
@@ -272,8 +274,10 @@ function toRad(Value) {
 
 function getDistanceBetween(lat1, lon1) {
   console.log(GeoMarker)
-  var lat2 = GeoMarker.position.lat;
-  var lon2 = GeoMarker.position.lng;
+  var myLatlng = GeoMarker.getPosition();
+  console.log(myLatlng)
+  var lat2 = myLatlng.position.lat;
+  var lon2 = myLatlng.position.lng;
 
 console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
