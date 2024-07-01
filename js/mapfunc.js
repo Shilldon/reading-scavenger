@@ -205,10 +205,10 @@ function centreOnUser() {
 
 function follow() {
   var win = function (position) {
-    //var lat = position.coords.latitude;
-    //var long = position.coords.longitude;
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
 
-    //var myLatlng = new google.maps.LatLng(lat, long);
+    var myLatlng = new google.maps.LatLng(lat, long);
     //userMarker.position = myLatlng;
     //marker.setMap(map);
     for (i = 1; i <= clueMarkersKeys.length; i++) {
