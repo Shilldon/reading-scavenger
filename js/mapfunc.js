@@ -30,7 +30,7 @@ function loadMap(key) {
       */
           'use strict';
           
-          for (i = 1; i <= clueMarkersKeys.length; i++) {
+          for (let i = 1; i <= clueMarkersKeys.length; i++) {
             if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
               console.log(`marker ${i} within scope`)
               const clueMarkerActiveImg = document.createElement("img");
