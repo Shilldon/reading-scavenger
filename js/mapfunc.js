@@ -67,6 +67,7 @@ currentLocImg.className = "marker-img";
 */
 //define the map variable
 let map;
+let GeoMarker;
 let userMarker;
 let infoWindow;
 let clueMarker;
@@ -118,6 +119,16 @@ async function initMap() {
   });
 
   infoWindow = new google.maps.InfoWindow();
+
+
+
+  GeoMarker = new GeolocationMarker();
+  GeoMarker.setCircleOptions({fillColor: '#808080'});
+
+  google.maps.event.addListenerOnce(GeoMarker, 'position_changed', function() {
+    map.setCenter(this.getPosition());
+    map.fitBounds(this.getBounds());
+  });
 
   return AdvancedMarkerElement;
 
