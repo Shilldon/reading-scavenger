@@ -57,7 +57,7 @@ class GeolocationMarker extends google.maps.MVCObject {
        'flat': true,
        'icon': {
            'path': google.maps.SymbolPath.CIRCLE,
-           'fillColor': '#C8D6EC',
+           'fillColor': '#a9f5aa',
            'fillOpacity': 0.7,
            'scale': 12,
            'strokeWeight': 0,
@@ -74,7 +74,7 @@ class GeolocationMarker extends google.maps.MVCObject {
        'flat': true,
        'icon': {
            'path': google.maps.SymbolPath.CIRCLE,
-           'fillColor': '#4285F4',
+           'fillColor': '#25f528',
            'fillOpacity': 1,
            'scale': 6,
            'strokeColor': 'white',
@@ -98,9 +98,9 @@ class GeolocationMarker extends google.maps.MVCObject {
      var circleOpts = {
        'clickable': false,
        'radius': 0,
-       'strokeColor': '1bb6ff',
+       'strokeColor': '1bff1f',
        'strokeOpacity': .4,
-       'fillColor': '61a0bf',
+       'fillColor': '49914a',
        'fillOpacity': .4,
        'strokeWeight': 1,
        'zIndex': 1

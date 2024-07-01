@@ -30,10 +30,10 @@ function loadMap(key) {
       */
           'use strict'; var b; function e(a, c) { function f() { } f.prototype = c.prototype; a.B = c.prototype; a.prototype = new f; a.prototype.constructor = a; for (var g in c) if ("prototype" != g) if (Object.defineProperties) { var d = Object.getOwnPropertyDescriptor(c, g); d && Object.defineProperty(a, g, d) } else a[g] = c[g] }
           function h(a, c, f, g) {
-              var d = google.maps.MVCObject.call(this) || this; d.c = null; d.b = null; d.a = null; d.i = -1; var l = { clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#C8D6EC", fillOpacity: .7, scale: 12, strokeWeight: 0 }, position: new google.maps.LatLng(0, 0), title: "Current location", zIndex: 2 }, m = {
-                  clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#4285F4", fillOpacity: 1, scale: 6, strokeColor: "white", strokeWeight: 2 },
+              var d = google.maps.MVCObject.call(this) || this; d.c = null; d.b = null; d.a = null; d.i = -1; var l = { clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#a9f5aa", fillOpacity: .7, scale: 12, strokeWeight: 0 }, position: new google.maps.LatLng(0, 0), title: "Current location", zIndex: 2 }, m = {
+                  clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#25f528", fillOpacity: 1, scale: 6, strokeColor: "white", strokeWeight: 2 },
                   optimized: !1, position: new google.maps.LatLng(0, 0), title: "Current location", zIndex: 3
-              }; c && (l = k(l, c)); f && (m = k(m, f)); c = { clickable: !1, radius: 0, strokeColor: "1bb6ff", strokeOpacity: .4, fillColor: "61a0bf", fillOpacity: .4, strokeWeight: 1, zIndex: 1 }; g && (c = k(c, g)); d.c = new google.maps.Marker(l); d.b = new google.maps.Marker(m); d.a = new google.maps.Circle(c); google.maps.MVCObject.prototype.set.call(d, "accuracy", null); google.maps.MVCObject.prototype.set.call(d, "position", null); google.maps.MVCObject.prototype.set.call(d,
+              }; c && (l = k(l, c)); f && (m = k(m, f)); c = { clickable: !1, radius: 0, strokeColor: "10e613", strokeOpacity: .4, fillColor: "428743", fillOpacity: .4, strokeWeight: 1, zIndex: 1 }; g && (c = k(c, g)); d.c = new google.maps.Marker(l); d.b = new google.maps.Marker(m); d.a = new google.maps.Circle(c); google.maps.MVCObject.prototype.set.call(d, "accuracy", null); google.maps.MVCObject.prototype.set.call(d, "position", null); google.maps.MVCObject.prototype.set.call(d,
                   "map", null); d.set("minimum_accuracy", null); d.set("position_options", { enableHighAccuracy: !0, maximumAge: 1E3 }); d.a.bindTo("map", d.c); d.a.bindTo("map", d.b); a && d.setMap(a); return d
           } e(h, google.maps.MVCObject); b = h.prototype; b.set = function (a, c) { if (n.test(a)) throw "'" + a + "' is a read-only property."; "map" === a ? this.setMap(c) : google.maps.MVCObject.prototype.set.call(this, a, c) }; b.f = function () { return this.get("map") }; b.l = function () { return this.get("position_options") };
           b.w = function (a) { this.set("position_options", a) }; b.g = function () { return this.get("position") }; b.m = function () { return this.get("position") ? this.a.getBounds() : null }; b.j = function () { return this.get("accuracy") }; b.h = function () { return this.get("minimum_accuracy") }; b.v = function (a) { this.set("minimum_accuracy", a) };
@@ -45,9 +45,8 @@ function loadMap(key) {
           }; b.o = function (a) { google.maps.event.trigger(this, "geolocation_error", a) }; function k(a, c) { for (var f in c) !0 !== p[f] && (a[f] = c[f]); return a } var p = { map: !0, position: !0, radius: !0 }, n = /^(?:position|accuracy)$/i; var q = window; function r() { h.prototype.getAccuracy = h.prototype.j; h.prototype.getBounds = h.prototype.m; h.prototype.getMap = h.prototype.f; h.prototype.getMinimumAccuracy = h.prototype.h; h.prototype.getPosition = h.prototype.g; h.prototype.getPositionOptions = h.prototype.l; h.prototype.setCircleOptions = h.prototype.s; h.prototype.setMap = h.prototype.setMap; h.prototype.setMarkerOptions = h.prototype.u; h.prototype.setMinimumAccuracy = h.prototype.v; h.prototype.setPositionOptions = h.prototype.w; return h }
           "function" === typeof q.define && q.define.amd ? q.define([], r) : "object" === typeof q.exports ? q.module.exports = r() : q.GeolocationMarker = r();
       }).call(this)
-      var GeoMarker = new GeolocationMarker(map);      
+      GeoMarker = new GeolocationMarker(map);      
     centreOnUser();
-    //follow();
     positionClueMarkers(AdvancedMarkerElement);
   }
   );
@@ -92,7 +91,8 @@ currentLocImg.className = "marker-img";
 */
 //define the map variable
 let map;
-let userMarker;
+let GeoMarker;
+//let userMarker;
 let infoWindow;
 let clueMarker;
 let clues = {
@@ -137,12 +137,13 @@ async function initMap() {
   });  
 
   //set marker
+  /*
   userMarker = new AdvancedMarkerElement({
     title: 'Your Location',
     content: currentLocImg,
     map: map,
   });
-
+*/
   infoWindow = new google.maps.InfoWindow();
 
   return AdvancedMarkerElement;
@@ -184,7 +185,7 @@ function centreOnUser() {
         //when the location is found hide the 'wait screen'
         let waitScreen = document.getElementsByClassName("waiting-screen")[0];
         waitScreen.style.display = "none";
-        userMarker.position = pos;
+        GeoMarker.position = pos;
         map.setCenter(pos);
       },
       () => {
@@ -196,9 +197,9 @@ function centreOnUser() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 }
-window.initMap = initMap;
+//window.initMap = initMap;
 
-
+/*
 function follow() {
   var win = function (position) {
     var lat = position.coords.latitude;
@@ -224,7 +225,7 @@ function follow() {
 
   var watchID = navigator.geolocation.watchPosition(win);
 }
-
+*/
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
 
