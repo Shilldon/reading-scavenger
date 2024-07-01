@@ -98,6 +98,7 @@ async function initMap() {
 
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
+  const {GeolocationMarker} = await "./js/geolocation-marker.js";
   //set up map for first time
   //set initial position
   map = new Map(document.getElementById("map"), {
@@ -111,7 +112,7 @@ async function initMap() {
   });
 
   var GeoMarker = new GeolocationMarker(map);
-  
+
   //set marker
   userMarker = new AdvancedMarkerElement({
     title: 'Your Location',
