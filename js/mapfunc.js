@@ -274,10 +274,8 @@ function toRad(Value) {
 
 function getDistanceBetween(lat1, lon1) {
   console.log(GeoMarker)
-  var myLatlng = GeoMarker.get("position");
-  console.log(myLatlng)
-  var lat2 = myLatlng.position.lat;
-  var lon2 = myLatlng.position.lng;
+  var lat2 = GeoMarker.get("postion").lat();
+  var lon2 = GeoMarker.get("postion").lng();
 
 console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
