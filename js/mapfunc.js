@@ -29,21 +29,6 @@ function loadMap(key) {
        @see https://github.com/ChadKillingsworth/geolocation-marker/blob/master/LICENSE.txt
       */
           'use strict';
-          
-          for (let i = 1; i <= clueMarkersKeys.length; i++) {
-            if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
-              console.log(`marker ${i} within scope`)
-              const clueMarkerActiveImg = document.createElement("img");
-              clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
-              clueMarkerActiveImg.className = "clue-marker-img";
-              clueMarkers[i - 1].gmpClickable = true;
-              clueMarkers[i - 1].content = clueMarkerActiveImg;
-            }
-            else {
-              console.log(`marker ${i} outside scope`)
-            }
-          }
-
           var b; function e(a, c) { function f() { } f.prototype = c.prototype; a.B = c.prototype; a.prototype = new f; a.prototype.constructor = a; for (var g in c) if ("prototype" != g) if (Object.defineProperties) { var d = Object.getOwnPropertyDescriptor(c, g); d && Object.defineProperty(a, g, d) } else a[g] = c[g] }
           function h(a, c, f, g) {
               var d = google.maps.MVCObject.call(this) || this; d.c = null; d.b = null; d.a = null; d.i = -1; var l = { clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#a9f5aa", fillOpacity: .7, scale: 12, strokeWeight: 0 }, position: new google.maps.LatLng(0, 0), title: "Current location", zIndex: 2 }, m = {
@@ -63,10 +48,12 @@ function loadMap(key) {
       }).call(this)
       GeoMarker = new GeolocationMarker(map);      
     centreOnUser();
+    follow();
     positionClueMarkers(AdvancedMarkerElement);
   }
   );
 }
+
 
 
 function fullScreenToggle() {
@@ -215,14 +202,14 @@ function centreOnUser() {
 }
 //window.initMap = initMap;
 
-/*
+
 function follow() {
   var win = function (position) {
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
+    //var lat = position.coords.latitude;
+    //var long = position.coords.longitude;
 
-    var myLatlng = new google.maps.LatLng(lat, long);
-    userMarker.position = myLatlng;
+    //var myLatlng = new google.maps.LatLng(lat, long);
+    //userMarker.position = myLatlng;
     //marker.setMap(map);
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
@@ -241,7 +228,7 @@ function follow() {
 
   var watchID = navigator.geolocation.watchPosition(win);
 }
-*/
+
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
 
