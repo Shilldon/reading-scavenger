@@ -28,7 +28,23 @@ function loadMap(key) {
        @copyright 2012, 2015 Chad Killingsworth
        @see https://github.com/ChadKillingsworth/geolocation-marker/blob/master/LICENSE.txt
       */
-          'use strict'; var b; function e(a, c) { function f() { } f.prototype = c.prototype; a.B = c.prototype; a.prototype = new f; a.prototype.constructor = a; for (var g in c) if ("prototype" != g) if (Object.defineProperties) { var d = Object.getOwnPropertyDescriptor(c, g); d && Object.defineProperty(a, g, d) } else a[g] = c[g] }
+          'use strict';
+          
+          for (i = 1; i <= clueMarkersKeys.length; i++) {
+            if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
+              console.log(`marker ${i} within scope`)
+              const clueMarkerActiveImg = document.createElement("img");
+              clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
+              clueMarkerActiveImg.className = "clue-marker-img";
+              clueMarkers[i - 1].gmpClickable = true;
+              clueMarkers[i - 1].content = clueMarkerActiveImg;
+            }
+            else {
+              console.log(`marker ${i} outside scope`)
+            }
+          }
+
+          var b; function e(a, c) { function f() { } f.prototype = c.prototype; a.B = c.prototype; a.prototype = new f; a.prototype.constructor = a; for (var g in c) if ("prototype" != g) if (Object.defineProperties) { var d = Object.getOwnPropertyDescriptor(c, g); d && Object.defineProperty(a, g, d) } else a[g] = c[g] }
           function h(a, c, f, g) {
               var d = google.maps.MVCObject.call(this) || this; d.c = null; d.b = null; d.a = null; d.i = -1; var l = { clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#a9f5aa", fillOpacity: .7, scale: 12, strokeWeight: 0 }, position: new google.maps.LatLng(0, 0), title: "Current location", zIndex: 2 }, m = {
                   clickable: !1, cursor: "pointer", draggable: !1, flat: !0, icon: { path: google.maps.SymbolPath.CIRCLE, fillColor: "#25f528", fillOpacity: 1, scale: 6, strokeColor: "white", strokeWeight: 2 },
@@ -268,8 +284,8 @@ function toRad(Value) {
 }
 
 function getDistanceBetween(lat1, lon1) {
-  var lat2 = userMarker.position.lat;
-  var lon2 = userMarker.position.lng;
+  var lat2 = GeoMarker.position.lat;
+  var lon2 = GeoMarker.position.lng;
 
 console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
 
