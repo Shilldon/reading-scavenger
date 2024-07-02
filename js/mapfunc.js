@@ -109,7 +109,14 @@ let clues = {
     "lat": 51.410609,
     "lng": -1.316207,
     "clue": "More wording"
+  },
+  "3": {
+    "lat":  51.4566,
+    "lng": -0.968,
+    "clue": "Tester"
   }
+ 
+  
 }
 
 let clueMarkersKeys = Object.keys(clues);
