@@ -215,6 +215,8 @@ function follow() {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
         console.log("Marker "+i+" is:");
         console.log(clueMarkers[i-1]);
+        console.log("marker image element:")
+        console.log(document.getElementById(`marker-${i}`))
         if(document.getElementById(`marker-${i}`).getAttribute("active") == false) {
 
         console.log(`marker ${i} within scope`)
