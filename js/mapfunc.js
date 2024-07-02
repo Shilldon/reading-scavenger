@@ -217,17 +217,20 @@ function follow() {
         console.log(clueMarkers[i-1]);
         console.log("marker image element:")
         console.log(document.getElementById(`marker-${i}`))
-        if(document.getElementById(`marker-${i}`).getAttribute("active") == false) {
+        let markerInRange =document.getElementById(`marker-${i}`); 
+        if(markerInRange) {
+          if(markerInRange.getAttribute("active") == false) {
+            console.log(`marker ${i} within scope`)
+            /*
+            const clueMarkerActiveImg = document.createElement("img");
+            clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
+            clueMarkerActiveImg.className = "clue-marker-img";
+            clueMarkerActiveImg.setAttribute("active",true);*/
+            document.getElementById(`marker-${i}`).setAttribute("active",true);
+            document.getElementById(`marker-${i}`).src = "./icons/clue-marker-active.png";
+            document.getElementById(`marker-${i}`).className - "clue-marker-img";
+          }
 
-        console.log(`marker ${i} within scope`)
-        /*
-        const clueMarkerActiveImg = document.createElement("img");
-        clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
-        clueMarkerActiveImg.className = "clue-marker-img";
-        clueMarkerActiveImg.setAttribute("active",true);*/
-        document.getElementById(`marker-${i}`).setAttribute("active",true);
-        document.getElementById(`marker-${i}`).src = "./icons/clue-marker-active.png";
-        document.getElementById(`marker-${i}`).className - "clue-marker-img";
       }
     }
       else {
