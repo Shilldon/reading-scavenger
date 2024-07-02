@@ -82,16 +82,12 @@ function fullScreenToggle() {
 
 
 //set up map markers
+/*
 const currentLocImg = document.createElement("img");
 currentLocImg.src = "./icons/location.gif";
 currentLocImg.className = "marker-img";
-
-
-/*
-    const clueMarkerActiveImg = document.createElement("img");
-    clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
-    clueMarkerActiveImg.className = "clue-marker-img";
 */
+
 //define the map variable
 let map;
 let GeoMarker;
@@ -208,20 +204,19 @@ function follow() {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
 
-    //var myLatlng = new google.maps.LatLng(lat, long);
-  //  var myLatlng = GeoMarker.getPosition();
-   // console.log(myLatlng)
-    //userMarker.position = myLatlng;
-    //marker.setMap(map);
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
+        if(clueMarkers[i - 1].active == false) {
+
         console.log(`marker ${i} within scope`)
         const clueMarkerActiveImg = document.createElement("img");
         clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
         clueMarkerActiveImg.className = "clue-marker-img";
         clueMarkers[i - 1].gmpClickable = true;
+        clueMarkers[i - 1].active = true;
         clueMarkers[i - 1].content = clueMarkerActiveImg;
       }
+    }
       else {
         console.log(`marker ${i} outside scope`)
       }
@@ -245,6 +240,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
       title: 'Clue',
       map: map,
       gmpClickable: false,
+      active: false
     });
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
