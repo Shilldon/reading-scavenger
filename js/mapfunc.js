@@ -110,7 +110,7 @@ let clues = {
     "lng": -1.316207,
     "clue": "More wording"
   },
-  "3": {
+  "4": {
     "lat":  51.4566,
     "lng": -0.968,
     "clue": "Tester"
@@ -213,6 +213,8 @@ function follow() {
 
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
+        console.log("Marker "+i+" is:");
+        console.log(clueMarkers[i-1]);
         if(clueMarkers[i - 1].content.active == false) {
 
         console.log(`marker ${i} within scope`)
