@@ -206,14 +206,18 @@ function follow() {
 
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
-        if(clueMarkers[i - 1].active == false) {
+        if(clueMarkers[i - 1].content.active == false) {
 
         console.log(`marker ${i} within scope`)
+        /*
         const clueMarkerActiveImg = document.createElement("img");
         clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
         clueMarkerActiveImg.className = "clue-marker-img";
+        clueMarkerActiveImg.setAttribute("active",true);*/
+        clueMarkers[i - 1].content.setAttribute("active",true);
+        clueMarkers[i - 1].content.src = "./icons/clue-marker-active.png";
+        clueMarkers[i - 1].content.className - "clue-marker-img";
         clueMarkers[i - 1].gmpClickable = true;
-        clueMarkers[i - 1].active = true;
         clueMarkers[i - 1].content = clueMarkerActiveImg;
       }
     }
@@ -234,13 +238,13 @@ function positionClueMarkers(AdvancedMarkerElement) {
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
     clueMarkerImg.className = "marker-img";
+    clueMarkerImg.setAttribute("active",false);
 
     //create the marker
     let clueMarker = new AdvancedMarkerElement({
       title: 'Clue',
       map: map,
-      gmpClickable: false,
-      active: false
+      gmpClickable: false
     });
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
