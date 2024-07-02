@@ -218,7 +218,8 @@ function follow() {
         console.log("marker image element:")
         console.log(document.getElementById(`marker-${i}`))
         let markerInRange =document.getElementById(`marker-${i}`); 
-        if(markerInRange) {
+        if(markerInRange!=null) {
+          console.log("marker is not null")
           if(markerInRange.getAttribute("active") == false) {
             console.log(`marker ${i} within scope`)
             /*
