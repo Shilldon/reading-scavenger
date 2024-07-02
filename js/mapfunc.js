@@ -220,16 +220,16 @@ function follow() {
         let markerInRange =document.getElementById(`marker-${i}`); 
         if(markerInRange!=null) {
           console.log("marker is not null")
-          if(markerInRange.getAttribute("active") == false) {
+          if(markerInRange.getAttribute("active") == "false") {
             console.log(`marker ${i} within scope`)
             /*
             const clueMarkerActiveImg = document.createElement("img");
             clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
             clueMarkerActiveImg.className = "clue-marker-img";
             clueMarkerActiveImg.setAttribute("active",true);*/
-            document.getElementById(`marker-${i}`).setAttribute("active",true);
-            document.getElementById(`marker-${i}`).src = "./icons/clue-marker-active.png";
-            document.getElementById(`marker-${i}`).className - "clue-marker-img";
+            markerInRange.setAttribute("active","true");
+            markerInRange.src = "./icons/clue-marker-active.png";
+            markerInRange.className - "clue-marker-img";
           }
 
       }
@@ -252,7 +252,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     clueMarkerImg.src = "./icons/clue-marker.png";
     clueMarkerImg.className = "marker-img";
     clueMarkerImg.id = `marker-${i}`;
-    clueMarkerImg.setAttribute("active",false);
+    clueMarkerImg.setAttribute("active","false");
 
     //create the marker
     let clueMarker = new AdvancedMarkerElement({
