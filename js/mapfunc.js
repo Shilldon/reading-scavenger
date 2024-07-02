@@ -215,7 +215,7 @@ function follow() {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
         console.log("Marker "+i+" is:");
         console.log(clueMarkers[i-1]);
-        if(clueMarkers[i - 1].content.active == false) {
+        if(document.getElementById(`marker-${i}`).getAttribute("active") == false) {
 
         console.log(`marker ${i} within scope`)
         /*
@@ -223,11 +223,9 @@ function follow() {
         clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
         clueMarkerActiveImg.className = "clue-marker-img";
         clueMarkerActiveImg.setAttribute("active",true);*/
-        clueMarkers[i - 1].content.setAttribute("active",true);
-        clueMarkers[i - 1].content.src = "./icons/clue-marker-active.png";
-        clueMarkers[i - 1].content.className - "clue-marker-img";
-        clueMarkers[i - 1].gmpClickable = true;
-        clueMarkers[i - 1].content = clueMarkerActiveImg;
+        document.getElementById(`marker-${i}`).setAttribute("active",true);
+        document.getElementById(`marker-${i}`).src = "./icons/clue-marker-active.png";
+        document.getElementById(`marker-${i}`).className - "clue-marker-img";
       }
     }
       else {
@@ -247,6 +245,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     const clueMarkerImg = document.createElement("img");
     clueMarkerImg.src = "./icons/clue-marker.png";
     clueMarkerImg.className = "marker-img";
+    clueMarkerImg.id = `marker-${i}`;
     clueMarkerImg.setAttribute("active",false);
 
     //create the marker
