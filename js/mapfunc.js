@@ -96,28 +96,168 @@ let infoWindow;
 let clueMarker;
 let clues = {
   "1": {
-    "lat": 51.448272,
-    "lng": -1.009108,
-    "clue": "Some wording"
+    "lat": 51.455050,
+    "lng": -0.960765,
+    "clue": "When did we first produce biscuits?"
   },
   "2": {
-    "lat": 51.458272,
-    "lng": -1.059108,
-    "clue": "Some wording too"
+    "lat": 51.453957, 
+    "lng": -0.961984,
+    "clue": "59 and ..."
   },
   "3": {
-    "lat": 51.410609,
-    "lng": -1.316207,
-    "clue": "More wording"
+    "lat": 51.453083, 
+    "lng": -0.969136,
+    "clue": "First tram?"
   },
   "4": {
-    "lat":  51.4566,
-    "lng": -0.968,
-    "clue": "Tester"
-  }
- 
-  
+    "lat":  51.452515,
+    "lng": -0.971589,
+    "clue": "Bruce Tunnel - height above sea level?"
+  },
+  "5": {
+    "lat":  51.452623, 
+    "lng": -0.972350,
+    "clue": "How many taxis stand here?"
+  },
+  "6": {
+    "lat":  51.454097, 
+    "lng": -0.966383,
+    "clue": "What year deen Maureen Lockey open this?"
+  },
+  "7": {
+    "lat":  51.454171, 
+    "lng": -0.967394 ,
+    "clue": "How many birds?"
+  },
+  "8": {
+    "lat":  51.454675, 
+    "lng": -0.966327,
+    "clue": "What year was this completed?"
+  },
+  "9": {
+    "lat":  51.455797, 
+    "lng": -0.966093,
+    "clue": "When was Abbot Hugh executed?"
+  },
+  "10": {
+    "lat":  51.4565098732022, 
+    "lng": -0.976282147785361,
+    "clue": "Middle of the black V (look carefully, this one's small!)?"
+  },
+  "11": {
+    "lat":  51.456777, 
+    "lng": -0.974131,
+    "clue": "How many bollards outside Siren?"
+  },
+  "12": {
+    "lat":  51.454582,  
+    "lng": -0.977798,
+    "clue": "Orange planters?"
+  },
+  "13": {
+    "lat":  51.456053, 
+    "lng": -0.977058 ,
+    "clue": "What location do you quote to 'save time'?"
+  },
+  "14": {
+    "lat":  51.453863, 
+    "lng": -0.977308,
+    "clue": "How many sides?"
+  },
+  "15": {
+    "lat":  51.45420432233849, 
+    "lng": -0.973830158038599, 
+    "clue": "How old was Peter Inman?"
+  },
+  "16": {
+    "lat":  51.454002, 
+    "lng": -0.973724, 
+    "clue": "How many volts?"
+  },
+  "17": {
+    "lat":  51.4548622442915, 
+    "lng": -0.9732989962959214,
+    "clue": "When was Bill's drainpipe installed?"
+  },
+  "18": {
+    "lat":  51.456372, 
+    "lng": -0.967826,
+    "clue": "When was the Abbey severely damaged?"
+  },
+  "19": {
+    "lat":  51.456969094260906, 
+    "lng": -0.9674520989827075,
+    "clue": "How many captains?"
+  },
+  "20": {
+    "lat":  51.456926048986155, 
+    "lng": -0.9681526690837963,
+    "clue": "Romans were writing on the wall."
+  },
+  "21": {
+    "lat":  51.45786784843759, 
+    "lng": -0.9694736110905124,
+    "clue": "You cannot miss this one!"
+  },
+  "22": {
+    "lat":  51.45810805988329, 
+    "lng": -0.972069271328189 ,
+    "clue": "Who is this?"
+  },
+  "23": {
+    "lat":  51.45663880429062, 
+    "lng": -0.9678497364696548,
+    "clue": "When did John Speed make his map?"
+  },
+  "24": {
+    "lat":  51.45654731484567, 
+    "lng": -0.967196205486239 ,
+    "clue": "What year was Frederick Potts in Gallipoli?"
+  },
+  "25": {
+    "lat":  51.45502978513994, 
+    "lng": -0.970030106107138 ,
+    "clue": "George knows his Roman numerals..."
+  },
+  "26": {
+    "lat":  51.4566599803753, 
+    "lng": -0.97000077524566853,
+    "clue": "Right circle minus left circle = ?"
+  },
+  "27": {
+    "lat":  51.45684525008421, 
+    "lng": -0.9722219340620878,
+    "clue": "Anno domini"
+  },
+  "28": {
+    "lat":  51.456710589169155, 
+    "lng": -0.9723428065772316,
+    "clue": "When did they first start surveying, or auctioning?"
+  },
+  "29": {
+    "lat":  51.45669965202262, 
+    "lng": -0.9718587723006621,
+    "clue": "666 maybe the number of the beast, what is the number of the dog?"
+  },
+  "30": {
+    "lat":   51.45670984883732, 
+    "lng": -0.9719931584053527,
+    "clue": "How many minutes to get to the Abbey Ruins?"
+  },
+  "31": {
+    "lat":   51.45527591728553, 
+    "lng": -0.9707796488937782,
+    "clue": "O, how many blue plaques above this?"
+  },
+  "32": {
+    "lat":   51.45631791329671,
+    "lng":  -0.9695816750144369,
+    "clue": "When was this 'clock' installed?"
+  }                                          
 }
+
+
 
 let clueMarkersKeys = Object.keys(clues);
 let clueMarkers = [];
@@ -229,7 +369,7 @@ function follow() {
             clueMarkerActiveImg.setAttribute("active",true);*/
             markerInRange.setAttribute("active","true");
             markerInRange.src = "./icons/clue-marker-active.png";
-            markerInRange.className - "clue-marker-img";
+            markerInRange.className = "clue-marker-img";
           }
 
       }
