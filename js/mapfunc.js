@@ -353,10 +353,7 @@ function follow() {
 
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
-        console.log("Marker "+i+" is:");
-        console.log(clueMarkers[i-1]);
-        console.log("marker image element:")
-        console.log(document.getElementById(`marker-${i}`))
+
         let markerInRange =document.getElementById(`marker-${i}`); 
         if(markerInRange!=null) {
           console.log("marker is not null")
@@ -399,7 +396,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
       title: 'Clue',
       map: map,
       gmpClickable: true,
-      gmpDraggable: true
+      gmpDraggable:true
     });
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
@@ -408,12 +405,11 @@ function positionClueMarkers(AdvancedMarkerElement) {
       lat: clues[`${i}`].lat,
       lng: clues[`${i}`].lng
     }
-    let positionText = `lat ${clues[i].lat}, lng: ${clues[i].lng}`;
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
     
       infoWindow.close();
-      infoWindow.setContent(positionText);
+      infoWindow.setContent(infoWindow.getPosition());
       infoWindow.open(clueMarker.map, clueMarker);
     });
 
@@ -429,7 +425,6 @@ function toRad(Value) {
 }
 
 function getDistanceBetween(lat1, lon1) {
-  console.log(GeoMarker)
   var lat2 = GeoMarker.get("position").lat();
   var lon2 = GeoMarker.get("position").lng();
 

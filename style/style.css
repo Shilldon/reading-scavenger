@@ -38,6 +38,13 @@ html, body {
   pointer-events: none;
 }
 
+.markerposition {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: white;
+}
+
 #wrapper {
   height: 100%;
   width: 100%;
