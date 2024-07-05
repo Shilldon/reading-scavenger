@@ -412,7 +412,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
       const { target } = domEvent;
     
       infoWindow.close();
-      infoWindow.setContent(clueMarker.title);
+      infoWindow.setContent(clueMarker.position.lat,clueMarker.position.lng);
       infoWindow.open(clueMarker.map, clueMarker);
     });
 
