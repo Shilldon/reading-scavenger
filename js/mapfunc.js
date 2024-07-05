@@ -398,7 +398,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
     let clueMarker = new AdvancedMarkerElement({
       title: 'Clue',
       map: map,
-      gmpClickable: false
+      gmpClickable: false,
+      gmpDraggable: true
     });
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;

@@ -14,6 +14,11 @@
     transform: translate(-1.8em,-1.8em);
   }
 
+  .screen-rotate {
+    width: 100%;
+    height: 100%;
+  }
+
   .clue-marker-img {
     width: 3vh;
     height: 3vh;
@@ -123,5 +128,12 @@
     }
     100% {
       transform: translate(-1.8em,-1.8em) scale(0.5);      
+    }
+  }
+
+  @media only screen and (min-width: 6000px) 
+  {
+    .screen-rotate {
+      transform: rotate(90deg);
     }
   }
