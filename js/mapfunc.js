@@ -407,9 +407,9 @@ function positionClueMarkers(AdvancedMarkerElement) {
     }
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
-    
+      let textPosition = infoWindow.getPosition();
       infoWindow.close();
-      infoWindow.setContent(infoWindow.getPosition());
+      infoWindow.setContent(textPosition);
       infoWindow.open(clueMarker.map, clueMarker);
     });
 
