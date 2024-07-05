@@ -398,7 +398,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     let clueMarker = new AdvancedMarkerElement({
       title: 'Clue',
       map: map,
-      gmpClickable: false,
+      gmpClickable: true,
       gmpDraggable: true
     });
     //add inactive marker properties
@@ -408,11 +408,12 @@ function positionClueMarkers(AdvancedMarkerElement) {
       lat: clues[`${i}`].lat,
       lng: clues[`${i}`].lng
     }
+    let positionText = `lat ${clues[i].lat}, lng: ${clues[i].lng}`;
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
     
       infoWindow.close();
-      infoWindow.setContent(clueMarker.position.lat,clueMarker.position.lng);
+      infoWindow.setContent(positionText);
       infoWindow.open(clueMarker.map, clueMarker);
     });
 
