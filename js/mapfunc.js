@@ -48,7 +48,7 @@ function loadMap(key) {
     }).call(this)
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
-    //positionClueMarkers(AdvancedMarkerElement);
+    positionClueMarkers(AdvancedMarkerElement);
     follow();
   }
   );
@@ -275,7 +275,7 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 18,
-    mapId: "32becf6749a12dee",
+    mapId: "",
     mapTypeControl: false,
     streetViewControl: false,
     scaleControl: false,
