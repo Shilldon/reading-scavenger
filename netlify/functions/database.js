@@ -17,7 +17,7 @@ export default async () => {
     const { data, error } = await supabase
         .from('clues')
         .insert([
-            { status: 'THis is a clue' },
+            { id: 1, status: 'THis is a clue' },
         ]);
 
   // Did it work?
