@@ -21,13 +21,13 @@ function loadMap(key) {
       // Add other bootstrap parameters as needed, using camel case.
     })
   initMap().then(function (AdvancedMarkerElement) {
-
+/*
     (function () {
       /*
        geolocation-marker version 2.0.5
        @copyright 2012, 2015 Chad Killingsworth
        @see https://github.com/ChadKillingsworth/geolocation-marker/blob/master/LICENSE.txt
-      */
+      *//*
       'use strict';
       var b; function e(a, c) { function f() { } f.prototype = c.prototype; a.B = c.prototype; a.prototype = new f; a.prototype.constructor = a; for (var g in c) if ("prototype" != g) if (Object.defineProperties) { var d = Object.getOwnPropertyDescriptor(c, g); d && Object.defineProperty(a, g, d) } else a[g] = c[g] }
       function h(a, c, f, g) {
@@ -49,7 +49,7 @@ function loadMap(key) {
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
     positionClueMarkers(AdvancedMarkerElement);
-    follow();
+    follow();*/
   }
   );
 }
