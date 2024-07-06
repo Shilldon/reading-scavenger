@@ -5,8 +5,8 @@ import { createClient } from '../node_modules/@supabase/supabase-js'
 const supabase = createClient(`${keys.site}`, keys.supabase)
 
 // Our standard serverless handler function
-exports.handler = async event => {
-
+//exports.handler = async event => {
+export default async () => {
   // Insert a row
     const { data, error } = await supabase
         .from('clues')

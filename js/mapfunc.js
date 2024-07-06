@@ -50,7 +50,6 @@ function loadMap(key) {
     centreOnUser();
     positionClueMarkers(AdvancedMarkerElement);
     follow();
-    addToDatabase();
   }
   );
 }
