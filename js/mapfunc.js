@@ -360,7 +360,7 @@ function follow() {
         clueMarkers[i].content.src = "./icons/clue-marker-active.png";
         clueMarkers[i].content.className = "clue-marker-img";
         clueMarkers[i].content.setAttribute("active", "true");
-        clueMarkers[i].content.setAttribute("clue", clues[i].clue);
+        clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
 
       }
       else {
