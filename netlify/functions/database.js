@@ -12,12 +12,23 @@ const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
 
 // Our standard serverless handler function
 //exports.handler = async event => {
-export default async () => {
-    let { data: clues, error } = await supabase
-    .from('clues')
-    .select('status')
-
-  // Did it work?
-  return new Response(JSON.stringify(data));
-  
-}
+    exports.handler = async (event, context) => {
+        try {
+          const { data, error } = await supabase.from('clues').select('*');
+          if (error) {
+            return {
+              statusCode: 500,
+              body: JSON.stringify({ error: 'Error fetching data' }),
+            };
+          }
+          return {
+            statusCode: 200,
+            body: JSON.stringify(data),
+          };
+        } catch (err) {
+          return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Internal server error' }),
+          };
+        }
+      };
