@@ -18,6 +18,6 @@ export default async () => {
     .select('status')
 
   // Did it work?
-  return new Response(clues);
+  return new Response(JSON.stringify(data));
   
 }
