@@ -48,7 +48,7 @@ function loadMap(key) {
     }).call(this)
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
-    positionClueMarkers(AdvancedMarkerElement);
+    //positionClueMarkers(AdvancedMarkerElement);
     follow();
   }
   );
