@@ -60,7 +60,7 @@ function loadMap(key) {
 import { createClient } from '@supabase/supabase-js'
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient(keys.site, keys.supabase)
+const supabase = createClient(`${keys.site}`, keys.supabase)
 
 // Our standard serverless handler function
 exports.handler = async event => {
