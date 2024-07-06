@@ -1,8 +1,12 @@
-// Connect to our database 
-import { createClient } from '@supabase/supabase-js'
+require('dotenv').config();
+const {
+    SITE,
+    SUPABASE
+} = process.env;
 
-// Create a single supabase client for interacting with your database
-const supabase = createClient(`${keys.site}`, keys.supabase)
+// Connect to our database 
+const { createClient } = require('@supabase/supabase-js');
+const supabase = createClient(SITE, SUPABASE);
 
 // Our standard serverless handler function
 //exports.handler = async event => {
