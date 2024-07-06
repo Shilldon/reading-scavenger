@@ -11,8 +11,8 @@ const { createClient } = require('@supabase/supabase-js');
 const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
 
 // Our standard serverless handler function
-exports.handler = async event => {
-//export default async () => {
+//exports.handler = async event => {
+export default async () => {
   // Insert a row
     const { data, error } = await supabase
         .from('clues')
@@ -21,6 +21,6 @@ exports.handler = async event => {
         ]);
 
   // Did it work?
-  return Response(data,error);
+  return new Response(data,error);
   
 }
