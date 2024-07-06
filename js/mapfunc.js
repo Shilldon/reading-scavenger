@@ -359,7 +359,8 @@ function follow() {
         console.log(clueMarkers[i].title + " in range ")
         clueMarkers[i].content.src = "./icons/clue-marker-active.png";
         clueMarkers[i].content.className = "clue-marker-img";
-        clueMarkers[i].setAttribute("active", "true");
+        clueMarkers[i].content.setAttribute("active", "true");
+        clueMarkers[i].content.setAttribute("clue", clues[i].clue);
 
       }
       else {
@@ -393,6 +394,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
     clueMarker.content = clueMarkerImg;
+    clueMarker.content.addAttribute("active","false");
+    clueMarker.content.addAttribute("clue","You need to move closer");
     clueMarker.metadata = { id: i };
     clueMarker.position = {
       lat: clues[`${i}`].lat,
@@ -400,10 +403,10 @@ function positionClueMarkers(AdvancedMarkerElement) {
     }
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
-      let textPosition = "lat " + clueMarker.position.lat + " lng " + clueMarker.position.lng;
       //let textPosition = "Text position"
+      let textDisplay = clueMarker.content.getAttribute("clue");
       infoWindow.close();
-      infoWindow.setContent(textPosition);
+      infoWindow.setContent(textDisplay);
       infoWindow.open(clueMarker.map, clueMarker);
     });
 
