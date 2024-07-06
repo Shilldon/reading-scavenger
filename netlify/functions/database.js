@@ -5,8 +5,10 @@ const {
 } = process.env;*/
 
 // Connect to our database 
+const DATABASE_URL = Netlify.env.get("SUPABASE_SITE");
+const SUPABASE_SERVICE_API_KEY = Netlify.env.get("SUPABASE");
 const { createClient } = require('@supabase/supabase-js');
-const supabase = createClient('https://rqkdrjczypzxuyzyrins.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxa2RyamN6eXB6eHV5enlyaW5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAzMDA3NDAsImV4cCI6MjAzNTg3Njc0MH0.yzsaK3btoSwnYlVxxWiGSw0FDzt0UMdRzORtAzCWp5Y');
+const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
 
 // Our standard serverless handler function
 //exports.handler = async event => {
