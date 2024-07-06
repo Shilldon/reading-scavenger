@@ -350,7 +350,23 @@ function follow() {
   var win = function (position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
+/*
+    const getMarkerById = (id) => markers.find((m) => m.metadata.id === id);
+    const desiredMarkerId = 1; // Replace with the desired ID
+    const desiredMarker = getMarkerById(desiredMarkerId);
+    
+    if (desiredMarker) {
+      console.log('Found marker:', desiredMarker);
+      // Do something with the marker (e.g., show an info window)
+    } else {
+      console.log('Marker not found.');
+    }*/
 
+    for(i=0;i<clueMarkers.length;i++) {
+      console.log("position of marker "+i+" "+clueMarkers[i].getPosition().lat);
+    }
+
+/*
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
 
@@ -364,6 +380,7 @@ function follow() {
             clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
             clueMarkerActiveImg.className = "clue-marker-img";
             clueMarkerActiveImg.setAttribute("active",true);*/
+            /*
             markerInRange.setAttribute("active","true");
             markerInRange.src = "./icons/clue-marker-active.png";
             markerInRange.className = "clue-marker-img";
@@ -376,7 +393,7 @@ function follow() {
       }
     }
   };
-
+*/
   var watchID = navigator.geolocation.watchPosition(win);
 }
 
@@ -401,6 +418,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
     clueMarker.content = clueMarkerImg;
+    clueMarker.metadata = { id: i };
     clueMarker.position = {
       lat: clues[`${i}`].lat,
       lng: clues[`${i}`].lng
