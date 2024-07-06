@@ -394,8 +394,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
     //add inactive marker properties
     clueMarker.title = `Location ${i}`;
     clueMarker.content = clueMarkerImg;
-    clueMarker.content.addAttribute("active","false");
-    clueMarker.content.addAttribute("clue","You need to move closer");
+    clueMarker.content.setAttribute("active","false");
+    clueMarker.content.setAttribute("clue","You need to move closer");
     clueMarker.metadata = { id: i };
     clueMarker.position = {
       lat: clues[`${i}`].lat,
