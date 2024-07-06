@@ -391,9 +391,9 @@ function follow() {
       else {
         console.log(`marker ${i} outside scope`)
       }
-    }
+    }*/
   };
-*/
+
   var watchID = navigator.geolocation.watchPosition(win);
 }
 
