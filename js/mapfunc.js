@@ -367,7 +367,7 @@ function follow() {
       let markerLat =clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
       if (getDistanceBetween(markerLat, markerLng) == true) {
-        console.log("Marker "+i+1+" in range ")
+        console.log(clueMarkers[i].title+" in range ")
         clueMarkers[i].setAttribute("active","true");
         clueMarkers[i].src = "./icons/clue-marker-active.png";
         clueMarkers[i].className = "clue-marker-img";        
