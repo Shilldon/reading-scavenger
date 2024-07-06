@@ -51,6 +51,7 @@
         throw response.status
       }
     }).then(data => {
+      console.log(data)
       loadMap(data);
     }).catch(error => {
       console.log("error ", error)
