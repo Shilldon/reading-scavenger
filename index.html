@@ -51,7 +51,7 @@
         throw response.status
       }
     }).then(data => {
-      console.log(data)
+      console.log(JSON.stringify(data))
       loadMap(data);
     }).catch(error => {
       console.log("error ", error)
