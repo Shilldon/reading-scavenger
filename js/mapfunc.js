@@ -57,8 +57,10 @@ function loadMap(key) {
 
 
 // Connect to our database 
-const { createClient } = require('@supabase/supabase-js');
-const supabase = createClient(keys.site, keys.supabase);
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient(keys.site, keys.supabase)
 
 // Our standard serverless handler function
 exports.handler = async event => {
