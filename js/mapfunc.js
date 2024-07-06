@@ -350,17 +350,6 @@ function follow() {
   var win = function (position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
-/*
-    const getMarkerById = (id) => markers.find((m) => m.metadata.id === id);
-    const desiredMarkerId = 1; // Replace with the desired ID
-    const desiredMarker = getMarkerById(desiredMarkerId);
-    
-    if (desiredMarker) {
-      console.log('Found marker:', desiredMarker);
-      // Do something with the marker (e.g., show an info window)
-    } else {
-      console.log('Marker not found.');
-    }*/
 
     for(i=0;i<clueMarkers.length;i++) {
       console.log("position of marker "+i+" "+clueMarkers[i].position.lat);
@@ -368,9 +357,9 @@ function follow() {
       let markerLng = clueMarkers[i].position.lng;
       if (getDistanceBetween(markerLat, markerLng) == true) {
         console.log(clueMarkers[i].title+" in range ")
-        clueMarkers[i].setAttribute("active","true");
-        clueMarkers[i].src = "./icons/clue-marker-active.png";
-        clueMarkers[i].className = "clue-marker-img";        
+        clueMarkers[i].content.src = "./icons/clue-marker-active.png";
+        clueMarkers[i].content.className = "clue-marker-img";
+        clueMarkers[i].setAttribute("active","true");    
 
       }
       else {
@@ -378,32 +367,6 @@ function follow() {
 
       }
     }
-/*
-    for (i = 1; i <= clueMarkersKeys.length; i++) {
-      if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
-
-        let markerInRange =document.getElementById(`marker-${i}`); 
-        if(markerInRange!=null) {
-          console.log("marker is not null")
-          if(markerInRange.getAttribute("active") == "false") {
-            console.log(`marker ${i} within scope`)
-            /*
-            const clueMarkerActiveImg = document.createElement("img");
-            clueMarkerActiveImg.src = "./icons/clue-marker-active.png";
-            clueMarkerActiveImg.className = "clue-marker-img";
-            clueMarkerActiveImg.setAttribute("active",true);*/
-            /*
-            markerInRange.setAttribute("active","true");
-            markerInRange.src = "./icons/clue-marker-active.png";
-            markerInRange.className = "clue-marker-img";
-          }
-
-      }
-    }
-      else {
-        console.log(`marker ${i} outside scope`)
-      }
-    }*/
   };
 
   var watchID = navigator.geolocation.watchPosition(win);
@@ -437,8 +400,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
     }
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
-      //let textPosition = "lat "+infoWindow.getPosition().lat+" lng "+infoWindow.getPosition().lng;
-      let textPosition = "Text position"
+      let textPosition = "lat "+clueMarker.position.lat+" lng "+clueMarker.position.lng;
+      //let textPosition = "Text position"
       infoWindow.close();
       infoWindow.setContent(textPosition);
       infoWindow.open(clueMarker.map, clueMarker);
