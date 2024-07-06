@@ -1,5 +1,5 @@
 // Connect to our database 
-import { createClient } from '../node_modules/@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js'
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(`${keys.site}`, keys.supabase)
