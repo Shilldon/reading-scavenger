@@ -1,6 +1,7 @@
 
 //function to submit api key and define map
 function loadMap(key) {
+  console.log(key.MAP)
   (g => {
     var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window;
     b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => {
@@ -254,6 +255,11 @@ let clues = {
     "lat": 51.45631791329671,
     "lng": -0.9695816750144369,
     "clue": "When was this 'clock' installed?"
+  },
+  "33": {
+    "lat":   51.45558870304998, 
+    "lng": -0.9680066913345313,
+    "clue": "Question 1 - what number to unlock our door?"
   }
 }
 
