@@ -275,7 +275,7 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 18,
-    mapId: "",
+    mapId: "32becf6749a12dee",
     mapTypeControl: false,
     streetViewControl: false,
     scaleControl: false,
