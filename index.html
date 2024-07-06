@@ -51,11 +51,8 @@
         throw response.status
       }
     }).then(data => {
-      console.log(JSON.stringify(data))
-      console.log(JSON.parse(data))
-      console.log(data["map"])
-      console.log(data.map)
-      loadMap(data.map);
+      console.log(data)
+      loadMap(data[0]);
     }).catch(error => {
       console.log("error ", error)
     })
