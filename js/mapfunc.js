@@ -364,7 +364,19 @@ function follow() {
 
     for(i=0;i<clueMarkers.length;i++) {
       console.log("position of marker "+i+" "+clueMarkers[i].position.lat);
-    }
+      let markerLat =clueMarkers[i].position.lat;
+      let markerLng = clueMarkers[i].position.lng;
+      if (getDistanceBetween(markerLat, markerLng) == true) {
+        console.log("Marker "+i+1+" in range ")
+        clueMarkers[i].setAttribute("active","true");
+        clueMarkers[i].src = "./icons/clue-marker-active.png";
+        clueMarkers[i].className = "clue-marker-img";        
+
+      }
+      else {
+        console.log("Marker "+i+1+" out of range ")
+
+      }
 
 /*
     for (i = 1; i <= clueMarkersKeys.length; i++) {
