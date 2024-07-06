@@ -363,7 +363,7 @@ function follow() {
     }*/
 
     for(i=0;i<clueMarkers.length;i++) {
-      console.log("position of marker "+i+" "+clueMarkers[i].getPosition().lat);
+      console.log("position of marker "+i+" "+clueMarkers[i].position.lat);
     }
 
 /*
