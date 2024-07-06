@@ -377,7 +377,7 @@ function follow() {
         console.log("Marker "+i+1+" out of range ")
 
       }
-
+    }
 /*
     for (i = 1; i <= clueMarkersKeys.length; i++) {
       if (getDistanceBetween(clues[`${i}`].lat, clues[`${i}`].lng) == true) {
