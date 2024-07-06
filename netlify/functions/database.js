@@ -13,14 +13,11 @@ const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
 // Our standard serverless handler function
 //exports.handler = async event => {
 export default async () => {
-  // Insert a row
-    const { data, error } = await supabase
-        .from('clues')
-        .insert([
-            { id: 1, status: 'THis is a clue' },
-        ]);
+    let { data: clues, error } = await supabase
+    .from('clues')
+    .select('status')
 
   // Did it work?
-  return new Response(data,error);
+  return new Response(clues);
   
 }
