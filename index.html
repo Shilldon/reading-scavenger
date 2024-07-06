@@ -43,6 +43,7 @@
   </div>
 
   <script type="module">
+    /*
     fetch('/.netlify/functions/request').then(response => {
       if (response.ok) {
         return response.text()
@@ -54,9 +55,9 @@
       loadMap(keys);
     }).catch(error => {
       console.log("error ", error)
-    })
+    })*/
 
-    fetch('/.netlify/functions/database').then(response => {
+    fetch('/netlify/functions/database').then(response => {
       if (response.ok) {
         return response.text()
       } else {
