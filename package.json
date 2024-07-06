@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@supabase/supabase-js": "^2.44.2",
     "geolocation-marker": "^2.0.5"
   }
 }

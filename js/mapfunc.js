@@ -50,11 +50,30 @@ function loadMap(key) {
     centreOnUser();
     positionClueMarkers(AdvancedMarkerElement);
     follow();
+    addToDatabase();
   }
   );
 }
 
 
+// Connect to our database 
+const { createClient } = require('@supabase/supabase-js');
+const supabase = createClient(keys.site, keys.supabase);
+
+// Our standard serverless handler function
+exports.handler = async event => {
+
+  // Insert a row
+    const { data, error } = await supabase
+        .from('clues')
+        .insert([
+            { note: 'THis is a clue' },
+        ]);
+
+  // Did it work?
+  console.log(data, error);
+  
+}
 
 function fullScreenToggle() {
   var elem = document.body;

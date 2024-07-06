@@ -51,7 +51,6 @@
         throw response.status
       }
     }).then(data => {
-      console.log(data);
       let keys = JSON.parse(data);
       loadMap(keys);
     }).catch(error => {
