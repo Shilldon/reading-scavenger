@@ -430,7 +430,7 @@ function follow() {
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
       console.log(captures[i+1])
-      if(captures[i+1]!="false") {
+      if(captures[i+1]!="active") {
         console.log(`marker ${i+1} has been captured `)
         clueMarkers[i].content.src = "./icons/captured-"+captures[i+1]+".png";
     
