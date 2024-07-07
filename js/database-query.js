@@ -65,7 +65,7 @@ async function getCapturedStatus(keys) {
     
     let capturedArray = {};
     for(i=0;i<res.data.length;i++) {
-      console.log("captured - "+res.data[i].id+" is "+res.data[i].status)
+    //  console.log("captured - "+res.data[i].id+" is "+res.data[i].status)
       capturedArray[res.data[i].id] = res.data[i].status;
     }
 

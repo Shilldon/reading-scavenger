@@ -426,14 +426,13 @@ function follow() {
     getCapturedStatus(keys).then(function (captures) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
-
     for (i = 0; i < clueMarkers.length; i++) {
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
+      console.log(captures[i+1])
       if(captures[i+1]!="false") {
         console.log(`marker ${i+1} has been captured `)
-        let team = clueMarkers[i].content.getAttribute("captured");
-        clueMarkers[i].content.src = "./icons/captured-"+team+".png";
+        clueMarkers[i].content.src = "./icons/captured-"+captures[i+1]+".png";
     
       }
       else if (getDistanceBetween(markerLat, markerLng) == true) {
