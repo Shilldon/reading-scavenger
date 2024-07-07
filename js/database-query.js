@@ -52,6 +52,16 @@ async function checkStatus(keys,marker,clueMarkers) {
             captureText="Another team has captured this data point."
 
         }
-        failCapture(marker, captureText);
+        failCapture(marker, captureText,data[0].status);
     }
+}
+async function getCapturedStatus(keys) {
+    const url = keys.site;
+    const key = keys.supabase;
+    const database = supabase.createClient(url,key);
+    console.log(database);
+
+    const res = await database.from("clues").select()
+    
+    return new Response(res);
 }

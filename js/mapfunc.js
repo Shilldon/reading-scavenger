@@ -49,7 +49,10 @@ function loadMap(key) {
     }).call(this)
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
-    positionClueMarkers(AdvancedMarkerElement);
+    getCapturedStatus(keys).then(function (captures) {
+      console.log(captures)
+      positionClueMarkers(AdvancedMarkerElement,captures);
+    })
     follow();
   }
   );
@@ -451,6 +454,7 @@ function follow() {
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
 
+
   for (i = 1; i <= clueMarkersKeys.length; i++) {
     //define our active and inactive marker images
     const clueMarkerImg = document.createElement("img");
@@ -458,6 +462,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
     clueMarkerImg.className = "marker-img";
     clueMarkerImg.id = `marker-${i}`;
     clueMarkerImg.setAttribute("active", "false");
+
+
 
     //create the marker
     let clueMarker = new AdvancedMarkerElement({
@@ -547,8 +553,9 @@ function checkAnswer(answer,location) {
   }
 }
 
-function failCapture(marker,captureText) {
+function failCapture(marker,captureText,captureTeam) {
   document.getElementById("question").style.color = "red";
   document.getElementById("answer-input-section").style.display = "none";
   document.getElementById("question").innerHTML = captureText;  
+  clueMarkers[marker-1].content.src = "./icons/captured-"+captureTeam+".png";
 }
