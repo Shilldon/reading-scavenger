@@ -59,9 +59,7 @@ async function getCapturedStatus(keys) {
     const url = keys.site;
     const key = keys.supabase;
     const database = supabase.createClient(url,key);
-    console.log(database);
-
     const res = await database.from("clues").select()
     
-    return new Response(res);
+    return res;
 }
