@@ -407,7 +407,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
       infoWindow.close();
-      let textDisplay = clues[i].clue;
+      let textDisplay = clueMarker.content.getAttribute("clue");
       if(clueMarker.content.getAttribute("active")=="true") {
         var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
         myModal.show();
