@@ -42,6 +42,14 @@ async function checkStatus(keys,marker,clueMarkers) {
         captureMarker(keys,marker,team,clueMarkers);
     }
     else {
-        failCapture(marker);
+        let team = document.body.getAttribute("team");
+        if(data[0].status == team) {
+            captureText="Your team has already captured this data point."
+        }
+        else {
+            captureText="Another team has captured this data point."
+
+        }
+        failCapture(marker, captureText);
     }
 }

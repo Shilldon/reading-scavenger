@@ -430,7 +430,7 @@ function follow() {
         clueMarkers[i].content.src = "./icons/captured-"+team+".png";
     
       }
-      if (getDistanceBetween(markerLat, markerLng) == true) {
+      else if (getDistanceBetween(markerLat, markerLng) == true) {
         console.log(clueMarkers[i].title + " in range ")
         clueMarkers[i].content.src = "./icons/clue-marker-active.png";
         clueMarkers[i].content.className = "clue-marker-img";
@@ -543,12 +543,12 @@ function getDistanceBetween(lat1, lon1) {
 function checkAnswer(keys,answer,location) {
   console.log("answer "+answer+" location "+location)
   if(answer == clues[`${location}`].answer) {
-    alert("right");
     checkStatus(keys,location,clueMarkers);
   }
 }
 
-function failCapture() {
+function failCapture(marker,captureText) {
   document.getElementById("question").style.color = "red";
-  document.getElementById("question").innerHTML = "This data point has just been captured by another team.";  
+  document.getElementById("answer-input-section").style.display = "none";
+  document.getElementById("question").innerHTML = captureText;  
 }
