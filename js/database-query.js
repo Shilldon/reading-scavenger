@@ -31,7 +31,7 @@ async function checkStatus(keys,marker) {
     const key = keys.supabase;
     const database = supabase.createClient(url,key);
 
-    const { data, error } = await supabase
+    const { data, error } = await database
         .from('clues')
         .select('status')
         .eq('id',marker)
