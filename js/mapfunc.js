@@ -412,7 +412,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
       if(clueMarker.content.getAttribute("active")=="true") {
         var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
         myModal.show();
-        document.getElementById("answer-modal").setAttribute("location") = clueMarker.content.getAttribute("location");          
+        let location = clueMarker.content.getAttribute("location");
+        document.getElementById("answer-modal").setAttribute("location",location);           
         document.getElementById("question").innerHTML = textDisplay;
       }
       else {
