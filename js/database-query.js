@@ -23,7 +23,7 @@ async function captureMarker(keys, marker, team, clueMarkers) {
         .update({status: team})
         .eq("id",marker);
 
-    clueMarkers[marker-1].content.setAttribute("captured")=team;
+    clueMarkers[marker-1].content.setAttribute("captured",team);
     clueMarkers[marker-1].content.src = "./icons/captured-"+team+".png";
 }
 
