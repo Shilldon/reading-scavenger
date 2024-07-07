@@ -470,8 +470,9 @@ function getDistanceBetween(lat1, lon1) {
 
 function checkAnswer(answer,location) {
   console.log("answer "+answer+" location "+location)
-  if(answer = clues[`${location}`].answer) {
+  if(answer == clues[`${location}`].answer) {
     alert("right");
+    checkStatus(keys,location);
   }
 }
 
