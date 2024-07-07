@@ -412,7 +412,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
         var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
         myModal.show();
                     
-        document.getElementById("question").innerHTML(textDisplay);
+        document.getElementById("question").innerHTML = textDisplay;
       }
       else {
         infoWindow.setContent("You need to move closer.");
