@@ -18,10 +18,10 @@ async function captureMarker(keys, marker, team) {
     const database = supabase.createClient(url,key);
 
 
-    const res = await database.from("clues").insert({
-        id: marker,
-        status: team
-    })
+    const res = await database
+        .from("clues")
+        .update({status: "team"})
+        .eq("id",marker);
 
 }
 
