@@ -39,12 +39,12 @@ async function checkStatus(keys,marker,clueMarkers) {
         .eq('id',marker)
         console.log(data)
     if(data[0].status == "active") {
-        let team = document.body.getAttribute("team");
+        let team = document.body.getAttribute("data-team");
         console.log("team is "+team)
         captureMarker(keys,marker,team,clueMarkers);
     }
     else {
-        let team = document.body.getAttribute("team");
+        let team = document.body.getAttribute("data-team");
         if(data[0].status == team) {
             captureText="Your team has already captured this data point."
         }
