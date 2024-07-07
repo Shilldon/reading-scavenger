@@ -58,7 +58,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="answer-form">
+          <div class="answer-form">
             <div class="form-group">
               <label for="question"></label>
               <p id="question">Where are we?</p>
@@ -67,8 +67,8 @@
               <label for="answer-input">Your input:</label>
               <input type="number" class="form-control" id="answer-input" placeholder="0">
             </div>
-            <button type="" class="btn btn-success">Submit</button>
-          </form>
+            <button id="submit-answer" class="btn btn-success">Submit</button>
+          </div>
   
         </div>
       </div>
@@ -79,15 +79,16 @@
 
 
   <script type="module">
-
+        var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
+        myModal.show();
     $('.close').click(function() {
         $('#answer-modal').modal('hide');
     });
 
-    $("#answer-input").click(function(event) {
-      event.preventDefault();
+    $("#submit-answer").click(function(event) {
       let answer = $("#answer-input").val();
       let location = $("#answer-modal").attr("location");
+      location = 1;
       checkAnswer(answer,location);
     })
 

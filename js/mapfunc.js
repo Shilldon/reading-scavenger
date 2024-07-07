@@ -96,7 +96,8 @@ let clues = {
   "1": {
     "lat": 51.455050,
     "lng": -0.960765,
-    "clue": "When did we first produce biscuits?"
+    "clue": "When did we first produce biscuits?",
+    "answer": 1814
   },
   "2": {
     "lat": 51.453957,
@@ -468,6 +469,9 @@ function getDistanceBetween(lat1, lon1) {
 
 
 function checkAnswer(answer,location) {
-  console.log(answer,location)
+  console.log("answer "+answer+" location "+location)
+  if(answer = clues[`${location}`].answer) {
+    alert("right");
+  }
 }
 
