@@ -468,11 +468,11 @@ function getDistanceBetween(lat1, lon1) {
 }
 
 
-function checkAnswer(answer,location) {
+function checkAnswer(keys,answer,location) {
   console.log("answer "+answer+" location "+location)
   if(answer == clues[`${location}`].answer) {
     alert("right");
-    checkStatus(key,location);
+    checkStatus(keys,location);
   }
 }
 
