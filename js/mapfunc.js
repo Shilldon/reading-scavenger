@@ -1,3 +1,4 @@
+let keys;
 
 //function to submit api key and define map
 function loadMap(key) { 
@@ -21,7 +22,7 @@ function loadMap(key) {
       // Add other bootstrap parameters as needed, using camel case.
     })
   initMap().then(function (AdvancedMarkerElement) {
-
+    keys = key;
     (function () {
       /*
        geolocation-marker version 2.0.5
@@ -97,167 +98,232 @@ let clues = {
     "lat": 51.455050,
     "lng": -0.960765,
     "clue": "When did we first produce biscuits?",
-    "answer": 1814
+    "answer": 1814,
+    "captured":false
   },
   "2": {
     "lat": 51.453957,
     "lng": -0.961984,
-    "clue": "59 and ..."
+    "clue": "59 and ...",
+    "answer": 1814,
+    "captured":false
   },
   "3": {
     "lat": 51.453083,
     "lng": -0.969136,
-    "clue": "First tram?"
+    "clue": "First tram?",
+    "answer": 1814,
+    "captured":false
   },
   "4": {
     "lat": 51.452515,
     "lng": -0.971589,
-    "clue": "Bruce Tunnel - height above sea level?"
+    "clue": "Bruce Tunnel - height above sea level?",
+    "answer": 1814,
+    "captured":false
   },
   "5": {
     "lat": 51.452623,
     "lng": -0.972350,
-    "clue": "How many taxis stand here?"
+    "clue": "How many taxis stand here?",
+    "answer": 1814,
+    "captured":false
   },
   "6": {
     "lat": 51.454097,
     "lng": -0.966383,
-    "clue": "What year deen Maureen Lockey open this?"
+    "clue": "What year deen Maureen Lockey open this?",
+    "answer": 1814,
+    "captured":false
   },
   "7": {
     "lat": 51.454171,
     "lng": -0.967394,
-    "clue": "How many birds?"
+    "clue": "How many birds?",
+    "answer": 1814,
+    "captured":false
   },
   "8": {
     "lat": 51.454675,
     "lng": -0.966327,
-    "clue": "What year was this completed?"
+    "clue": "What year was this completed?",
+    "answer": 1814,
+    "captured":false
   },
   "9": {
     "lat": 51.455797,
     "lng": -0.966093,
-    "clue": "When was Abbot Hugh executed?"
+    "clue": "When was Abbot Hugh executed?",
+    "answer": 1814,
+    "captured":false
   },
   "10": {
     "lat": 51.4565098732022,
     "lng": -0.976282147785361,
-    "clue": "Middle of the black V (look carefully, this one's small!)?"
+    "clue": "Middle of the black V (look carefully, this one's small!)?",
+    "answer": 1814,
+    "captured":false
   },
   "11": {
     "lat": 51.456777,
     "lng": -0.974131,
-    "clue": "How many bollards outside Siren?"
+    "clue": "How many bollards outside Siren?",
+    "answer": 1814,
+    "captured":false
   },
   "12": {
     "lat": 51.454582,
     "lng": -0.977798,
-    "clue": "Orange planters?"
+    "clue": "Orange planters?",
+    "answer": 1814,
+    "captured":false
   },
   "13": {
     "lat": 51.456053,
     "lng": -0.977058,
-    "clue": "What location do you quote to 'save time'?"
+    "clue": "What location do you quote to 'save time'?",
+    "answer": 1814,
+    "captured":false
   },
   "14": {
     "lat": 51.453863,
     "lng": -0.977308,
-    "clue": "How many sides?"
+    "clue": "How many sides?",
+    "answer": 1814,
+    "captured":false
   },
   "15": {
     "lat": 51.45420432233849,
     "lng": -0.973830158038599,
-    "clue": "How old was Peter Inman?"
+    "clue": "How old was Peter Inman?",
+    "answer": 1814,
+    "captured":false
   },
   "16": {
     "lat": 51.454002,
     "lng": -0.973724,
-    "clue": "How many volts?"
+    "clue": "How many volts?",
+    "answer": 1814,
+    "captured":false
   },
   "17": {
     "lat": 51.4548622442915,
     "lng": -0.9732989962959214,
-    "clue": "When was Bill's drainpipe installed?"
+    "clue": "When was Bill's drainpipe installed?",
+    "answer": 1814,
+    "captured":false
   },
   "18": {
     "lat": 51.456372,
     "lng": -0.967826,
-    "clue": "When was the Abbey severely damaged?"
+    "clue": "When was the Abbey severely damaged?",
+    "answer": 1814,
+    "captured":false
   },
   "19": {
     "lat": 51.456969094260906,
     "lng": -0.9674520989827075,
-    "clue": "How many captains?"
+    "clue": "How many captains?",
+    "answer": 1814,
+    "captured":false
   },
   "20": {
     "lat": 51.45695789637502,
     "lng": -0.9682384625131224,
-    "clue": "Romans were writing on the wall."
+    "clue": "Romans were writing on the wall.",
+    "answer": 1814,
+    "captured":false
   },
   "21": {
     "lat": 51.45786784843759,
     "lng": -0.9694736110905124,
-    "clue": "You cannot miss this one!"
+    "clue": "You cannot miss this one!",
+    "answer": 1814,
+    "captured":false
   },
   "22": {
     "lat": 51.45810805988329,
     "lng": -0.972069271328189,
-    "clue": "Who is this?"
+    "clue": "Who is this?",
+    "answer": 1814,
+    "captured":false
   },
   "23": {
     "lat": 51.45663880429062,
     "lng": -0.9678497364696548,
-    "clue": "When did John Speed make his map?"
+    "clue": "When did John Speed make his map?",
+    "answer": 1814,
+    "captured":false
   },
   "24": {
     "lat": 51.45654731484567,
     "lng": -0.967196205486239,
-    "clue": "What year was Frederick Potts in Gallipoli?"
+    "clue": "What year was Frederick Potts in Gallipoli?",
+    "answer": 1814,
+    "captured":false
   },
   "25": {
     "lat": 51.45502978513994,
     "lng": -0.970030106107138,
-    "clue": "George knows his Roman numerals..."
+    "clue": "George knows his Roman numerals...",
+    "answer": 1814,
+    "captured":false
   },
   "26": {
     "lat": 51.4566599803753,
     "lng": -0.97000077524566853,
-    "clue": "Right circle minus left circle = ?"
+    "clue": "Right circle minus left circle = ?",
+    "answer": 1814,
+    "captured":false
   },
   "27": {
     "lat": 51.45684525008421,
     "lng": -0.9722219340620878,
-    "clue": "Anno domini"
+    "clue": "Anno domini",
+    "answer": 1814,
+    "captured":false
   },
   "28": {
     "lat": 51.456710589169155,
     "lng": -0.9723428065772316,
-    "clue": "When did they first start surveying, or auctioning?"
+    "clue": "When did they first start surveying, or auctioning?",
+    "answer": 1814,
+    "captured":false
   },
   "29": {
     "lat": 51.45669965202262,
     "lng": -0.9718587723006621,
-    "clue": "666 maybe the number of the beast, what is the number of the dog?"
+    "clue": "666 maybe the number of the beast, what is the number of the dog?",
+    "answer": 1814,
+    "captured":false
   },
   "30": {
     "lat": 51.45670984883732,
     "lng": -0.9719931584053527,
-    "clue": "How many minutes to get to the Abbey Ruins?"
+    "clue": "How many minutes to get to the Abbey Ruins?",
+    "answer": 1814,
+    "captured":false
   },
   "31": {
     "lat": 51.45527591728553,
     "lng": -0.9707796488937782,
-    "clue": "O, how many blue plaques above this?"
+    "clue": "O, how many blue plaques above this?",
+    "answer": 1814,
+    "captured":false
   },
   "32": {
     "lat": 51.45631791329671,
     "lng": -0.9695816750144369,
-    "clue": "When was this 'clock' installed?"
+    "clue": "When was this 'clock' installed?",
+    "answer": 1814,
+    "captured":false
   },
   "33": {
     "lat":   51.45558870304998, 
     "lng": -0.9680066913345313,
-    "clue": "Question 1 - what number to unlock our door?"
+    "clue": "Question 1 - what number to unlock our door?",
+    "answer": 1814,
+    "captured":false
   }
 }
 
@@ -359,12 +425,16 @@ function follow() {
       console.log("position of marker " + i + " " + clueMarkers[i].position.lat);
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
+      if(clueMarkers[i].content.getAttribute("captured")!="false") {
+        let team = clueMarkers[i].content.getAttribute("captured");
+        clueMarkers[i].content.src = "./icons/captured-"+team+".png";
+    
+      }
       if (getDistanceBetween(markerLat, markerLng) == true) {
         console.log(clueMarkers[i].title + " in range ")
         clueMarkers[i].content.src = "./icons/clue-marker-active.png";
         clueMarkers[i].content.className = "clue-marker-img";
         clueMarkers[i].content.setAttribute("active", "true");
-        clueMarkers[i].content.setAttribute("location", i+1);
         clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
 
       }
@@ -401,6 +471,8 @@ function positionClueMarkers(AdvancedMarkerElement) {
     clueMarker.content = clueMarkerImg;
     clueMarker.content.setAttribute("active","false");
     clueMarker.content.setAttribute("clue","You need to move closer");
+    clueMarker.content.setAttribute("location", i);
+    clueMarker.content.setAttribute("captured", false);
     clueMarker.metadata = { id: i };
     clueMarker.position = {
       lat: clues[`${i}`].lat,
@@ -472,7 +544,11 @@ function checkAnswer(keys,answer,location) {
   console.log("answer "+answer+" location "+location)
   if(answer == clues[`${location}`].answer) {
     alert("right");
-    checkStatus(keys,location);
+    checkStatus(keys,location,clueMarkers);
   }
 }
 
+function failCapture() {
+  document.getElementById("question").style.color = "red";
+  document.getElementById("question").innerHTML = "This data point has just been captured by another team.";  
+}

@@ -12,7 +12,7 @@ async function databaseQuery(keys) {
     console.log(res);
 }
 
-async function captureMarker(keys, marker, team) {
+async function captureMarker(keys, marker, team, clueMarkers) {
     const url = keys.site;
     const key = keys.supabase;
     const database = supabase.createClient(url,key);
@@ -20,12 +20,14 @@ async function captureMarker(keys, marker, team) {
 
     const res = await database
         .from("clues")
-        .update({status: "team"})
+        .update({status: team})
         .eq("id",marker);
 
+    clueMarkers[marker-1].content.setAttribute("captured")=team;
+    clueMarkers[marker-1].content.src = "./icons/captured-"+team+".png";
 }
 
-async function checkStatus(keys,marker) {
+async function checkStatus(keys,marker,clueMarkers) {
 
     const url = keys.site;
     const key = keys.supabase;
@@ -35,8 +37,11 @@ async function checkStatus(keys,marker) {
         .from('clues')
         .select('status')
         .eq('id',marker)
-    if(data[0].status = "active") {
+    if(data[0].status == "active") {
         let team = document.body.getAttribute("team")
-        captureMarker(keys,marker,team);
+        captureMarker(keys,marker,team,clueMarkers);
+    }
+    else {
+        failCapture(marker);
     }
 }
