@@ -406,11 +406,19 @@ function positionClueMarkers(AdvancedMarkerElement) {
     }
     clueMarker.addListener("click", ({ domEvent, latLng }) => {
       const { target } = domEvent;
-      //let textPosition = "Text position"
-      let textDisplay = clueMarker.content.getAttribute("clue");
       infoWindow.close();
-      infoWindow.setContent(textDisplay);
-      infoWindow.open(clueMarker.map, clueMarker);
+      let textDisplay = clues[i].clue;
+      if(clueMarker.content.getAttribute("active")=="true") {
+        var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
+        myModal.show();
+                    
+        document.getElementById("question").innerHTML(textDisplay);
+      }
+      else {
+        infoWindow.setContent("You need to move closer.");
+        infoWindow.open(clueMarker.map, clueMarker);
+
+      }
     });
 
     console.log("creating marker " + i)
