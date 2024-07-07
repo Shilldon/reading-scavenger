@@ -25,6 +25,7 @@ async function captureMarker(keys, marker, team, clueMarkers) {
 
     clueMarkers[marker-1].content.setAttribute("captured",team);
     clueMarkers[marker-1].content.src = "./icons/captured-"+team+".png";
+    $('#answer-modal').modal('hide');
 }
 
 async function checkStatus(keys,marker,clueMarkers) {

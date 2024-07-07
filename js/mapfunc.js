@@ -451,10 +451,10 @@ function follow() {
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement,captures) {
 
-  let capturedArray = [];
+  let capturedArray = {};
   for(i=0;i<captures.length;i++) {
     console.log("captured "+captures[i].status)
-    capturedArray.push(captures[i].status);
+    capturedArray[captures[i].id] = captures[i].status;
   }
 
   console.log(capturedArray);
@@ -482,11 +482,11 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
     clueMarker.content.setAttribute("active","false");
     clueMarker.content.setAttribute("clue","You need to move closer");
     clueMarker.content.setAttribute("location", i);
-    if(capturedArray[i-1]=="active") {
+    if(capturedArray[i-1].status=="active") {
       clueMarker.content.setAttribute("captured", "false");
     }
     else {
-      clueMarker.content.setAttribute("captured", capturedArray[i-1]);
+      clueMarker.content.setAttribute("captured", capturedArray[i-1].status);
     }
     clueMarker.metadata = { id: i };
     clueMarker.position = {
@@ -501,6 +501,11 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
         if(clueMarker.content.getAttribute("active")=="true") {
           var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
           myModal.show();
+          document.getElementById("question").style.color = "#00c100";
+          document.getElementById("answer-input-section").style.display = "block";
+        
+          document.getElementById("answer-input").value = 0;
+
           let location = clueMarker.content.getAttribute("location");
           document.getElementById("answer-modal").setAttribute("location",location);           
           document.getElementById("question").innerHTML = textDisplay;
