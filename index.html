@@ -67,7 +67,7 @@
               <label for="answer-input">Your input:</label>
               <input type="number" class="form-control" id="answer-input" placeholder="0">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="" class="btn btn-success">Submit</button>
           </form>
   
         </div>
@@ -84,7 +84,8 @@
         $('#answer-modal').modal('hide');
     });
 
-    $("#answer-input").click(function() {
+    $("#answer-input").click(function(event) {
+      event.preventDefault();
       let answer = $("#answer-input").val();
       let location = $("#answer-modal").attr("location");
       checkAnswer(answer,location);
