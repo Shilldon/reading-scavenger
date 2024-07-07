@@ -6,7 +6,7 @@ async function databaseQuery(keys) {
 
     const res = await database.from("clues").insert({
         id: 2,
-        clue: "This is another clue"
+        status: "This is another clue"
     })
 
     console.log(res);
