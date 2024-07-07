@@ -108,14 +108,14 @@ let clues = {
     "lat": 51.453957,
     "lng": -0.961984,
     "clue": "59 and ...",
-    "answer": 1814,
+    "answer": 75,
     "captured":"false"
   },
   "3": {
     "lat": 51.453083,
     "lng": -0.969136,
     "clue": "First tram?",
-    "answer": 1814,
+    "answer": 1903,
     "captured":"false"
   },
   "4": {
@@ -482,11 +482,11 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
     clueMarker.content.setAttribute("active","false");
     clueMarker.content.setAttribute("clue","You need to move closer");
     clueMarker.content.setAttribute("location", i);
-    if(capturedArray[i]=="active") {
+    if(capturedArray[i-1]=="active") {
       clueMarker.content.setAttribute("captured", "false");
     }
     else {
-      clueMarker.content.setAttribute("captured", capturedArray[i]);
+      clueMarker.content.setAttribute("captured", capturedArray[i-1]);
     }
     clueMarker.metadata = { id: i };
     clueMarker.position = {
@@ -497,17 +497,19 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
       const { target } = domEvent;
       infoWindow.close();
       let textDisplay = clueMarker.content.getAttribute("clue");
-      if(clueMarker.content.getAttribute("active")=="true") {
-        var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
-        myModal.show();
-        let location = clueMarker.content.getAttribute("location");
-        document.getElementById("answer-modal").setAttribute("location",location);           
-        document.getElementById("question").innerHTML = textDisplay;
-      }
-      else {
-        infoWindow.setContent("You need to move closer.");
-        infoWindow.open(clueMarker.map, clueMarker);
-
+      if(clueMarker.content.getAttribute("captured")=="false") {
+        if(clueMarker.content.getAttribute("active")=="true") {
+          var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
+          myModal.show();
+          let location = clueMarker.content.getAttribute("location");
+          document.getElementById("answer-modal").setAttribute("location",location);           
+          document.getElementById("question").innerHTML = textDisplay;
+        }
+        else {
+          infoWindow.setContent("You need to move closer.");
+          infoWindow.open(clueMarker.map, clueMarker);
+  
+        }  
       }
     });
 
