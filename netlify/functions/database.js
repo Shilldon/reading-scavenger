@@ -15,12 +15,6 @@ const supabase = createClient(DATABASE_URL, SUPABASE_SERVICE_API_KEY);
     exports.handler = async (event, context) => {
         try {
           const { data, error } = await supabase.from('clues').select('*');
-          if (error) {
-            return {
-              statusCode: 500,
-              body: JSON.stringify({ error: 'Error fetching data' }),
-            };
-          }
           return {
             statusCode: 200,
             body: JSON.stringify(data),
