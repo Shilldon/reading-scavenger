@@ -453,7 +453,7 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
 
   let capturedArray = {};
   for(i=0;i<captures.length;i++) {
-    console.log("captured "+captures[i].status)
+    console.log("captured - "+captures[i].id+" is "+captures[i].status)
     capturedArray[captures[i].id] = captures[i].status;
   }
 
@@ -482,11 +482,14 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
     clueMarker.content.setAttribute("active","false");
     clueMarker.content.setAttribute("clue","You need to move closer");
     clueMarker.content.setAttribute("location", i);
-    if(capturedArray[i-1] =="active") {
+    if(capturedArray[i] =="active") {
+      console.log("marker "+i+" is active")
       clueMarker.content.setAttribute("captured", "false");
     }
     else {
-      clueMarker.content.setAttribute("captured", capturedArray[i-1]);
+      console.log("marker "+i+" is captured "+capturedArray[i])
+
+      clueMarker.content.setAttribute("captured", capturedArray[1]);
     }
     clueMarker.metadata = { id: i };
     clueMarker.position = {
