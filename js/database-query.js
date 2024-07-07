@@ -19,8 +19,8 @@ async function captureMarker(keys, marker, team) {
 
 
     const res = await database.from("clues").insert({
-        id: 2,
-        status: "This is another clue"
+        id: marker,
+        status: team
     })
 
 }
@@ -35,5 +35,8 @@ async function checkStatus(keys,marker) {
         .from('clues')
         .select('status')
         .eq('id',marker)
-    console.log(data);
+    if(data[0].status = "active") {
+        let team = document.body.getAttribute("team")
+        captureMarker(keys,marker,team);
+    }
 }
