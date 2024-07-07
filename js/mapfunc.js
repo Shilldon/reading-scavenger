@@ -50,8 +50,8 @@ function loadMap(key) {
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
     getCapturedStatus(keys).then(function (captures) {
-      console.log(captures)
-      positionClueMarkers(AdvancedMarkerElement,captures);
+      console.log(captures.data)
+      positionClueMarkers(AdvancedMarkerElement,captures.data);
     })
     follow();
   }
@@ -452,8 +452,13 @@ function follow() {
 }
 
 //draw all the clue markers on the map and add listeners
-function positionClueMarkers(AdvancedMarkerElement) {
+function positionClueMarkers(AdvancedMarkerElement,captures) {
 
+
+  for(i=0;i<captures.length;i++) {
+    console.log("captured "+captures[i].status)
+    clueMarkers[i+1].captured = captures[i].status;
+  }
 
   for (i = 1; i <= clueMarkersKeys.length; i++) {
     //define our active and inactive marker images
