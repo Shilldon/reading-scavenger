@@ -482,11 +482,11 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
     clueMarker.content.setAttribute("active","false");
     clueMarker.content.setAttribute("clue","You need to move closer");
     clueMarker.content.setAttribute("location", i);
-    if(capturedArray[i-1].status=="active") {
+    if(capturedArray[i-1] =="active") {
       clueMarker.content.setAttribute("captured", "false");
     }
     else {
-      clueMarker.content.setAttribute("captured", capturedArray[i-1].status);
+      clueMarker.content.setAttribute("captured", capturedArray[i-1]);
     }
     clueMarker.metadata = { id: i };
     clueMarker.position = {
