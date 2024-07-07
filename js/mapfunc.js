@@ -428,6 +428,7 @@ function follow() {
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
       if(clueMarkers[i].content.getAttribute("captured")!="false") {
+        console.log(`marker ${i+1} has been captured `)
         let team = clueMarkers[i].content.getAttribute("captured");
         clueMarkers[i].content.src = "./icons/captured-"+team+".png";
     
@@ -510,7 +511,6 @@ function positionClueMarkers(AdvancedMarkerElement,captures) {
       }
     });
 
-    console.log("creating marker " + i)
     clueMarkers.push(clueMarker);
 
   };
@@ -524,9 +524,6 @@ function toRad(Value) {
 function getDistanceBetween(lat1, lon1) {
   var lat2 = GeoMarker.get("position").lat();
   var lon2 = GeoMarker.get("position").lng();
-
-  console.log(`lat1 ${lat1} lat2 ${lat2} lon1 ${lon1} lon2 ${lon2}`)
-
   var R = 6371000; // metres
   var φ1 = toRad(lat1);
   var φ2 = toRad(lat2);
@@ -544,7 +541,6 @@ function getDistanceBetween(lat1, lon1) {
   var clueRange;// = $(document).attr("Range");
   if (clueRange == undefined) { clueRange = 300; };
   //var clueRange=20;
-  console.log("clue range " + d)
   if (d <= clueRange) {
     return true;
   }
