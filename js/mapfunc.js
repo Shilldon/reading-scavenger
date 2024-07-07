@@ -472,7 +472,7 @@ function checkAnswer(answer,location) {
   console.log("answer "+answer+" location "+location)
   if(answer == clues[`${location}`].answer) {
     alert("right");
-    checkStatus(keys,location);
+    checkStatus(key,location);
   }
 }
 
