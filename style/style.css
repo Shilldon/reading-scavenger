@@ -129,6 +129,7 @@ html, body {
   font-size: 5vw;
   font-family: "Orbitron", sans-serif;
   color: #00c100;
+  display: flex;
   justify-content: center;
   align-items: center;
 }

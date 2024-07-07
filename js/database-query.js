@@ -25,6 +25,7 @@ async function captureMarker(keys, marker, team, clueMarkers) {
 
     clueMarkers[marker-1].content.setAttribute("captured",team);
     clueMarkers[marker-1].content.src = "./icons/captured-"+team+".png";
+    clueMarkers[marker-1].content.className = "marker-img";
     $('#answer-modal').modal('hide');
 }
 
@@ -62,5 +63,11 @@ async function getCapturedStatus(keys) {
     const database = supabase.createClient(url,key);
     const res = await database.from("clues").select()
     
-    return res;
+    let capturedArray = {};
+    for(i=0;i<res.data.length;i++) {
+      console.log("captured - "+res.data[i].id+" is "+res.data[i].status)
+      capturedArray[res[i].id] = res[i].status;
+    }
+
+    return capturedArray;
 }

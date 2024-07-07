@@ -50,8 +50,8 @@ function loadMap(key) {
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
     getCapturedStatus(keys).then(function (captures) {
-      console.log(captures.data)
-      positionClueMarkers(AdvancedMarkerElement,captures.data);
+
+      positionClueMarkers(AdvancedMarkerElement,captures);
     })
     follow();
   }
@@ -420,14 +420,17 @@ function centreOnUser() {
 
 
 function follow() {
+
   var win = function (position) {
+
+    getCapturedStatus(keys).then(function (captures) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
 
     for (i = 0; i < clueMarkers.length; i++) {
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
-      if(clueMarkers[i].content.getAttribute("captured")!="false") {
+      if(captures[i+1]!="false") {
         console.log(`marker ${i+1} has been captured `)
         let team = clueMarkers[i].content.getAttribute("captured");
         clueMarkers[i].content.src = "./icons/captured-"+team+".png";
@@ -440,22 +443,21 @@ function follow() {
         clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
       }
       else {
+        clueMarkers[i].content.src = "./icons/clue-marker.png";
+        clueMarkers[i].content.className = "marker-img";
         console.log("Marker " + i + 1 + " out of range ")
       }
     }
+  })
   };
 
   var watchID = navigator.geolocation.watchPosition(win);
 }
 
 //draw all the clue markers on the map and add listeners
-function positionClueMarkers(AdvancedMarkerElement,captures) {
+function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
 
-  let capturedArray = {};
-  for(i=0;i<captures.length;i++) {
-    console.log("captured - "+captures[i].id+" is "+captures[i].status)
-    capturedArray[captures[i].id] = captures[i].status;
-  }
+
 
   console.log(capturedArray);
 
@@ -548,9 +550,8 @@ function getDistanceBetween(lat1, lon1) {
   var d = R * c;
 
 
-  var clueRange;// = $(document).attr("Range");
+  var clueRange = document.body.getAttribute("data-range");
   if (clueRange == undefined) { clueRange = 300; };
-  //var clueRange=20;
   if (d <= clueRange) {
     return true;
   }
