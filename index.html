@@ -89,18 +89,18 @@
       let answer = $("#answer-input").val();
       let location = $("#answer-modal").attr("location");
       location = 1;
-      fetch('/.netlify/functions/request').then(response => {
-      if (response.ok) {
-        return response.text()
-      } else {
-        throw response.status
-      }
-    }).then(data => {
-      let keys = JSON.parse(data);
-      checkAnswer(keys,answer,location);
-    }).catch(error => {
-      console.log("error ", error)
-    })
+     // fetch('/.netlify/functions/request').then(response => {
+     // if (response.ok) {
+     //   return response.text()
+     // } else {
+      //  throw response.status
+     // }
+    //}).then(data => {
+     // let keys = JSON.parse(data);
+      checkAnswer(answer,location);
+    //}).catch(error => {
+    //  console.log("error ", error)
+    //})
       
     })
 

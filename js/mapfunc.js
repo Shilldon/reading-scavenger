@@ -540,7 +540,7 @@ function getDistanceBetween(lat1, lon1) {
 }
 
 
-function checkAnswer(keys,answer,location) {
+function checkAnswer(answer,location) {
   console.log("answer "+answer+" location "+location)
   if(answer == clues[`${location}`].answer) {
     checkStatus(keys,location,clueMarkers);

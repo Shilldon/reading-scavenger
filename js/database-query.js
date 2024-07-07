@@ -37,8 +37,10 @@ async function checkStatus(keys,marker,clueMarkers) {
         .from('clues')
         .select('status')
         .eq('id',marker)
+        console.log(data)
     if(data[0].status == "active") {
-        let team = document.body.getAttribute("team")
+        let team = document.body.getAttribute("team");
+        console.log("team is "+team)
         captureMarker(keys,marker,team,clueMarkers);
     }
     else {
