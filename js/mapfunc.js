@@ -363,6 +363,7 @@ function follow() {
         clueMarkers[i].content.src = "./icons/clue-marker-active.png";
         clueMarkers[i].content.className = "clue-marker-img";
         clueMarkers[i].content.setAttribute("active", "true");
+        clueMarkers[i].content.setAttribute("location", i+1);
         clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
 
       }
@@ -411,7 +412,7 @@ function positionClueMarkers(AdvancedMarkerElement) {
       if(clueMarker.content.getAttribute("active")=="true") {
         var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
         myModal.show();
-                    
+        document.getElementById("answer-modal").setAttribute("location") = clueMarker.content.getAttribute("location");          
         document.getElementById("question").innerHTML = textDisplay;
       }
       else {
@@ -462,5 +463,10 @@ function getDistanceBetween(lat1, lon1) {
   else {
     return false;
   }
+}
+
+
+function checkAnswer(answer,location) {
+  console.log(answer,location)
 }
 

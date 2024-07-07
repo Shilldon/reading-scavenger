@@ -24,3 +24,4 @@ async function captureMarker(keys, marker, team) {
     })
 
 }
+

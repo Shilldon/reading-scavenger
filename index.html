@@ -24,7 +24,7 @@
   <script src="./js/mapfunc.js"></script>
 </head>
 
-<body>
+<body data-team="red">
 
   <div id="wrapper">
       <div class="control-buttons">
@@ -80,11 +80,16 @@
 
   <script type="module">
 
-    var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
-        myModal.show();
     $('.close').click(function() {
         $('#answer-modal').modal('hide');
     });
+
+    $("#answer-input").click(function() {
+      let answer = $("#answer-input").val();
+      let location = $("#answer-modal").attr("location");
+      checkAnswer(answer,location);
+    })
+
     fetch('/.netlify/functions/request').then(response => {
       if (response.ok) {
         return response.text()
