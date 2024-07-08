@@ -604,7 +604,7 @@ function checkAnswer(answer,location) {
       document.getElementById("answer-input").value = "";
       document.getElementById("question").innerHTML = clues[`${location}`].clue;  
       document.getElementById("question").style = "#00c100";  
-    })
+    },500);
   }
 }
 
