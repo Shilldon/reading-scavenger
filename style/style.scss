@@ -50,6 +50,54 @@
   padding-bottom:10px;
 }
 
+.choose-team {
+  position: absolute;
+  z-index: 49;
+  top:0;
+  left:0;
+  height:100vh;
+  width: 100vw;
+  display: inline-grid;
+  grid-template-columns: 25vw 25vw 25vw 25vw;
+  grid-template-rows: repeat(10, 10vh);
+  background-color: black;
+}
+
+.team-select {
+  grid-row: 3;
+  grid-column: 1/span 4;
+  text-align: center;
+  color:#00c100;
+  font-size: 5em;
+  font-family: "Orbitron", sans-serif;    
+}
+
+.red-select {
+  display:flex;
+  justify-content: right;
+  grid-column: 1 / span 2;
+  grid-row: 4 /span 2;
+}
+
+.green-select {
+  display:flex;
+  justify-content: left;
+  grid-column: 3 / span 2;
+  grid-row:4 / span 2;
+}
+
+.yellow-select {
+  display:flex;
+  align-items:start;
+  justify-content: center;
+  grid-column: 2 / span 2;
+  grid-row:6 / span 2; 
+  img {
+    height: 100%;
+  };
+}
+
+
 .modal-backdrop
 {
     opacity:0.0 !important;

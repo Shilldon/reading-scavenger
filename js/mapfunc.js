@@ -391,6 +391,10 @@ var geoOptions = {
 };
 
 
+function reloadMap() {
+  location.reload();  
+}
+
 //centre the map on the user - run on load and on button push
 function centreOnUser() {
   if (navigator.geolocation) {
@@ -432,6 +436,8 @@ function follow() {
       console.log(captures[i+1])
       if(captures[i+1]!="active") {
         console.log(`marker ${i+1} has been captured `)
+        
+        clueMarkers[i].content.className = "marker-img";
         clueMarkers[i].content.src = "./icons/captured-"+captures[i+1]+".png";
     
       }

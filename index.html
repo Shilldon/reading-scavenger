@@ -2,7 +2,6 @@
 
 <head>
   <title>Reading Office Scavenger Hunt</title>
- <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
   <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
   <link rel="stylesheet" type="text/css" href="./style/style.css" />
   <link rel=”icon” type=”image/x-icon” href=”./favicon.ico”>
@@ -25,25 +24,46 @@
 </head>
 
 <body data-team="red" data-range="30000">
-
   <div id="wrapper">
-      <div class="control-buttons">
-        <button class="btn" onclick="fullScreenToggle()">
-          <span id="fullscreen-toggler" class="material-symbols-outlined">
-            fullscreen
-            </span>
+    <div class="control-buttons">
+      <button class="btn" onclick="fullScreenToggle()">
+        <span id="fullscreen-toggler" class="material-symbols-outlined">
+          fullscreen
+        </span>
+      </button>
+      <button class="btn" onclick="centreOnUser()">
+        <span id="centre-map" class="material-symbols-outlined">
+          adjust
+        </span>
+      </button>
+      <button class="btn" onclick="reloadMap()">
+        <span id="reload-map" class="material-symbols-outlined">
+          frame_reload
+          </span>
         </button>
-        <button class="btn" onclick="centreOnUser()">
-          <span id="centre-map" class="material-symbols-outlined">
-            adjust
-            </span>
-        </button>      
-      </div>   
-      <div class="border"></div>
-      <div class="waiting-screen">
-        <span>Finding location</span><span class="dot_one">.</span><span class="dot_two">.</span><span class="dot_three">.</span>
-      </div>
+
+
+    </div>
+    <div class="border"></div>
+    <div class="waiting-screen">
+      <span>Finding location</span><span class="dot_one">.</span><span class="dot_two">.</span><span
+        class="dot_three">.</span>
+    </div>
     <div id="map">
+    </div>
+    <div class="choose-team">
+      <div class="team-select">
+        Choose Team
+      </div>
+      <div class="red-select select-team-btn">
+        <img src="./icons/captured-red.png" alt="">
+      </div>
+      <div class="green-select select-team-btn">
+        <img src="./icons/captured-green.png" alt="">
+      </div>
+      <div class="yellow-select select-team-btn">
+        <img src="./icons/captured-yellow.png" alt="">
+      </div>
     </div>
   </div>
 
@@ -86,20 +106,19 @@
     $("#submit-answer").click(function(event) {
       let answer = $("#answer-input").val();
       let location = $("#answer-modal").attr("location");
-     // fetch('/.netlify/functions/request').then(response => {
-     // if (response.ok) {
-     //   return response.text()
-     // } else {
-      //  throw response.status
-     // }
-    //}).then(data => {
-     // let keys = JSON.parse(data);
-      checkAnswer(answer,location);
-    //}).catch(error => {
-    //  console.log("error ", error)
-    //})
-      
+      checkAnswer(answer,location);     
     })
+
+    $(".select-team-btn").click(function() {
+      let team = $(this).attr('class').split(" ")[0].replace("-select","");
+      $(this).css({
+        "transform":"scale(0.75,0.75)",
+        "transition-duration":"0.25s",
+        "transition-timing-function":"ease-in-out"
+      })
+      $("body").attr("data-team",team);
+      $(".choose-team").delay(500).fadeOut(250);
+    }) 
 
     fetch('/.netlify/functions/request').then(response => {
       if (response.ok) {
