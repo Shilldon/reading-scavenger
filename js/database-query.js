@@ -7,7 +7,7 @@ function establishLink(keys) {
 }
 
 async function captureMarker(marker, team, clueMarkers) {
-    let points = clueMarkers[marker].points;
+    let points = clueMarkers[`${marker}`].points;
     console.log(points)
     const { data, error } = await database
     .from('positions')
