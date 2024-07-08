@@ -1,6 +1,10 @@
-const url = keys.site;
-const key = keys.supabase;
-const database = supabase.createClient(url,key);
+let database;
+
+function establishLink(keys) {
+    const url = keys.site;
+    const key = keys.supabase;
+    database = supabase.createClient(url,key);
+}
 
 async function captureMarker(keys, marker, team, clueMarkers) {
     let points = clueMarkers[marker].points;
