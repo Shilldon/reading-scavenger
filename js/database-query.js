@@ -7,18 +7,14 @@ function establishLink(keys) {
 }
 
 async function captureMarker(marker, team, clues) {
-    console.log(clues);
     let points = clues[`${marker}`].points;
-    console.log(points)
     const { data, error } = await database
     .from('positions')
     .select('score')
     .eq("team",team);
-    console.log(data);
     let score = data[0].score;
     score = score + points;
 
-    console.log(score)
 
     const res = await database
         .from("clues")
@@ -28,8 +24,8 @@ async function captureMarker(marker, team, clues) {
  
     const updatedScore = await database
     .from("positions")
-    .update({"team": team})
-    .eq("score",score);
+    .update({"score": score})
+    .eq("team",team);
 
 
     clueMarkers[marker-1].content.setAttribute("captured",team);
