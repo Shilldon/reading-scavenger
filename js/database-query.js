@@ -1,4 +1,4 @@
-async function captureMarker(keys, marker, team, clueMarkers,score) {
+async function captureMarker(keys, marker, team, clueMarkers) {
     const url = keys.site;
     const key = keys.supabase;
     const database = supabase.createClient(url,key);
