@@ -6,7 +6,7 @@ function establishLink(keys) {
     database = supabase.createClient(url,key);
 }
 
-async function captureMarker(keys, marker, team, clueMarkers) {
+async function captureMarker(marker, team, clueMarkers) {
     let points = clueMarkers[marker].points;
     console.log(points)
     const { data, error } = await database
@@ -37,12 +37,7 @@ async function captureMarker(keys, marker, team, clueMarkers) {
     $('#answer-modal').modal('hide');
 }
 
-async function checkStatus(keys,marker,clueMarkers) {
-
-    const url = keys.site;
-    const key = keys.supabase;
-    const database = supabase.createClient(url,key);
-
+async function checkStatus(marker,clueMarkers) {
     const { data, error } = await database
         .from('clues')
         .select('status')
@@ -51,7 +46,7 @@ async function checkStatus(keys,marker,clueMarkers) {
     if(data[0].status == "active") {
         let team = document.body.getAttribute("data-team");
         console.log("team is "+team)
-        captureMarker(keys,marker,team,clueMarkers);
+        captureMarker(marker,team,clueMarkers);
     }
     else {
         let team = document.body.getAttribute("data-team");
@@ -66,10 +61,8 @@ async function checkStatus(keys,marker,clueMarkers) {
     }
 }
 
-async function getCapturedStatus(keys) {
-    const url = keys.site;
-    const key = keys.supabase;
-    const database = supabase.createClient(url,key);
+async function getCapturedStatus() {
+
     const res = await database.from("clues").select()
     
     let capturedArray = {};

@@ -49,7 +49,7 @@ function loadMap(key) {
     }).call(this)
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
-    getCapturedStatus(keys).then(function (captures) {
+    getCapturedStatus().then(function (captures) {
 
       positionClueMarkers(AdvancedMarkerElement,captures);
     })
@@ -595,7 +595,7 @@ function getDistanceBetween(lat1, lon1) {
 
 function checkAnswer(answer,location) {
   if(answer == clues[`${location}`].answer) {
-    checkStatus(keys,location,clueMarkers);
+    checkStatus(location,clueMarkers);
   }
   else {
     document.getElementById("question").innerHTML = "INCORRECT";  
