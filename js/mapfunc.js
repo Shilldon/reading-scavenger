@@ -541,7 +541,7 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
           document.getElementById("question").style.color = "#00c100";
           document.getElementById("answer-input-section").style.display = "block";
         
-          document.getElementById("answer-input").value = 0;
+          document.getElementById("answer-input").value = "";
 
           let location = clueMarker.content.getAttribute("location");
           document.getElementById("answer-modal").setAttribute("location",location);           
@@ -596,6 +596,15 @@ function getDistanceBetween(lat1, lon1) {
 function checkAnswer(answer,location) {
   if(answer == clues[`${location}`].answer) {
     checkStatus(keys,location,clueMarkers);
+  }
+  else {
+    document.getElementById("question").innerHTML = "INCORRECT";  
+    document.getElementById("question").style = "red";
+    setTimeout(function() {
+      document.getElementById("answer-input").value = "";
+      document.getElementById("question").innerHTML = clues[`${location}`].clue;  
+      document.getElementById("question").style = "#00c100";  
+    })
   }
 }
 

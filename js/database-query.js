@@ -15,7 +15,7 @@ async function captureMarker(keys, marker, team, clueMarkers) {
     .from('positions')
     .select('score')
     .eq('name',team);
-
+    console.log(data);
     let score = data[0].score;
     score = score + points;
 
