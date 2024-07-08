@@ -595,6 +595,7 @@ function getDistanceBetween(lat1, lon1) {
 
 function checkAnswer(answer,location) {
   if(answer == clues[`${location}`].answer) {
+    console.log(location);
     checkStatus(location,clueMarkers);
   }
   else {

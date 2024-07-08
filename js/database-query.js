@@ -45,7 +45,6 @@ async function checkStatus(marker,clueMarkers) {
 
     if(data[0].status == "active") {
         let team = document.body.getAttribute("data-team");
-        console.log("team is "+team)
         captureMarker(marker,team,clueMarkers);
     }
     else {
