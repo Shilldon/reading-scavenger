@@ -6,8 +6,9 @@ function establishLink(keys) {
     database = supabase.createClient(url,key);
 }
 
-async function captureMarker(marker, team, clueMarkers) {
-    let points = clueMarkers[`${marker}`].points;
+async function captureMarker(marker, team, clues) {
+    console.log(clues);
+    let points = clues[`${marker}`].points;
     console.log(points)
     const { data, error } = await database
     .from('positions')
