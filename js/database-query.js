@@ -1,14 +1,8 @@
+const url = keys.site;
+const key = keys.supabase;
+const database = supabase.createClient(url,key);
+
 async function captureMarker(keys, marker, team, clueMarkers) {
-    const url = keys.site;
-    const key = keys.supabase;
-    const database = supabase.createClient(url,key);
-
-
-    const res = await database
-        .from("clues")
-        .update({status: team})
-        .eq("id",marker);
-
     let points = clueMarkers[marker].points;
 
     const { data, error } = await database
@@ -18,6 +12,14 @@ async function captureMarker(keys, marker, team, clueMarkers) {
     let score = data[0].score;
     score = score + points;
 
+
+
+    const res = await database
+        .from("clues")
+        .update({status: team})
+        .eq("id",marker);
+
+ 
     const updatedScore = await database
     .from("positions")
     .update({"team": team})
