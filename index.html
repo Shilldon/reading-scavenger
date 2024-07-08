@@ -111,11 +111,15 @@
 
     $(".select-team-btn").click(function() {
       let team = $(this).attr('class').split(" ")[0].replace("-select","");
-      $(this).css({
-        "transform":"scale(0.75,0.75)",
-        "transition-duration":"0.25s",
-        "transition-timing-function":"ease-in-out"
+      $(this).addClass("hex-button-select")
+
+      $(".select-team-btn").each(function() {
+        if(!$(this).hasClass(team+"-select")) {
+          $(this).addClass("hex-button-unselect")
+        }
       })
+
+
       $("body").attr("data-team",team);
       $(".choose-team").delay(500).fadeOut(250);
     }) 
