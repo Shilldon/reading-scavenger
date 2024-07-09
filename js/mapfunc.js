@@ -526,7 +526,7 @@ function follow() {
       }    
     })    
 
-    getCapturedStatus(keys).then(function (captures) {
+    getCapturedStatus().then(function (captures) {
 
     for (i = 0; i < clueMarkers.length; i++) {
       let markerLat = clueMarkers[i].position.lat;
