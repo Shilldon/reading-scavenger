@@ -515,21 +515,24 @@ function follow() {
         console.log("Marker " + i + 1 + " out of range ")
       }
     }
+
+    let team = document.body.getAttribute("data-team");
+    updatePosition(team,lat,long);
+    showTeamPositions().then(function(data) {
+      for(i=0; i< data.length;i++) {
+        if(data[i].team!=team) {
+          let pos = {
+            lat: data[i].lat,
+            lng: data[i].lng
+          }
+          markerDict[data[i].team].position = pos;
+        }  
+      }    
+    })    
   })
+  
   };
-  let team = document.body.getAttribute("data-team");
-  updatePosition(team,lat,long);
-  showTeamPositions().then(function(data) {
-    for(i=0; i< data.length;i++) {
-      if(data[i].team!=team) {
-        let pos = {
-          lat: data[i].lat,
-          lng: data[i].lng
-        }
-        markerDict[data[i].team].position = pos;
-      }  
-    }    
-  })
+
 
   var watchID = navigator.geolocation.watchPosition(win);
 }
