@@ -21,7 +21,7 @@ async function showTeamPositions() {
     .from("positions")
     .select()
 
-    return res;
+    return res.data;
 }
 
 async function captureMarker(marker, team, clues) {
