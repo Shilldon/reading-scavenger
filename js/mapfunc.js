@@ -464,6 +464,11 @@ var geoOptions = {
 
 
 function reloadMap() {
+  if (document.fullscreenElement) {
+    //full screen mode is active so take us out of fullscreen    
+    document.exitFullscreen();
+    button.innerHTML = "fullscreen";
+  }  
   location.reload();  
 }
 
