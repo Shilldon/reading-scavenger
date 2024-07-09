@@ -394,7 +394,7 @@ async function initMap() {
     lng: -0.972069271328189,    
   }
   const greenMarkerImg = document.createElement("img");
-  greenMarkerImg.src = "./icons/clue-marker.png";
+  greenMarkerImg.src = "./icons/green-marker.png";
   greenMarkerImg.className = "clue-marker-img";
 
   let greenMarker = new AdvancedMarkerElement({
@@ -406,7 +406,7 @@ async function initMap() {
   greenMarker.position = markerPosition;
 
   const redMarkerImg = document.createElement("img");
-  redMarkerImg.src = "./icons/clue-marker.png";
+  redMarkerImg.src = "./icons/red-marker.png";
   redMarkerImg.className = "clue-marker-img";
 
   let redMarker = new AdvancedMarkerElement({
@@ -418,7 +418,7 @@ async function initMap() {
   redMarker.position = markerPosition;
 
   const yellowMarkerImg = document.createElement("img");
-  yellowMarkerImg.src = "./icons/clue-marker.png";
+  yellowMarkerImg.src = "./icons/yellow-marker.png";
   yellowMarkerImg.className = "clue-marker-img";
 
   let yellowMarker = new AdvancedMarkerElement({
@@ -499,6 +499,23 @@ function follow() {
 
   var win = function (position) {
 
+    let team = document.body.getAttribute("data-team");
+    updatePosition(team,lat,long);
+    showTeamPositions().then(function(data) {
+      console.log(data)
+      for(i=0; i< data.length;i++) {
+        console.log(data[i])
+        if(data[i].team!=team) {
+          let pos = {
+            lat: data[i].lat,
+            lng: data[i].lng
+          }
+          console.log(pos)
+          markerDict[data[i].team].position = pos;
+        }  
+      }    
+    })    
+
     getCapturedStatus(keys).then(function (captures) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
@@ -526,22 +543,7 @@ function follow() {
       }
     }
 
-    let team = document.body.getAttribute("data-team");
-    updatePosition(team,lat,long);
-    showTeamPositions().then(function(data) {
-      console.log(data)
-      for(i=0; i< data.length;i++) {
-        console.log(data[i])
-        if(data[i].team!=team) {
-          let pos = {
-            lat: data[i].lat,
-            lng: data[i].lng
-          }
-          console.log(pos)
-          markerDict[data[i].team].position = pos;
-        }  
-      }    
-    })    
+
   })
   
   };
