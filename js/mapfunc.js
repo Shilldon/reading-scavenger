@@ -389,35 +389,45 @@ async function initMap() {
   //set marker
 
   //************figure out how to set ID to markers
+  let markerPosition = {
+    lat: 51.45810805988329,
+    lng: -0.972069271328189,    
+  }
   const greenMarkerImg = document.createElement("img");
   greenMarkerImg.src = "./icons/clue-marker.png";
   greenMarkerImg.className = "clue-marker-img";
 
   let greenMarker = new AdvancedMarkerElement({
-    title: 'Your Location',
+    title: 'Green Location',
     content: greenMarkerImg,
     map: map,
+    gmpClickable: false
   });
+  greenMarker.position = markerPosition;
 
   const redMarkerImg = document.createElement("img");
   redMarkerImg.src = "./icons/clue-marker.png";
   redMarkerImg.className = "clue-marker-img";
 
   let redMarker = new AdvancedMarkerElement({
-    title: 'Your Location',
+    title: 'Red Location',
     content: redMarkerImg,
     map: map,
+    gmpClickable: false
   });
+  redMarker.position = markerPosition;
 
   const yellowMarkerImg = document.createElement("img");
   yellowMarkerImg.src = "./icons/clue-marker.png";
   yellowMarkerImg.className = "clue-marker-img";
 
   let yellowMarker = new AdvancedMarkerElement({
-    title: 'Your Location',
+    title: 'Yellow Location',
     content: yellowMarkerImg,
     map: map,
+    gmpClickable: false
   });
+  yellowMarker.position = markerPosition;
 
   markerDict = {
     "green" : greenMarker,
