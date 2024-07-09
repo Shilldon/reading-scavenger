@@ -519,12 +519,15 @@ function follow() {
     let team = document.body.getAttribute("data-team");
     updatePosition(team,lat,long);
     showTeamPositions().then(function(data) {
+      console.log(data)
       for(i=0; i< data.length;i++) {
+        console.log(data[i])
         if(data[i].team!=team) {
           let pos = {
             lat: data[i].lat,
             lng: data[i].lng
           }
+          console.log(pos)
           markerDict[data[i].team].position = pos;
         }  
       }    
