@@ -514,6 +514,10 @@ function follow() {
           console.log(pos)
           markerDict[data[i].team].position = pos;
         }  
+        else {
+          console.log("marker is "+team+" - hiding")
+          markerDict[data[i].team].content.display = "none";
+        }
       }    
     })    
 
