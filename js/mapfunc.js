@@ -516,7 +516,7 @@ function follow() {
         }  
         else {
           console.log("marker is "+team+" - hiding")
-          markerDict[data[i].team].map = "null";
+          markerDict[data[i].team].map = null;
         }
       }    
     })    
