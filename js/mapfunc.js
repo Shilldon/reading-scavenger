@@ -498,7 +498,8 @@ function centreOnUser() {
 function follow() {
 
   var win = function (position) {
-
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
     let team = document.body.getAttribute("data-team");
     updatePosition(team,lat,long);
     showTeamPositions().then(function(data) {
@@ -517,8 +518,7 @@ function follow() {
     })    
 
     getCapturedStatus(keys).then(function (captures) {
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
+
     for (i = 0; i < clueMarkers.length; i++) {
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
