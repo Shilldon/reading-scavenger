@@ -89,6 +89,9 @@ let map;
 let GeoMarker;
 let infoWindow;
 let clueMarker;
+let greenMarker;
+let redMarker;
+let yellowMarker;
 
 let clues = {
   "1": {
@@ -362,6 +365,7 @@ let clues = {
 let clueMarkersKeys = Object.keys(clues);
 let clueMarkers = [];
 let clueMarkerTemp;
+let markerDict = {};
 
 //load libraries
 async function initMap() {
@@ -383,13 +387,44 @@ async function initMap() {
   });
 
   //set marker
-  /*
-  userMarker = new AdvancedMarkerElement({
+
+  //************figure out how to set ID to markers
+  const greenMarkerImg = document.createElement("img");
+  greenMarkerImg.src = "./icons/clue-marker.png";
+  greenMarkerImg.className = "clue-marker-img";
+
+  let greenMarker = new AdvancedMarkerElement({
     title: 'Your Location',
-    content: currentLocImg,
+    content: greenMarkerImg,
     map: map,
   });
-*/
+
+  const redMarkerImg = document.createElement("img");
+  redMarkerImg.src = "./icons/clue-marker.png";
+  redMarkerImg.className = "clue-marker-img";
+
+  let redMarker = new AdvancedMarkerElement({
+    title: 'Your Location',
+    content: redMarkerImg,
+    map: map,
+  });
+
+  const yellowMarkerImg = document.createElement("img");
+  yellowMarkerImg.src = "./icons/clue-marker.png";
+  yellowMarkerImg.className = "clue-marker-img";
+
+  let yellowMarker = new AdvancedMarkerElement({
+    title: 'Your Location',
+    content: yellowMarkerImg,
+    map: map,
+  });
+
+  markerDict = {
+    "green" : greenMarker,
+    "red" : redMarker,
+    "yellow" : yellowMarker
+  }
+
   infoWindow = new google.maps.InfoWindow();
 
   return AdvancedMarkerElement;
@@ -482,6 +517,19 @@ function follow() {
     }
   })
   };
+  let team = document.body.getAttribute("data-team");
+  updatePosition(team,lat,long);
+  showTeamPositions().then(function(data) {
+    for(i=0; i< data.length;i++) {
+      if(data[i].team!=team) {
+        let pos = {
+          lat: data[i].lat,
+          lng: data[i].lng
+        }
+        markerDict[data[i].team].position = pos;
+      }  
+    }    
+  })
 
   var watchID = navigator.geolocation.watchPosition(win);
 }

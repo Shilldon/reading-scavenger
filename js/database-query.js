@@ -6,6 +6,24 @@ function establishLink(keys) {
     database = supabase.createClient(url,key);
 }
 
+async function updatePosition(team,lat,lng) {
+    const res = await database
+    .from("positions")
+    .update({
+        "lat": lat,
+        "lng":lng
+    })
+    .eq("team",team);        
+}
+
+async function showTeamPositions() {
+    const res = await database
+    .from("positions")
+    .select()
+
+    return res;
+}
+
 async function captureMarker(marker, team, clues) {
     let points = clues[`${marker}`].points;
     const { data, error } = await database
