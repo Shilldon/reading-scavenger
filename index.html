@@ -130,7 +130,7 @@
       } else {
         throw response.status
       }
-    }).then(() => {
+    }).then(data => {
       //initMap();
       let keys = JSON.parse(data);
       loadMap(keys);
