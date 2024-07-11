@@ -130,8 +130,8 @@
       } else {
         throw response.status
       }
-    }).then(data => {
-      placeMarkers(data);
+    }).then(() => {
+      initMap();
      /* let keys = JSON.parse(data);
       loadMap(keys);
       establishLink(keys);*/
