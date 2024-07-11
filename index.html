@@ -131,10 +131,10 @@
         throw response.status
       }
     }).then(() => {
-      initMap();
-     /* let keys = JSON.parse(data);
+      //initMap();
+      let keys = JSON.parse(data);
       loadMap(keys);
-      establishLink(keys);*/
+      establishLink(keys);
     }).catch(error => {
       console.log("error ", error)
     })

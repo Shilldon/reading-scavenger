@@ -386,8 +386,6 @@ async function initMap() {
     backgroundColor: "#3d55af"
   });
 
-  map = mapData.map;
-  AdvancedMarkerElement = mapData.markerElement;
   //set marker
 
   //************figure out how to set ID to markers
