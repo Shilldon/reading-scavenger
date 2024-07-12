@@ -7,7 +7,7 @@
 
 
       async function fetchMapData(lat, lng) {
-  const response = await fetch('/.netlify/functions/getMapData', {
+  const response = await fetch('/.netlify/functions/getmap', {
     method: 'POST',
     body: JSON.stringify({ lat, lng }),
   });
@@ -16,11 +16,11 @@
   return data;
 }
     
-  
+window.addEventListener('load', fetchMapData(0,0))
     
   </script>
 </head>
-<body onload="fetchMapData(0,0)">
+<body>
   <div id="map" style="height: 500px; width: 100%;"></div>
 </body>
 </html>
