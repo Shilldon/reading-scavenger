@@ -3,25 +3,24 @@
 <head>
   <title>Google Maps Example</title>
   <script type="module">
-    function loadMap() {
 
-    async function initMap() {
-      const response = await fetch('/.netlify/functions/getMap', {
-        method: 'POST',
-        body: JSON.stringify({ lat: 40.7128, lng: -74.0060 }), // Example coordinates
-      });
-      const data = await response.json();
 
-      const map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 40.7128, lng: -74.0060 },
-        zoom: 8,
-      });
-    }
-  }
+
+      async function fetchMapData(lat, lng) {
+  const response = await fetch('/.netlify/functions/getMapData', {
+    method: 'POST',
+    body: JSON.stringify({ lat, lng }),
+  });
+
+  const data = await response.json();
+  return data;
+}
+    
+  
     
   </script>
 </head>
-<body onload="loadMap()">
+<body onload="fetchMapData(0,0)">
   <div id="map" style="height: 500px; width: 100%;"></div>
 </body>
 </html>
