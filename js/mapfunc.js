@@ -388,7 +388,6 @@ async function initMap() {
 
   //set marker
 
-  //************figure out how to set ID to markers
   let markerPosition = {
     lat: 51.45810805988329,
     lng: -0.972069271328189,    
