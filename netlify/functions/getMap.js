@@ -1,5 +1,5 @@
 // netlify/functions/getMapData.js
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 exports.handler = async (event, context) => {
   const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
