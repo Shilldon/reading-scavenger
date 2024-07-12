@@ -1,3 +1,5 @@
+
+import fetch from 'node-fetch';
 exports.handler = async (event, context) => {
   const apiKey = process.env.MAP;
   const { lat, lng } = JSON.parse(event.body);
