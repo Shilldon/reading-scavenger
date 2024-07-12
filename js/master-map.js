@@ -324,7 +324,7 @@ async function initMap() {
 
   //set up map for first time
   //set initial position
-  map = new Map(document.getElementById("map"), {
+  map = new Map(document.getElementById("master-map"), {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 18,
     mapId: "32becf6749a12dee",
