@@ -4,7 +4,7 @@
   <title>Google Maps Example</title>
   <script>
     async function initMap() {
-      const response = await fetch('/.netlify/functions/getMap', {
+      const response = fetch('/.netlify/functions/getMap', {
         method: 'POST',
         body: JSON.stringify({ lat: 40.7128, lng: -74.0060 }), // Example coordinates
       });
