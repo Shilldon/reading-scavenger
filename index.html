@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Google Maps Example</title>
-    <script>
-      async function initMap() {
-        // Fetch the API key from the Netlify function
-        const response = await fetch('/.netlify/functions/getMapKey');
-        const data = await response.json();
-        const apiKey = data.apiKey;
+<head>
+  <title>Google Maps Example</title>
+  <script>
+    async function initMap() {
+      const response = await fetch('/.netlify/functions/getMap', {
+        method: 'POST',
+        body: JSON.stringify({ lat: 40.7128, lng: -74.0060 }), // Example coordinates
+      });
+      const data = await response.json();
 
-        // Load the Google Maps script with the fetched API key
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=loadMap`;
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-      }
-
-      function loadMap() {
-        const map = new google.maps.Map(document.getElementById('map'), {
-          center: { lat: -34.397, lng: 150.644 },
-          zoom: 8,
-        });
-      }
-
-      // Initialize the map
-      window.onload = initMap;
-    </script>
-  </head>
-  <body>
-    <div id="map" style="height: 500px; width: 100%;"></div>
-  </body>
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 40.7128, lng: -74.0060 },
+        zoom: 8,
+      });
+    }
+  </script>
+</head>
+<body onload="initMap()">
+  <div id="map" style="height: 500px; width: 100%;"></div>
+</body>
 </html>
