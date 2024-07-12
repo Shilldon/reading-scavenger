@@ -7,8 +7,8 @@ exports.handler = async (event, context) => {
   const response = await fetch(`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`);
   const data = await response.json();
 
-  return {
+  return new Response (JSON.stringify({
     statusCode: 200,
     body: JSON.stringify(data),
-  };
+  }));
 };
