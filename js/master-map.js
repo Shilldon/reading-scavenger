@@ -1,7 +1,7 @@
 let keys;
 
 //function to submit api key and define map
-function loadMap() { 
+function loadMasterMap(key) { 
   (g => {
     var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window;
     b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => {
@@ -58,35 +58,9 @@ function loadMap() {
   );
 }
 
-function fullScreenToggle() {
-  var elem = document.body;
-  var button = document.getElementById("fullscreen-toggler");
-
-  if (document.fullscreenElement) {
-    //full screen mode is active so take us out of fullscreen    
-    document.exitFullscreen();
-    button.innerHTML = "fullscreen";
-  }
-  else {
-    //fullscreen mode is not active so put us in fullscreen
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-      button.innerHTML = "fullscreen_exit";
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-      elem.webkitRequestFullscreen();
-      button.innerHTML = "fullscreen_exit";
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-      elem.msRequestFullscreen();
-      button.innerHTML = "fullscreen_exit";
-    }
-  }
-}
-
-
 
 //define the map variable
 let map;
-let GeoMarker;
 let infoWindow;
 let clueMarker;
 let greenMarker;
@@ -388,7 +362,6 @@ async function initMap() {
 
   //set marker
 
-  //************figure out how to set ID to markers
   let markerPosition = {
     lat: 51.45810805988329,
     lng: -0.972069271328189,    
@@ -456,56 +429,21 @@ function geoError() {
   console.log("Sorry, no position available.");
 }
 
-var geoOptions = {
-  enableHighAccuracy: true,
-  maximumAge: 30000,
-  timeout: 27000
-};
 
 
-function reloadMap() {
-  if (document.fullscreenElement) {
-    //full screen mode is active so take us out of fullscreen    
-    document.exitFullscreen();
-    button.innerHTML = "fullscreen";
-  }  
-  location.reload();  
-}
-
-//centre the map on the user - run on load and on button push
-function centreOnUser() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-
-        //when the location is found hide the 'wait screen'
-        let waitScreen = document.getElementsByClassName("waiting-screen")[0];
-        waitScreen.style.display = "none";
-        GeoMarker.position = pos;
-        map.setCenter(pos);
-      },
-      () => {
-        handleLocationError(true, infoWindow, map.getCenter());
-      }, geoError, geoOptions
-    );
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-}
 //window.initMap = initMap;
 
 
-function follow() {
+function updateMap() {
+    setTimeout(function() {
+    //call spreadsheet to get positions of all teams
 
-  var win = function (position) {
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
-    let team = document.body.getAttribute("data-team");
+
+    //update status of all markers
+    },1000)
+
+
+
     updatePosition(team,lat,long);
     showTeamPositions().then(function(data) {
       console.log(data)
@@ -524,7 +462,6 @@ function follow() {
           markerDict[data[i].team].map = null;
         }
       }    
-    })    
 
     getCapturedStatus().then(function (captures) {
 
@@ -539,17 +476,6 @@ function follow() {
         clueMarkers[i].content.src = "./icons/captured-"+captures[i+1]+".png";
     
       }
-      else if (getDistanceBetween(markerLat, markerLng) == true) {
-        clueMarkers[i].content.src = "./icons/clue-marker-active.png";
-        clueMarkers[i].content.className = "clue-marker-img";
-        clueMarkers[i].content.setAttribute("active", "true");
-        clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
-      }
-      else {
-        clueMarkers[i].content.src = "./icons/clue-marker.png";
-        clueMarkers[i].content.className = "marker-img";
-        console.log("Marker " + i + 1 + " out of range ")
-      }
     }
 
 
@@ -558,13 +484,10 @@ function follow() {
   };
 
 
-  var watchID = navigator.geolocation.watchPosition(win);
 }
 
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
-
-
 
   console.log(capturedArray);
 
@@ -634,59 +557,4 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
 
   };
 
-}
-
-function toRad(Value) {
-  return Value * Math.PI / 180;
-}
-
-function getDistanceBetween(lat1, lon1) {
-  var lat2 = GeoMarker.get("position").lat();
-  var lon2 = GeoMarker.get("position").lng();
-  var R = 6371000; // metres
-  var φ1 = toRad(lat1);
-  var φ2 = toRad(lat2);
-  var Δφ = toRad(lat2 - lat1);
-  var Δλ = toRad(lon2 - lon1);
-  //alert("φ1 " + φ1 + "φ2 " + φ2)
-  var a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-    Math.cos(φ1) * Math.cos(φ2) *
-    Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  var d = R * c;
-
-
-  var clueRange = document.body.getAttribute("data-range");
-  if (clueRange == undefined) { clueRange = 300; };
-  if (d <= clueRange) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-
-function checkAnswer(answer,location) {
-  if(answer == clues[`${location}`].answer) {
-    console.log(location);
-    checkStatus(location,clues);
-  }
-  else {
-    document.getElementById("question").innerHTML = "INCORRECT";  
-    document.getElementById("question").style.color = "red";
-    setTimeout(function() {
-      document.getElementById("answer-input").value = "";
-      document.getElementById("question").innerHTML = clues[`${location}`].clue;  
-      document.getElementById("question").style.color = "#00c100";  
-    },2000);
-  }
-}
-
-function failCapture(marker,captureText,captureTeam) {
-  document.getElementById("question").style.color = "red";
-  document.getElementById("answer-input-section").style.display = "none";
-  document.getElementById("question").innerHTML = captureText;  
-  clueMarkers[marker-1].content.src = "./icons/captured-"+captureTeam+".png";
 }
