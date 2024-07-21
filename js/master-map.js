@@ -397,6 +397,10 @@ function updateMap() {
     //call spreadsheet to get positions of all teams
     showTeamPositions().then(function (data) {
       for (i = 0; i < data.length; i++) {
+        let pos = {
+          lat: data[i].lat,
+          lng: data[i].lng
+        }
         markerDict[data[i].team].position = pos;
       }
     })

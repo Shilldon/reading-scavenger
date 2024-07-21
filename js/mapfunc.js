@@ -389,8 +389,8 @@ async function initMap() {
   //set marker
 
   let markerPosition = {
-    lat: 51.45810805988329,
-    lng: -0.972069271328189,    
+    lat: 0.0,
+    lng: 0.0,    
   }
   const greenMarkerImg = document.createElement("img");
   greenMarkerImg.src = "./icons/green-marker.png";
