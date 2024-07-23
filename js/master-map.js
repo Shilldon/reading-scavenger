@@ -43,12 +43,12 @@ let yellowMarker;
 
 let clues = {
   "1": {
-    "lat": 51.455050,
-    "lng": -0.960765,
+    "lat": 51.4550936,
+    "lng": -0.9609585,
     "clue": "When did we first produce biscuits?",
     "answer": 1814,
     "captured": "false",
-    "points": 10
+    "points": 9
   },
   "2": {
     "lat": 51.453957,
@@ -56,7 +56,7 @@ let clues = {
     "clue": "59 and ...",
     "answer": 75,
     "captured": "false",
-    "points": 8
+    "points": 9
   },
   "3": {
     "lat": 51.453083,
@@ -64,7 +64,7 @@ let clues = {
     "clue": "First tram?",
     "answer": 1903,
     "captured": "false",
-    "points": 7
+    "points": 5
   },
   "4": {
     "lat": 51.452515,
@@ -72,7 +72,7 @@ let clues = {
     "clue": "Bruce Tunnel - height above sea level?",
     "answer": 450,
     "captured": "false",
-    "points": 6
+    "points": 8
   },
   "5": {
     "lat": 51.452623,
@@ -80,7 +80,7 @@ let clues = {
     "clue": "How many taxis stand here?",
     "answer": 3,
     "captured": "false",
-    "points": 6
+    "points": 8
   },
   "6": {
     "lat": 51.454097,
@@ -88,7 +88,7 @@ let clues = {
     "clue": "What year did Maureen Lockey open this?",
     "answer": 1990,
     "captured": "false",
-    "points": 4
+    "points": 3
   },
   "7": {
     "lat": 51.454171,
@@ -96,7 +96,7 @@ let clues = {
     "clue": "How many birds?",
     "answer": 8,
     "captured": "false",
-    "points": 4
+    "points": 3
   },
   "8": {
     "lat": 51.454675,
@@ -112,7 +112,7 @@ let clues = {
     "clue": "When was Abbot Hugh executed?",
     "answer": 1539,
     "captured": "false",
-    "points": 3
+    "points": 2
   },
   "10": {
     "lat": 51.4565098732022,
@@ -120,7 +120,7 @@ let clues = {
     "clue": "Middle of the black V (look carefully, this one's small!)?",
     "answer": 3,
     "captured": "false",
-    "points": 10
+    "points": 15
   },
   "11": {
     "lat": 51.456777,
@@ -128,7 +128,7 @@ let clues = {
     "clue": "How many bollards outside Siren?",
     "answer": 14,
     "captured": "false",
-    "points": 7
+    "points": 8
   },
   "12": {
     "lat": 51.454582,
@@ -136,7 +136,7 @@ let clues = {
     "clue": "Orange planters?",
     "answer": 9,
     "captured": "false",
-    "points": 8
+    "points": 13
   },
   "13": {
     "lat": 51.456053,
@@ -144,7 +144,7 @@ let clues = {
     "clue": "What location do you quote to 'save time'?",
     "answer": 9431,
     "captured": "false",
-    "points": 7
+    "points": 12
   },
   "14": {
     "lat": 51.453863,
@@ -152,7 +152,7 @@ let clues = {
     "clue": "How many sides?",
     "answer": 8,
     "captured": "false",
-    "points": 7
+    "points": 11
   },
   "15": {
     "lat": 51.45420432233849,
@@ -160,7 +160,7 @@ let clues = {
     "clue": "How old was Peter Inman?",
     "answer": 76,
     "captured": "false",
-    "points": 6
+    "points": 10
   },
   "16": {
     "lat": 51.454002,
@@ -168,7 +168,7 @@ let clues = {
     "clue": "How many volts?",
     "answer": 240,
     "captured": "false",
-    "points": 7
+    "points": 8
   },
   "17": {
     "lat": 51.4548622442915,
@@ -176,7 +176,7 @@ let clues = {
     "clue": "When was Bill's drainpipe installed?",
     "answer": 1931,
     "captured": "false",
-    "points": 8
+    "points": 10
   },
   "18": {
     "lat": 51.456372,
@@ -192,7 +192,7 @@ let clues = {
     "clue": "How many captains?",
     "answer": 4,
     "captured": "false",
-    "points": 2
+    "points": 3
   },
   "20": {
     "lat": 51.45695789637502,
@@ -208,7 +208,7 @@ let clues = {
     "clue": "You cannot miss this one!",
     "answer": 12,
     "captured": "false",
-    "points": 1
+    "points": 3
   },
   "22": {
     "lat": 51.45810805988329,
@@ -216,7 +216,7 @@ let clues = {
     "clue": "Edward the ...",
     "answer": 7,
     "captured": "false",
-    "points": 4
+    "points": 7
   },
   "23": {
     "lat": 51.45663880429062,
@@ -232,7 +232,7 @@ let clues = {
     "clue": "What year was Frederick Potts in Gallipoli?",
     "answer": 1915,
     "captured": "false",
-    "points": 1
+    "points": 2
   },
   "25": {
     "lat": 51.45502978513994,
@@ -240,7 +240,7 @@ let clues = {
     "clue": "George knows his Roman numerals...",
     "answer": 1506,
     "captured": "false",
-    "points": 5
+    "points": 4
   },
   "26": {
     "lat": 51.4566599803753,
@@ -256,7 +256,7 @@ let clues = {
     "clue": "Anno domini",
     "answer": 1902,
     "captured": "false",
-    "points": 3
+    "points": 6
   },
   "28": {
     "lat": 51.456710589169155,
@@ -264,7 +264,7 @@ let clues = {
     "clue": "When did they first start surveying, or auctioning?",
     "answer": 1882,
     "captured": "false",
-    "points": 4
+    "points": 6
   },
   "29": {
     "lat": 51.45669965202262,
@@ -272,7 +272,7 @@ let clues = {
     "clue": "666 maybe the number of the beast, what is the number of the dog?",
     "answer": 150,
     "captured": "false",
-    "points": 3
+    "points": 5
   },
   "30": {
     "lat": 51.45670984883732,
@@ -280,7 +280,7 @@ let clues = {
     "clue": "How many minutes to get to the Abbey Ruins?",
     "answer": 6,
     "captured": "false",
-    "points": 3
+    "points": 6
   },
   "31": {
     "lat": 51.45527591728553,
@@ -288,7 +288,7 @@ let clues = {
     "clue": "O, how many blue plaques above this?",
     "answer": 5,
     "captured": "false",
-    "points": 5
+    "points": 3
   },
   "32": {
     "lat": 51.45631791329671,
@@ -296,7 +296,7 @@ let clues = {
     "clue": "When was this 'clock' installed?",
     "answer": 1727,
     "captured": "false",
-    "points": 3
+    "points": 2
   },
   "33": {
     "lat": 51.45558870304998,
@@ -305,6 +305,54 @@ let clues = {
     "answer": 1289,
     "captured": "false",
     "points": 0
+  },
+  "34": {
+    "lat": 51.454559,
+    "lng": -0.9624617,
+    "clue": "Date of the IDR bridge",
+    "answer": 2261988,
+    "captured": "false",
+    "points": 8
+  },
+  "35": {
+    "lat": 51.4543561,
+    "lng": -0.9623777,
+    "clue": "How many round windows?",
+    "answer": 4,
+    "captured": "false",
+    "points": 8
+  },
+  "36": {
+    "lat": 51.454178,
+    "lng": -0.963985,
+    "clue": "Reading Piece",
+    "answer": 1982,
+    "captured": "false",
+    "points": 6
+  },
+  "37": {
+    "lat": 51.4543398,
+    "lng": -0.9664905,
+    "clue": "How legs does the orange creature have?",
+    "answer": 8,
+    "captured": "false",
+    "points": 3
+  },
+  "38": {
+    "lat": 51.4547667,
+    "lng": -0.964435,
+    "clue": "What building is the swan flying into?",
+    "answer": 100,
+    "captured": "false",
+    "points": 5
+  },
+  "39": {
+    "lat": 51.4554009,
+    "lng": -0.9667538,
+    "clue": "Royal charter + town charter?",
+    "answer": 2814,
+    "captured": "false",
+    "points": 5
   }
 }
 
@@ -407,10 +455,16 @@ function updateMap() {
     getCapturedStatus().then(function (captures) {
 
       for (i = 0; i < clueMarkers.length; i++) {
-        if (captures[i + 1] != "active") {
-          console.log(`marker ${i + 1} has been captured `)
+        let markerLat = clueMarkers[i].position.lat;
+        let markerLng = clueMarkers[i].position.lng;
+        console.log(captures[i+1])
+        let captureOrder = captures[i+1].split(",");
+        if(captureOrder[0]!="none") {
+          console.log(`marker ${i+1} has been captured `)
+          
           clueMarkers[i].content.className = "marker-img";
-          clueMarkers[i].content.src = "./icons/captured-" + captures[i + 1] + ".png";
+          clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";
+      
         }
       }
     })

@@ -24,19 +24,28 @@ async function showTeamPositions() {
     return res.data;
 }
 
-async function captureMarker(marker, team, clues) {
+async function captureMarker(marker, team, clues,position,captureOrder) {
     let points = clues[`${marker}`].points;
     const { data, error } = await database
     .from('positions')
     .select('score')
     .eq("team",team);
+    let multiplier = 1;
+    switch(position) {
+        case 1: multiplier=1.00; break;
+        case 2: multiplier = 0.5; break;
+        case 3: multiplier = 0.25; break;
+    }
+    let amendedPoints = points * multiplier;
+    let award = Math.ceil(amendedPoints);
     let score = data[0].score;
-    score = score + points;
+    score = score + award;
+    captureOrder[position-1] = team;
 
-
+    let captureOrderString = captureOrder.toString();
     const res = await database
         .from("clues")
-        .update({status: team})
+        .update({status: captureOrderString})
         .eq("id",marker);
 
  
@@ -45,9 +54,9 @@ async function captureMarker(marker, team, clues) {
     .update({"score": score})
     .eq("team",team);
 
-
-    clueMarkers[marker-1].content.setAttribute("captured",team);
-    clueMarkers[marker-1].content.src = "./icons/captured-"+team+".png";
+    let winningTeam = captureOrder[0];
+    clueMarkers[marker-1].content.setAttribute("captured",winningTeam);
+    clueMarkers[marker-1].content.src = "./icons/captured-"+winningTeam+".png";
     clueMarkers[marker-1].content.className = "marker-img";
     $('#answer-modal').modal('hide');
 }
@@ -58,19 +67,24 @@ async function checkStatus(marker,clueMarkers) {
         .select('status')
         .eq('id',marker)
 
-    if(data[0].status == "active") {
-        let team = document.body.getAttribute("data-team");
-        captureMarker(marker,team,clueMarkers);
+    let captureOrder = data[0].status.split(",");
+    let isNotNull = value => value != null;
+
+    let filteredArray = captureOrder.filter(isNotNull);
+    let team = document.body.getAttribute("data-team");
+
+    if(!captureArray.includes(team)) {
+        captureMarker(marker,team,clueMarkers,filteredArray.length+1,captureOrder);
     }
     else {
-        let team = document.body.getAttribute("data-team");
-        if(data[0].status == team) {
+   //     let team = document.body.getAttribute("data-team");
+   //     if(data[0].status == team) {
             captureText="Your team has already captured this data point."
-        }
-        else {
-            captureText="Another team has captured this data point."
-
-        }
+   //     }
+   //     else {
+   //         captureText="Another team has captured this data point."
+   //
+   //      }
         failCapture(marker, captureText,data[0].status);
     }
 }
