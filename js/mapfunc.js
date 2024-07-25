@@ -580,6 +580,53 @@ function follow() {
       let markerLng = clueMarkers[i].position.lng;
       console.log(captures[i+1])
       let captureOrder = captures[i+1].split(",");
+    ///new
+      //if we have captured this marker 
+      //change to the team color, set non-flashing, remove border and cannot be selected
+      if(captureOrder.includes(team)) {
+        clueMarkers[i].content.className = "marker-img";
+        clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
+        clueMarkers[i].content.style.border = "none";     
+      }
+      else {
+        //check range and make flash or not as appropriate and set to active/inactive
+        let inRange = false;
+        if (getDistanceBetween(markerLat, markerLng) == true) {
+          inRange = "true";
+          clueMarkers[i].content.className = "clue-marker-img"; // flashing
+          clueMarkers[i].content.setAttribute("active", "true");
+        }
+        else {
+          inRange = "false";
+          clueMarkers[i].content.className = "marker-img"; // non-flashing
+          clueMarkers[i].content.setAttribute("active", "false");
+        }
+        //check if anyone captured the marker
+        if(capturedArray[0] == "none") {
+          //if not set to green or red target
+          if(inRange == "true") {            
+            clueMarkers[i].content.src = "./icons/clue-marker-active.png";
+          }
+          else {
+            clueMarkers[i].content.src = "./icons/clue-marker.png";
+          }
+        }
+        else {
+          //if captured set it to the relevant team and give red or green border
+          clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
+          clueMarkers[i].content.style.borderRadius = "50%";
+          if(inRange == "true") {            
+            clueMarkers[i].content.style.border = "2px solid green";
+          }
+          else {
+            clueMarkers[i].content.style.border = "2px solid red";
+          }          
+        }
+      }
+    }
+
+
+/*
       if(captureOrder[0]!="none") {
         console.log(`marker ${i+1} has been captured `)
         
@@ -598,7 +645,7 @@ function follow() {
         clueMarkers[i].content.className = "marker-img";
         console.log("Marker " + i + 1 + " out of range ")
       }
-    }
+    }*/
 
 
   })
@@ -639,6 +686,10 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
     clueMarker.content.setAttribute("active","false");
     clueMarker.content.setAttribute("clue","You need to move closer");
     clueMarker.content.setAttribute("location", i);
+
+    //no need to change graphics on positioning markers - this will be done on calling "follow"
+
+    /*
     if(capturedArray[i] =="active") {
       console.log("marker "+i+" is active")
       clueMarker.content.setAttribute("captured", "false");
@@ -647,7 +698,7 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
       console.log("marker "+i+" is captured "+capturedArray[i])
 
       clueMarker.content.setAttribute("captured", capturedArray[1]);
-    }
+    }*/
     clueMarker.metadata = { id: i };
     clueMarker.position = {
       lat: clues[`${i}`].lat,
@@ -657,7 +708,7 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
       const { target } = domEvent;
       infoWindow.close();
       let textDisplay = clueMarker.content.getAttribute("clue");
-      if(clueMarker.content.getAttribute("captured")=="false") {
+      //if(clueMarker.content.getAttribute("captured")=="false") {
         if(clueMarker.content.getAttribute("active")=="true") {
           var myModal = new bootstrap.Modal(document.getElementById('answer-modal'), {})
           myModal.show();
@@ -675,7 +726,7 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
           infoWindow.open(clueMarker.map, clueMarker);
   
         }  
-      }
+      //}
     });
 
     clueMarkers.push(clueMarker);
