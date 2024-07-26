@@ -69,7 +69,7 @@ async function checkStatus(marker,clueMarkers) {
         .eq('id',marker)
 
     let captureOrder = data[0].status.split(",");
-    let isNotNull = value => value != null;
+    let isNotNull = value => value != "none";
     console.log("capture order 1:-", captureOrder)
     let filteredArray = captureOrder.filter(isNotNull);
     let team = document.body.getAttribute("data-team");
