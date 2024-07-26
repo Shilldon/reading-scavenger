@@ -73,7 +73,7 @@ async function checkStatus(marker,clueMarkers) {
     let filteredArray = captureOrder.filter(isNotNull);
     let team = document.body.getAttribute("data-team");
 
-    if(!captureArray.includes(team)) {
+    if(!captureOrder.includes(team)) {
         captureMarker(marker,team,clueMarkers,filteredArray.length+1,captureOrder);
     }
     else {
