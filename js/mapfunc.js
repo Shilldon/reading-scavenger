@@ -618,10 +618,10 @@ function follow() {
           clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
           clueMarkers[i].content.style.borderRadius = "50%";
           if(inRange == "true") {            
-            clueMarkers[i].content.style.border = "2px solid green";
+            clueMarkers[i].content.style.border = "4px solid green";
           }
           else {
-            clueMarkers[i].content.style.border = "2px solid red";
+            clueMarkers[i].content.style.border = "4px solid red";
           }          
         }
       }
