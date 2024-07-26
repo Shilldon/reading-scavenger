@@ -602,7 +602,7 @@ function follow() {
           clueMarkers[i].content.setAttribute("active", "false");
         }
         //check if anyone captured the marker
-        if(capturedArray[0] == "none") {
+        if(captureOrder[0] == "none") {
           //if not set to green or red target
           if(inRange == "true") {            
             clueMarkers[i].content.src = "./icons/clue-marker-active.png";

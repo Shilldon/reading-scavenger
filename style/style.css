@@ -72,8 +72,13 @@ html, body {
   grid-column: 1/span 4;
   text-align: center;
   color: #00c100;
-  font-size: 5em;
+  font-size: 3vh;
   font-family: "Orbitron", sans-serif;
+}
+
+.select-team-btn img {
+  height: auto;
+  max-width: 50vw;
 }
 
 .red-select {
@@ -85,7 +90,8 @@ html, body {
   grid-row: 4/span 2;
 }
 .red-select img {
-  transform: translate(2.5vw, 1vh);
+  margin-top: auto;
+  margin-right: 2vw;
 }
 
 .green-select {
@@ -97,7 +103,8 @@ html, body {
   grid-row: 4/span 2;
 }
 .green-select img {
-  transform: translate(-2.5vw, 1vh);
+  margin-left: 2vw;
+  margin-top: auto;
 }
 
 .yellow-select {
@@ -110,8 +117,7 @@ html, body {
   grid-row: 6/span 2;
 }
 .yellow-select img {
-  height: 100%;
-  transform: translateY(-5vh);
+  margin-top: -2vw;
 }
 
 .modal-backdrop {

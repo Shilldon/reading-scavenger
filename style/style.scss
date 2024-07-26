@@ -68,20 +68,29 @@
   grid-column: 1/span 4;
   text-align: center;
   color:#00c100;
-  font-size: 5em;
+  font-size: 3vh;
   font-family: "Orbitron", sans-serif;    
+}
+
+.select-team-btn {
+  img {
+    height: auto;
+    max-width: 50vw;
+  }
 }
 
 .red-select {
   transition-duration:0.25s;
   transition-timing-function:ease-in-out;
   display:flex;
+  
   justify-content: right;
   grid-column: 1 / span 2;
   grid-row: 4 /span 2;
   img {
-    transform: translate(2.5vw,1vh);
-
+    margin-top:auto;
+    //transform: translate(2.5vw,1vh);
+    margin-right:2vw;
   }
 }
 
@@ -93,7 +102,9 @@
   grid-column: 3 / span 2;
   grid-row:4 / span 2;
   img {
-    transform: translate(-2.5vw,1vh);
+    margin-left:2vw;
+    margin-top:auto;
+  //  transform: translate(-2.5vw,1vh);
 
   }
 }
@@ -107,8 +118,9 @@
   grid-column: 2 / span 2;
   grid-row:6 / span 2; 
   img {
-    height: 100%;
-    transform: translateY(-5vh);
+    margin-top:-2vw;
+    //margin-bottom:4vw;
+   // transform: translateY(-5vh);
   };
 }
 
