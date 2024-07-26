@@ -580,6 +580,7 @@ function follow() {
       let markerLng = clueMarkers[i].position.lng;
       console.log(captures[i+1])
       let captureOrder = captures[i+1].split(",");
+      console.log(captureOrder);
     ///new
       //if we have captured this marker 
       //change to the team color, set non-flashing, remove border and cannot be selected
@@ -595,6 +596,7 @@ function follow() {
           inRange = "true";
           clueMarkers[i].content.className = "clue-marker-img"; // flashing
           clueMarkers[i].content.setAttribute("active", "true");
+          clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
         }
         else {
           inRange = "false";
