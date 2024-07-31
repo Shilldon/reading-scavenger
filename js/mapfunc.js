@@ -186,7 +186,7 @@ let clues = {
     "lat": 51.454582,
     "lng": -0.977798,
     "clue": "Orange planters?",
-    "answer": 9,
+    "answer": 13,
     "captured": "false",
     "points": 13
   },
@@ -209,7 +209,7 @@ let clues = {
   "15": {
     "lat": 51.45420432233849,
     "lng": -0.973830158038599,
-    "clue": "How old was Peter Inman?",
+    "clue": "How old was Peter Zinman?",
     "answer": 76,
     "captured": "false",
     "points": 10
@@ -218,7 +218,7 @@ let clues = {
     "lat": 51.454002,
     "lng": -0.973724,
     "clue": "How many volts?",
-    "answer": 240,
+    "answer": 230,
     "captured": "false",
     "points": 8
   },
