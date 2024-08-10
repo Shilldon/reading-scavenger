@@ -145,8 +145,8 @@ let clues = {
   "7": {
     "lat": 51.454171,
     "lng": -0.967394,
-    "clue": "How many birds?",
-    "answer": 8,
+    "clue": "How many ducks?",
+    "answer": 4,
     "captured": "false",
     "points": 3
   },
@@ -385,7 +385,7 @@ let clues = {
   "37": {
     "lat": 51.4543398,
     "lng": -0.9664905,
-    "clue": "How legs does the orange creature have?",
+    "clue": "How legs does this orange creature normally have?",
     "answer": 8,
     "captured": "false",
     "points": 3
@@ -399,12 +399,12 @@ let clues = {
     "points": 5
   },
   "39": {
-    "lat": 51.4554009,
-    "lng": -0.9667538,
+    "lat": 51.455596,
+    "lng": -0.966065,
     "clue": "Royal charter + town charter?",
     "answer": 2814,
     "captured": "false",
-    "points": 5
+    "points": 2
   }
 }
 
@@ -557,7 +557,6 @@ function follow() {
     showTeamPositions().then(function(data) {
       console.log(data)
       for(i=0; i< data.length;i++) {
-        console.log(data[i])
         if(data[i].team!=team) {
           let pos = {
             lat: data[i].lat,
@@ -690,17 +689,6 @@ function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
     clueMarker.content.setAttribute("location", i);
 
     //no need to change graphics on positioning markers - this will be done on calling "follow"
-
-    /*
-    if(capturedArray[i] =="active") {
-      console.log("marker "+i+" is active")
-      clueMarker.content.setAttribute("captured", "false");
-    }
-    else {
-      console.log("marker "+i+" is captured "+capturedArray[i])
-
-      clueMarker.content.setAttribute("captured", capturedArray[1]);
-    }*/
     clueMarker.metadata = { id: i };
     clueMarker.position = {
       lat: clues[`${i}`].lat,
