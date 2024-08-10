@@ -6,9 +6,7 @@ function establishLink(keys) {
     const url = keys.site;
     const key = keys.supabase;
     database = supabase.createClient(url,key);
-}
-
-const channel = database
+    const channel = database
     .channel('any')
     .on(
         'postgres_changes',
@@ -22,6 +20,9 @@ const channel = database
             console.log(payload)
     )
     .subscribe()
+}
+
+
 
 async function updatePosition(team,lat,lng) {
     const res = await database
