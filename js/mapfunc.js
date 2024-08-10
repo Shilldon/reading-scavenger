@@ -50,8 +50,9 @@ function loadMap(key) {
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
     getCapturedStatus().then(function (captures) {
+      console.log(captures)
       console.log(clues)
-      for(i = 0; i<clueMarkers.length;i++) {
+      for(i = 0; i<captures.length;i++) {
         let captureOrder = captures[i+1].split(",");
         clues[i+1].captured = captureOrder;
         console.log(i+1,":",clues[i+1].captured)
