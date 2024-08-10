@@ -49,13 +49,17 @@ function loadMap(key) {
     }).call(this)
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
-    //getCapturedStatus().then(function (captures) {
+    getCapturedStatus().then(function (captures) {
 
+      for(i = 0; i<clueMarkers.length;i++) {
+        let captureOrder = captures[i+1].split(",");
+        clues[i+1].captured = captureOrder;
+      }
       positionClueMarkers(AdvancedMarkerElement);
       setInterval(function() {
         updateMarkers();
       },250);
-    //})
+    })
     //follow();
   }
   );
@@ -550,7 +554,7 @@ function centreOnUser() {
 //window.initMap = initMap;
 
 function updateMarker(markerID,markerStatus) {
-  let markerStatusArray =markerStatus.split(",");
+  let markerStatusArray = markerStatus.split(",");
   clues[markerID].captured = markerStatusArray;
 }
 
