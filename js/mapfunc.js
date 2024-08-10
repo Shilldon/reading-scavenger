@@ -49,11 +49,14 @@ function loadMap(key) {
     }).call(this)
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
-    getCapturedStatus().then(function (captures) {
+    //getCapturedStatus().then(function (captures) {
 
       positionClueMarkers(AdvancedMarkerElement,captures);
-    })
-    follow();
+      setInterval(function() {
+        updateMarkers();
+      },250);
+    //})
+    //follow();
   }
   );
 }
@@ -99,7 +102,7 @@ let clues = {
     "lng": -0.9609585,
     "clue": "When did we first produce biscuits?",
     "answer": 1814,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 9
   },
   "2": {
@@ -107,7 +110,7 @@ let clues = {
     "lng": -0.961984,
     "clue": "59 and ...",
     "answer": 75,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 9
   },
   "3": {
@@ -115,7 +118,7 @@ let clues = {
     "lng": -0.969136,
     "clue": "First tram?",
     "answer": 1903,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 5
   },
   "4": {
@@ -123,7 +126,7 @@ let clues = {
     "lng": -0.971589,
     "clue": "Bruce Tunnel - height above sea level?",
     "answer": 450,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 8
   },
   "5": {
@@ -131,7 +134,7 @@ let clues = {
     "lng": -0.972350,
     "clue": "How many taxis stand here?",
     "answer": 3,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 8
   },
   "6": {
@@ -139,7 +142,7 @@ let clues = {
     "lng": -0.966383,
     "clue": "What year did Maureen Lockey open this?",
     "answer": 1990,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "7": {
@@ -147,7 +150,7 @@ let clues = {
     "lng": -0.967394,
     "clue": "How many ducks?",
     "answer": 4,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "8": {
@@ -155,7 +158,7 @@ let clues = {
     "lng": -0.966327,
     "clue": "What year was this completed?",
     "answer": 2007,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "9": {
@@ -163,7 +166,7 @@ let clues = {
     "lng": -0.966093,
     "clue": "When was Abbot Hugh executed?",
     "answer": 1539,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 2
   },
   "10": {
@@ -171,7 +174,7 @@ let clues = {
     "lng": -0.976282147785361,
     "clue": "Middle of the black V (look carefully, this one's small!)?",
     "answer": 3,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 15
   },
   "11": {
@@ -179,7 +182,7 @@ let clues = {
     "lng": -0.974131,
     "clue": "How many bollards outside Siren?",
     "answer": 14,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 8
   },
   "12": {
@@ -187,7 +190,7 @@ let clues = {
     "lng": -0.977798,
     "clue": "Orange planters?",
     "answer": 13,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 13
   },
   "13": {
@@ -195,7 +198,7 @@ let clues = {
     "lng": -0.977058,
     "clue": "What location do you quote to 'save time'?",
     "answer": 9431,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 12
   },
   "14": {
@@ -203,7 +206,7 @@ let clues = {
     "lng": -0.977308,
     "clue": "How many sides?",
     "answer": 8,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 11
   },
   "15": {
@@ -211,7 +214,7 @@ let clues = {
     "lng": -0.973830158038599,
     "clue": "How old was Peter Zinman?",
     "answer": 76,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 10
   },
   "16": {
@@ -219,7 +222,7 @@ let clues = {
     "lng": -0.973724,
     "clue": "How many volts?",
     "answer": 230,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 8
   },
   "17": {
@@ -227,7 +230,7 @@ let clues = {
     "lng": -0.9732989962959214,
     "clue": "When was Bill's drainpipe installed?",
     "answer": 1931,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 10
   },
   "18": {
@@ -235,7 +238,7 @@ let clues = {
     "lng": -0.967826,
     "clue": "When was the Abbey severely damaged?",
     "answer": 1643,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 1
   },
   "19": {
@@ -243,7 +246,7 @@ let clues = {
     "lng": -0.9674520989827075,
     "clue": "How many captains?",
     "answer": 4,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "20": {
@@ -251,7 +254,7 @@ let clues = {
     "lng": -0.9682384625131224,
     "clue": "Romans were writing on the wall.",
     "answer": 20,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "21": {
@@ -259,7 +262,7 @@ let clues = {
     "lng": -0.9694736110905124,
     "clue": "You cannot miss this one!",
     "answer": 12,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "22": {
@@ -267,7 +270,7 @@ let clues = {
     "lng": -0.972069271328189,
     "clue": "Edward the ...",
     "answer": 7,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 7
   },
   "23": {
@@ -275,7 +278,7 @@ let clues = {
     "lng": -0.9678497364696548,
     "clue": "When did John Speed make his map?",
     "answer": 1610,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 2
   },
   "24": {
@@ -283,7 +286,7 @@ let clues = {
     "lng": -0.967196205486239,
     "clue": "What year was Frederick Potts in Gallipoli?",
     "answer": 1915,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 2
   },
   "25": {
@@ -291,7 +294,7 @@ let clues = {
     "lng": -0.970030106107138,
     "clue": "George knows his Roman numerals...",
     "answer": 1506,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 4
   },
   "26": {
@@ -299,7 +302,7 @@ let clues = {
     "lng": -0.97000077524566853,
     "clue": "Right circle minus left circle = ?",
     "answer": 57,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "27": {
@@ -307,7 +310,7 @@ let clues = {
     "lng": -0.9722219340620878,
     "clue": "Anno domini",
     "answer": 1902,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 6
   },
   "28": {
@@ -315,7 +318,7 @@ let clues = {
     "lng": -0.9723428065772316,
     "clue": "When did they first start surveying, or auctioning?",
     "answer": 1882,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 6
   },
   "29": {
@@ -323,7 +326,7 @@ let clues = {
     "lng": -0.9718587723006621,
     "clue": "666 maybe the number of the beast, what is the number of the dog?",
     "answer": 150,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 5
   },
   "30": {
@@ -331,7 +334,7 @@ let clues = {
     "lng": -0.9719931584053527,
     "clue": "How many minutes to get to the Abbey Ruins?",
     "answer": 6,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 6
   },
   "31": {
@@ -339,7 +342,7 @@ let clues = {
     "lng": -0.9707796488937782,
     "clue": "O, how many blue plaques above this?",
     "answer": 5,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "32": {
@@ -347,7 +350,7 @@ let clues = {
     "lng": -0.9695816750144369,
     "clue": "When was this 'clock' installed?",
     "answer": 1727,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 2
   },
   "33": {
@@ -355,7 +358,7 @@ let clues = {
     "lng": -0.9680066913345313,
     "clue": "Question 1 - what number to unlock our door?",
     "answer": 1289,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 0
   },
   "34": {
@@ -363,7 +366,7 @@ let clues = {
     "lng": -0.9624617,
     "clue": "Date of the IDR bridge",
     "answer": 2261988,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 8
   },
   "35": {
@@ -371,7 +374,7 @@ let clues = {
     "lng": -0.9623777,
     "clue": "How many round windows?",
     "answer": 4,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 8
   },
   "36": {
@@ -379,7 +382,7 @@ let clues = {
     "lng": -0.963985,
     "clue": "Reading Piece",
     "answer": 1982,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 6
   },
   "37": {
@@ -387,7 +390,7 @@ let clues = {
     "lng": -0.9664905,
     "clue": "How legs does this orange creature normally have?",
     "answer": 8,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 3
   },
   "38": {
@@ -395,7 +398,7 @@ let clues = {
     "lng": -0.964435,
     "clue": "What building is the swan flying into?",
     "answer": 100,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 5
   },
   "39": {
@@ -403,7 +406,7 @@ let clues = {
     "lng": -0.966065,
     "clue": "Royal charter + town charter?",
     "answer": 2814,
-    "captured": "false",
+    "captured": ["none","none","none"],
     "points": 2
   }
 }
@@ -546,6 +549,65 @@ function centreOnUser() {
 }
 //window.initMap = initMap;
 
+function updateMarker(markerID,markerStatus) {
+  let markerStatusArray =markerStatus.split(",");
+  clues[markerID].captured = markerStatusArray;
+}
+
+
+function updateMarkers() {
+  let team = document.body.getAttribute("data-team");
+  for (i = 0; i < clueMarkers.length; i++) {
+    let markerLat = clueMarkers[i].position.lat;
+    let markerLng = clueMarkers[i].position.lng;
+    let captureOrder = captures[i+1].captured;
+    //if we have captured this marker 
+    //change to the team color, set non-flashing, remove border and cannot be selected
+    if(captureOrder.includes(team)) {
+      clueMarkers[i].content.className = "marker-img";
+      clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
+      clueMarkers[i].content.style.border = "none";     
+    }
+    else {
+      //check range and make flash or not as appropriate and set to active/inactive
+      let inRange = false;
+      if (getDistanceBetween(markerLat, markerLng) == true) {
+        inRange = "true";
+        clueMarkers[i].content.className = "clue-marker-img"; // flashing
+        clueMarkers[i].content.setAttribute("active", "true");
+        clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
+      }
+      else {
+        inRange = "false";
+        clueMarkers[i].content.className = "marker-img"; // non-flashing
+        clueMarkers[i].content.setAttribute("active", "false");
+      }
+      //check if anyone captured the marker
+      if(captureOrder[0] == "none") {
+        //if not set to green or red target
+        if(inRange == "true") {            
+          clueMarkers[i].content.src = "./icons/clue-marker-active.png";
+        }
+        else {
+          clueMarkers[i].content.src = "./icons/clue-marker.png";
+        }
+      }
+      else {
+        //if captured set it to the relevant team and give red or green border
+        clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
+        clueMarkers[i].content.style.borderRadius = "50%";
+        if(inRange == "true") {            
+          clueMarkers[i].content.style.border = "4px solid green";
+        }
+        else {
+          clueMarkers[i].content.style.border = "4px solid red";
+        }          
+      }
+    }
+  }
+
+
+}
 
 function follow() {
 
@@ -554,7 +616,7 @@ function follow() {
     var long = position.coords.longitude;
     let team = document.body.getAttribute("data-team");
     updatePosition(team,lat,long);
-    showTeamPositions().then(function(data) {
+   /* showTeamPositions().then(function(data) {
       console.log(data)
       for(i=0; i< data.length;i++) {
         if(data[i].team!=team) {
@@ -570,15 +632,16 @@ function follow() {
           markerDict[data[i].team].map = null;
         }
       }    
-    })    
+    })    */
 
-    getCapturedStatus().then(function (captures) {
-
+   // getCapturedStatus().then(function (captures) {
+/*
     for (i = 0; i < clueMarkers.length; i++) {
       let markerLat = clueMarkers[i].position.lat;
       let markerLng = clueMarkers[i].position.lng;
       console.log(captures[i+1])
-      let captureOrder = captures[i+1].split(",");
+      //let captureOrder = captures[i+1].split(",");
+      let captureOrder = captures[i+1].captured;
       console.log(captureOrder);
     ///new
       //if we have captured this marker 
@@ -649,7 +712,7 @@ function follow() {
     }*/
 
 
-  })
+  //})
   
   };
 
@@ -658,11 +721,7 @@ function follow() {
 }
 
 //draw all the clue markers on the map and add listeners
-function positionClueMarkers(AdvancedMarkerElement,capturedArray) {
-
-
-
-  console.log(capturedArray);
+function positionClueMarkers(AdvancedMarkerElement) {
 
   for (i = 1; i <= clueMarkersKeys.length; i++) {
     //define our active and inactive marker images

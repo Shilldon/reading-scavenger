@@ -11,14 +11,22 @@ function establishLink(keys) {
     .on(
       'postgres_changes',
       {
-        event: '*',
+        table: 'clues',
+        event: 'UPDATE',
         schema: 'public',
       },
-      (payload) => console.log("payload ",payload)
+      (payload) => {
+        console.log("payload ",payload)
+            markerID = payload.new.id;
+            markerStatus = payload.new.status;
+            console.log(markerID,markerStatus)
+            updateMarker(markerID,markerStatus)
+        }
     )
     .subscribe()
   
 }
+
 
 
 
