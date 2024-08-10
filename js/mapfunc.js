@@ -52,7 +52,8 @@ function loadMap(key) {
     getCapturedStatus().then(function (captures) {
       console.log(captures)
       console.log(clues)
-      for(i = 0; i<captures.length;i++) {
+      let capturesKeys = Object.keys(captures);
+      for(i = 0; i<capturesKeys.length;i++) {
         let captureOrder = captures[i+1].split(",");
         clues[i+1].captured = captureOrder;
         console.log(i+1,":",clues[i+1].captured)
