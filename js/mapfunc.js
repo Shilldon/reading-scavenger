@@ -51,7 +51,7 @@ function loadMap(key) {
     centreOnUser();
     //getCapturedStatus().then(function (captures) {
 
-      positionClueMarkers(AdvancedMarkerElement,captures);
+      positionClueMarkers(AdvancedMarkerElement);
       setInterval(function() {
         updateMarkers();
       },250);
