@@ -1,4 +1,5 @@
 let map, infoWindow;
+
 /*
 function initMap() {
   console.log("loading map?")

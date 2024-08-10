@@ -1,13 +1,15 @@
 let database;
 
+
+
 function establishLink(keys) {
     const url = keys.site;
     const key = keys.supabase;
     database = supabase.createClient(url,key);
 }
 
-const channel = supabase
-    .channel('table_db_changes')
+const channel = database
+    .channel('schema-db-changes')
     .on(
         'postgres_changes',
         {
