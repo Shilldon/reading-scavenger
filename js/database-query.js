@@ -9,7 +9,7 @@ function establishLink(keys) {
 }
 
 const channel = database
-    .channel('schema-db-changes')
+    .channel('table_db_changes')
     .on(
         'postgres_changes',
         {
