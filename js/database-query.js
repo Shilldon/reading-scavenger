@@ -6,21 +6,18 @@ function establishLink(keys) {
     const url = keys.site;
     const key = keys.supabase;
     database = supabase.createClient(url,key);
-    const channel = database
-    .channel('any')
+    const allChanges = database
+    .channel('schema-db-changes')
     .on(
-        'postgres_changes',
-        {
-            event: "*",
-            schema: "public",
-            table:"clues",
-        },
-        (payload) =>
-            console.log("channel",channel),
-            console.log("payload: "),
-            console.log(payload)
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+      },
+      (payload) => console.log("payload ",payload)
     )
     .subscribe()
+  
 }
 
 
