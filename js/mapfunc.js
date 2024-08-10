@@ -560,7 +560,7 @@ function updateMarkers() {
   for (i = 0; i < clueMarkers.length; i++) {
     let markerLat = clueMarkers[i].position.lat;
     let markerLng = clueMarkers[i].position.lng;
-    let captureOrder = captures[i+1].captured;
+    let captureOrder = clueMarkers[i+1].captured;
     //if we have captured this marker 
     //change to the team color, set non-flashing, remove border and cannot be selected
     if(captureOrder.includes(team)) {
