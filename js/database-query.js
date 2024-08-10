@@ -16,6 +16,7 @@ function establishLink(keys) {
             table:"clues",
         },
         (payload) =>
+            console.log("channel",channel);
             console.log("payload: "),
             console.log(payload)
     )
