@@ -89,7 +89,7 @@ async function updatePosition(team,lat,lng) {
 async function checkEndGame() {
     const res = await database
     .from("end_game")
-    .select("end_game")
+    .select()
     return res.data
 }
 
