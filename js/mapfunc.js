@@ -50,7 +50,7 @@ function loadMap(key) {
       GeoMarker = new GeolocationMarker(map);
       centreOnUser();
       checkEndGame().then(function (data) {
-        console.log(data[0].end_game);
+        endGameFunc(data[0].end_game);
           getCapturedStatus().then(function (captures) {
         let capturesKeys = Object.keys(captures);
         for (i = 0; i < capturesKeys.length; i++) {
