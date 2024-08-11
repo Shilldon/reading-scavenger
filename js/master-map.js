@@ -451,16 +451,21 @@ function updateMarker(markerID, markerStatus) {
 function updateTeamPositions(team,lat,lng) {
   console.log("updateing team positions")
  // showTeamPositions().then(function (data) {
-    for (i = 0; i < data.length; i++) {
+  //  for (i = 0; i < data.length; i++) {
       let pos = {
         lat: lat,
         lng: lng
       }
       markerDict[team].position = pos;
-    }
+  //  }
  // })  
 }
 
+function callLocateTeams() {
+  locateTeams().then(function() {
+    resetlocateTeams();
+  })
+}
 
 function updateMap() {
     //call spreadsheet to get positions of all teams

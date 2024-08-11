@@ -50,9 +50,7 @@ async function locateTeams() {
     .update({"locate_team":"true"})
     .eq("id",1);    
     console.log("setting locate teams")
-    setTimeout(function() {
-        resetLocateTeams();
-    },2000)
+    return "done";
 }
 
 
