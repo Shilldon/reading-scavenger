@@ -15,6 +15,19 @@ html, body {
   transform: translate(-1.5vh, -1.5vh);
 }
 
+.message {
+  position: absolute;
+  width: 100vw;
+  height: 10vh;
+  display: none;
+  justify-content: center;
+  color: #00c100;
+  font-family: "Orbitron", sans-serif;
+  font-size: 3em;
+  z-index: 50;
+  bottom: 10vh;
+}
+
 .modal-header {
   background-color: black;
   color: #00c100;

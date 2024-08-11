@@ -19,15 +19,30 @@ function establishLink(keys) {
         console.log("payload ",payload)
             markerID = payload.new.id;
             markerStatus = payload.new.status;
-            console.log(markerID,markerStatus)
+            markerOldStatus = payload.old.status;
             updateMarker(markerID,markerStatus)
+            displayMessage(markerStatus,markerOldStatus);
         }
     )
     .subscribe()
   
 }
 
-
+function displayMessage(newStatus,oldStatus) {
+    let oldStatusFirstEntry = oldStatus.split(",")[0];
+    let newStatusFirstEntry = newStatus.split(",")[0];
+    let team = document.body.getAttribute("data-team");
+    if(oldStatusFirstEntry == "none") {
+        if(team!=newStatusFirstEntry) {
+            let message = document.getElemebtById("message");
+            message.innerHTML = `${newStatusFirstEntry} captured a datapoint`;
+            message.style.display = "flex";
+            setTimeout(function() {
+                message.style.display = "none";
+            },2000);
+        }   
+    }
+}
 
 
 async function updatePosition(team,lat,lng) {
