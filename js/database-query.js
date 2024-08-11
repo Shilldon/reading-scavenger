@@ -41,6 +41,23 @@ function establishLink(keys) {
     )
     .subscribe()
 
+    const updateScores = database
+    .channel('schema-db-changes')
+    .on(
+      'postgres_changes',
+      {
+        table: 'positions',
+        event: 'UPDATE',
+        schema: 'public',
+      },
+      (payload) => {
+        console.log(payload)
+            console.log(payload)
+            updateScoreBoxes(endStatus)
+        }
+    )
+    .subscribe()
+
 }
 
 function endGameFunc(endStatus) {
@@ -117,7 +134,6 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
     let award = Math.ceil(amendedPoints);
     let score = data[0].score;
     score = score + award;
-    document.getElementsByClass(`${team}-score-total`)[0].innerHTML = score;
     captureOrder[position-1] = team;
     let captureOrderString = captureOrder.toString();
     const res = await database

@@ -474,6 +474,10 @@ function updateMap() {
       }
 }
 
+function updateScoreBoxes(data) {
+  console.log("score ",data)
+}
+
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
 
