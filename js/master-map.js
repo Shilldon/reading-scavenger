@@ -546,5 +546,6 @@ function positionClueMarkers(AdvancedMarkerElement) {
 
 const endGameButton = document.getElementsByClassName("end-game-button")[0];
 endGameButton.addEventListener("click", function() {
+  console.log("clicked")
   fireEndGame();
 })

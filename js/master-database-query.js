@@ -43,6 +43,7 @@ async function getCapturedStatus() {
 }
 
 async function fireEndGame() {
+    console.log("firing end game")
     const res = await database
     .from("end_game")
     .update({"end_game":"true"})
