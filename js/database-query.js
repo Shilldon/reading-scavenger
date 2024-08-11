@@ -41,6 +41,23 @@ function establishLink(keys) {
     )
     .subscribe()
 
+    const sendLocation = database
+    .channel('schema-db-changes')
+    .on(
+      'postgres_changes',
+      {
+        table: 'locate',
+        event: 'UPDATE',
+        schema: 'public',
+      },
+      (payload) => {
+        console.log(payload)
+            locateStatus = payload.new.locate;
+            sendLocationFunc();
+        }
+    )
+    .subscribe()
+
 }
 
 function endGameFunc(endStatus) {

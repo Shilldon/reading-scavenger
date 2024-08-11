@@ -759,6 +759,14 @@ function toRad(Value) {
   return Value * Math.PI / 180;
 }
 
+function sendLocation() {
+  var lat2 = GeoMarker.get("position").lat();
+  var lon2 = GeoMarker.get("position").lng();
+  
+  let team = document.body.getAttribute("data-team");
+  updatePosition(team,lat2,lon2);
+}
+
 function getDistanceBetween(lat1, lon1) {
   var lat2 = GeoMarker.get("position").lat();
   var lon2 = GeoMarker.get("position").lng();

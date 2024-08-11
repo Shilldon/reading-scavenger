@@ -20,8 +20,11 @@ function establishMasterLink(keys) {
         console.log(payload)
             let score = payload.new.score;
             let team = payload.new.team;
+            let lat = payload.new.lat;
+            let lng = payload.new.lng;
             console.log("in subscribe ",score,team)
-            updateScoreBoxes(score,team)
+            updateScoreBoxes(score,team);
+            updateTeamPositions(team,lat,lng);
         }
     )
     .subscribe()
@@ -41,6 +44,13 @@ async function getScores() {
     console.log(data);
 }
 
+async function locateTeams() {
+    const res = await database
+    .from("locate")
+    .update({"locate_team":"true"})
+    .eq("id",1);    
+}
+
 async function getCapturedStatus() {
 
     const res = await database.from("clues").select()
@@ -54,7 +64,6 @@ async function getCapturedStatus() {
 }
 
 async function fireEndGame() {
-    console.log("firing end game")
     const res = await database
     .from("end_game")
     .update({"end_game":"true"})
