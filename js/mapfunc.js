@@ -517,12 +517,6 @@ var geoOptions = {
 };
 
 
-function endGame(endStatus) {
-  if(endStatus === "true") {
-    console.log("end game")
-  }
-}
-
 function reloadMap() {
   if (document.fullscreenElement) {
     //full screen mode is active so take us out of fullscreen    

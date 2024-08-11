@@ -36,12 +36,19 @@ function establishLink(keys) {
       (payload) => {
         console.log(payload)
             endStatus = payload.new.end_game;
-            endGame(endStatus)
+            endGameFunc(endStatus)
         }
     )
     .subscribe()
 
 }
+
+function endGameFunc(endStatus) {
+    if(endStatus === "true") {
+      console.log("end game")
+    }
+  }
+
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
