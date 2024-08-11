@@ -49,18 +49,19 @@ async function locateTeams() {
     .from("locate")
     .update({"locate_team":"true"})
     .eq("id",1);    
-
+    console.log("setting locate teams")
     setTimeout(function() {
         resetLocateTeams();
     },2000)
 }
 
 
-async function locateTeams() {
+async function resetlocateTeams() {
     const res = await database
     .from("locate")
     .update({"locate_team":"false"})
     .eq("id",1);    
+    console.log("resetting location")
 }
 
 async function getCapturedStatus() {

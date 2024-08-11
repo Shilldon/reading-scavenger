@@ -760,6 +760,7 @@ function toRad(Value) {
 }
 
 function sendLocation() {
+  console.log("sending location")
   var lat2 = GeoMarker.get("position").lat();
   var lon2 = GeoMarker.get("position").lng();
   
