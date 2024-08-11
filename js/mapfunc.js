@@ -565,6 +565,7 @@ function updateMarker(markerID, markerStatus) {
 
 
 function updateMarkers() {
+  console.log("running updateMarkers")
   let team = document.body.getAttribute("data-team");
   for (i = 0; i < clueMarkers.length; i++) {
     let markerLat = clueMarkers[i].position.lat;

@@ -22,6 +22,7 @@ function establishMasterLink(keys) {
             console.log(payload)
             let score = payload.new.score;
             let team = payload.new.team;
+            console.log("in subscribe ",score,team)
             updateScoreBoxes(score,team)
         }
     )
