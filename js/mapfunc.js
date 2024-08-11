@@ -21,8 +21,6 @@ function loadMap(key) {
       // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
       // Add other bootstrap parameters as needed, using camel case.
     })
-  checkEndGame().then(function (data) {
-    console.log(data);
     initMap().then(function (AdvancedMarkerElement) {
       keys = key;
       (function () {
@@ -51,7 +49,9 @@ function loadMap(key) {
       }).call(this)
       GeoMarker = new GeolocationMarker(map);
       centreOnUser();
-      getCapturedStatus().then(function (captures) {
+      checkEndGame().then(function (data) {
+        console.log(data);
+          getCapturedStatus().then(function (captures) {
         let capturesKeys = Object.keys(captures);
         for (i = 0; i < capturesKeys.length; i++) {
           let captureOrder = captures[i + 1].split(",");
@@ -62,11 +62,12 @@ function loadMap(key) {
           updateMarkers();
         }, 250);
       })
+    })
+
       //follow();
     }
 
     );
-  })
 
 }
 
