@@ -170,7 +170,7 @@
 
   .border {
     position: absolute;
-    z-index: 50;
+    z-index: 55;
     height: 100%;
     width: 100%;
     background-image: url("../icons/border.png");
@@ -201,7 +201,7 @@
     position: absolute;
     left: 17.5%;
     top: 7.5%;
-    z-index: 51;
+    z-index: 57;
     .material-symbols-outlined {
       font-size: 3vh;
       font-variation-settings:
@@ -229,6 +229,30 @@
     align-items: center;
   }
 
+  .end-game {
+    position: absolute;
+    z-index: 53;
+    height: 100%;
+    width: 100%;
+
+    pointer-events: none;
+    background-color: black;
+    font-size: 5vw;
+    font-family: "Orbitron", sans-serif;
+    color: #00c100;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top:0;
+    div {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      text-align: center;
+      width: 70%;
+    }
+  }
 
   .dot_one {
     animation: flash_one 3s linear infinite;
@@ -240,6 +264,10 @@
   
   .dot_three {
     animation: flash_three 3s linear infinite;
+  }
+
+  .flash-text {
+    animation: end_text 1s alternate infinite;
   }
   
   @keyframes flash_one {
@@ -265,6 +293,15 @@
       opacity: 0;
     }    
     60% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes end_text {
+    0% {
+      opacity: 0;
+    }    
+    100% {
       opacity: 1;
     }
   }
