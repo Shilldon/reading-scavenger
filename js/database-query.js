@@ -37,7 +37,7 @@ function displayMessage(newStatus) {
         if(team!=newStatusArray[0]) {
             console.log("showing message")
             let message = document.getElementById("message");
-            let messageBox = document.getElementsByClassName("messsage")[0];
+            let messageBox = document.getElementsByClassName("message")[0];
             message.innerHTML = `${newStatusArray[0]} captured a datapoint`;
             messageBox.style.display = "flex";
             setTimeout(function() {
