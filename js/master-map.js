@@ -475,6 +475,7 @@ function updateMap() {
 }
 
 function updateScoreBoxes(score,team) {
+  console.log("score update ",team,score)
    document.getElementsByClassName(`${team}-score-total`).innerHTML = score;
 }
 

@@ -570,9 +570,11 @@ function updateMarkers() {
     let markerLat = clueMarkers[i].position.lat;
     let markerLng = clueMarkers[i].position.lng;
     let captureOrder = clues[i + 1].captured;
+    console.log("updating markers")
     //if we have captured this marker 
     //change to the team color, set non-flashing, remove border and cannot be selected
     if (captureOrder.includes(team)) {
+      console.log(`${team} has captired this marker `);
       clueMarkers[i].content.className = "marker-img";
       clueMarkers[i].content.src = "./icons/captured-" + captureOrder[0] + ".png";
       clueMarkers[i].content.style.border = "none";
@@ -582,6 +584,8 @@ function updateMarkers() {
       let inRange = false;
       if (getDistanceBetween(markerLat, markerLng) == true) {
         inRange = "true";
+        console.log(`${team} hasnt captired this markerbut is in range `);
+
         clueMarkers[i].content.className = "clue-marker-img"; // flashing
         clueMarkers[i].content.setAttribute("active", "true");
         clueMarkers[i].content.setAttribute("clue", clues[i + 1].clue);
