@@ -22,10 +22,6 @@ function establishLink(keys) {
             displayMessage(markerStatus);
         }
     )
-    .subscribe()
-  
-    const endGame = database
-    .channel('schema-db-changes')
     .on(
       'postgres_changes',
       {
@@ -40,10 +36,6 @@ function establishLink(keys) {
             endGameFunc(endStatus)
         }
     )
-    .subscribe()
-
-    const sendLocationChannel = database
-    .channel('schema-db-changes')
     .on(
       'postgres_changes',
       {
