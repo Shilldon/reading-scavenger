@@ -463,7 +463,6 @@ function updateTeamPositions() {
 function updateMap() {
     //call spreadsheet to get positions of all teams
     for (i = 0; i < clueMarkers.length; i++) {
-        console.log(captures[i + 1])
         
         let captureOrder = clues[i + 1].captured;
         if (captureOrder[0] != "none") {
