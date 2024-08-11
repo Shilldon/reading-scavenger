@@ -37,10 +37,11 @@ function displayMessage(newStatus) {
         if(team!=newStatusArray[0]) {
             console.log("showing message")
             let message = document.getElementById("message");
+            let messageBox = document.getElementsByClassName("messsage")[0];
             message.innerHTML = `${newStatusArray[0]} captured a datapoint`;
-            message.style.display = "flex";
+            messageBox.style.display = "flex";
             setTimeout(function() {
-                message.style.display = "none";
+                messageBox.style.display = "none";
             },2000);
         }   
     }
