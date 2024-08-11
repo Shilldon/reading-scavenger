@@ -103,16 +103,15 @@ async function showTeamPositions() {
 
 
 
-async function captureMarker(marker,clueMarkers) {
+async function captureMarker(marker) {
     const { data, error } = await database
         .from('clues')
         .select('status')
         .eq('id',marker)
 
-    let captureOrder = data[0].status;
+    let captureOrder = data[0].status.split(",");
     let isNotNull = value => value != "none";
     let filteredArray = captureOrder.filter(isNotNull);
-    let team = document.body.getAttribute("data-team");    
     return {
         "position":filteredArray.length+1,
         "captured_order":captureOrder

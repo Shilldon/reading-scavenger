@@ -790,7 +790,7 @@ function getDistanceBetween(lat1, lon1) {
 function checkAnswer(answer, location) {
   if (answer == clues[`${location}`].answer) {
 
-    captureMarker(location,clues).then(function(data) {
+    captureMarker(location).then(function(data) {
       let captureOrderArray = data.captured_order.split(",");
       clues[`${location}`].captured = captureOrderArray; 
       
