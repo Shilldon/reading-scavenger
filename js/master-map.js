@@ -475,7 +475,6 @@ function updateMap() {
 }
 
 function updateScoreBoxes(score,team) {
-  console.log("score update ",team,score)
    document.getElementsByClassName(`${team}-score-total`)[0].innerHTML = score;
 }
 
@@ -544,8 +543,3 @@ function positionClueMarkers(AdvancedMarkerElement) {
 }
 
 
-const endGameButton = document.getElementsByClassName("end-game-button")[0];
-endGameButton.addEventListener("click", function() {
-  console.log("clicked")
-  fireEndGame();
-})

@@ -6,8 +6,7 @@ function establishMasterLink(keys) {
     const url = keys.site;
     const key = keys.supabase;
     database = supabase.createClient(url,key);
- 
-
+   
     const updateScores = database
     .channel('schema-db-changes')
     .on(
@@ -19,7 +18,6 @@ function establishMasterLink(keys) {
       },
       (payload) => {
         console.log(payload)
-            console.log(payload)
             let score = payload.new.score;
             let team = payload.new.team;
             console.log("in subscribe ",score,team)
@@ -28,6 +26,14 @@ function establishMasterLink(keys) {
     )
     .subscribe()
 
+}
+
+async function getScores() {
+    const { data, error } = await database
+    .from('positions')
+    .select('score')
+
+    console.log(data);
 }
 
 async function getCapturedStatus() {
