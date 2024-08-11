@@ -110,7 +110,7 @@ async function captureMarker(marker) {
         .eq('id',marker)
 
     let captureOrder= data[0].status;
-    let captureOrderArray = captureOrderArray.split(",");
+    let captureOrderArray = captureOrder.split(",");
     let isNotNull = value => value != "none";
     let filteredArray = captureOrderArray.filter(isNotNull);
     return {
