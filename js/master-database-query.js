@@ -31,8 +31,13 @@ function establishMasterLink(keys) {
 async function getScores() {
     const { data, error } = await database
     .from('positions')
-    .select('score')
+    .select('team','score')
+    for(let i = 0;i<data.length;i++) {
+        let team = data[i].team;
+        let score = data[i].score;
+        document.getElementsByClassName(`${team}-score-total`)[0].innerHTML = score;
 
+    }
     console.log(data);
 }
 
