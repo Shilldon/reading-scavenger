@@ -47,7 +47,7 @@ function endGameFunc(endStatus) {
     if(endStatus === "true") {
       console.log("end game")
       let map = document.getElementById("map");
-      map.style.display = none;
+      map.style.display = "none";
       let endGameBox = document.getElementsByClassName("end-game")[0];
       endGameBox.style.display = "flex";
     }
@@ -83,6 +83,14 @@ async function updatePosition(team,lat,lng) {
         "lng":lng
     })
     .eq("team",team);        
+}
+
+
+async function checkEndGame() {
+    const res = await database
+    .from("end_game")
+    .select("end_game")
+    return res.data
 }
 
 async function showTeamPositions() {
