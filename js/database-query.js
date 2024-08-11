@@ -41,7 +41,7 @@ function establishLink(keys) {
     )
     .subscribe()
 
-    const sendLocation = database
+    const sendLocationChannel = database
     .channel('schema-db-changes')
     .on(
       'postgres_changes',
@@ -53,7 +53,7 @@ function establishLink(keys) {
       (payload) => {
         console.log(payload)
             locateStatus = payload.new.locate;
-            sendLocationFunc();
+            sendLocation();
         }
     )
     .subscribe()
