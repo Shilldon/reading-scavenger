@@ -474,8 +474,8 @@ function updateMap() {
       }
 }
 
-function updateScoreBoxes(data) {
-  console.log("score ",data)
+function updateScoreBoxes(score,team) {
+   document.getElementsByClassName(`${team}-score-total`).innerHTML = score;
 }
 
 //draw all the clue markers on the map and add listeners
