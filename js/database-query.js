@@ -29,8 +29,11 @@ function establishLink(keys) {
 }
 
 function displayMessage(newStatus,oldStatus) {
+    console.log("displaying")
+    console.log(newStatus,oldStatus)
     let oldStatusFirstEntry = oldStatus.split(",")[0];
     let newStatusFirstEntry = newStatus.split(",")[0];
+    console.log(newStatusFirstEntry,oldStatusFirstEntry)
     let team = document.body.getAttribute("data-team");
     if(oldStatusFirstEntry == "none") {
         if(team!=newStatusFirstEntry) {
