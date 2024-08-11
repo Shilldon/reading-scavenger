@@ -115,7 +115,7 @@ async function captureMarker(marker,clueMarkers) {
     let team = document.body.getAttribute("data-team");    
     return {
         "position":filteredArray.length+1,
-        "captured-order":captureOrder
+        "captured_order":captureOrder
     }
 }
 
