@@ -26,3 +26,15 @@ function establishMasterLink(keys) {
     .subscribe()
 
 }
+
+async function getCapturedStatus() {
+
+    const res = await database.from("clues").select()
+    
+    let capturedArray = {};
+    for(i=0;i<res.data.length;i++) {
+      capturedArray[res.data[i].id] = res.data[i].status;
+    }
+
+    return capturedArray;
+}
