@@ -124,12 +124,12 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
         .update({status: captureOrderString})
         .eq("id",marker);
 
- 
+ /*
     const updatedScore = await database
     .from("positions")
     .update({"score": score})
     .eq("team",team);
-
+*/
     let winningTeam = captureOrder[0];
     clueMarkers[marker-1].content.setAttribute("captured",winningTeam);
     clueMarkers[marker-1].content.src = "./icons/captured-"+winningTeam+".png";
@@ -151,7 +151,7 @@ async function checkStatus(marker,clueMarkers) {
     if(!captureOrder.includes(team)) {
         captureMarker(marker,team,clueMarkers,filteredArray.length+1,captureOrder);
     }
-    else {
+  //  else {
    //     let team = document.body.getAttribute("data-team");
    //     if(data[0].status == team) {
             captureText="Your team has already captured this data point."
@@ -160,8 +160,10 @@ async function checkStatus(marker,clueMarkers) {
    //         captureText="Another team has captured this data point."
    //
    //      }
-        failCapture(marker, captureText,data[0].status);
-    }
+
+        //changes the modal to dispaly "incorrect"
+   //     failCapture(marker, captureText,data[0].status);
+   // }
 }
 
 async function getCapturedStatus() {

@@ -669,6 +669,9 @@ function checkMarkerRange() {
       }
     }
   }
+  else {
+    clueMarkers[i].content.setAttribute("active", "false");
+  }
 }
 }
 
@@ -802,9 +805,10 @@ function checkAnswer(answer, location) {
   }
 }
 
+/*
 function failCapture(marker, captureText, captureTeam) {
   document.getElementById("question").style.color = "red";
   document.getElementById("answer-input-section").style.display = "none";
   document.getElementById("question").innerHTML = captureText;
   clueMarkers[marker - 1].content.src = "./icons/captured-" + captureTeam + ".png";
-}
+}*/
