@@ -24,7 +24,9 @@
     font-family: "Orbitron", sans-serif;  
     font-size: 3em;
     z-index: 50;
-    bottom: 10vh;  
+    bottom: 10vh;
+    border: 2px solid #00c100;
+    background-color: black;
   }
 
   .modal-header {

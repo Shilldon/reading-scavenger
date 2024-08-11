@@ -27,6 +27,10 @@ function establishLink(keys) {
   
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function displayMessage(newStatus) {
     console.log("displaying")
     console.log(newStatus)
@@ -38,11 +42,11 @@ function displayMessage(newStatus) {
             console.log("showing message")
             let message = document.getElementById("message");
             let messageBox = document.getElementsByClassName("message")[0];
-            message.innerHTML = `${newStatusArray[0]} captured a datapoint`;
+            message.innerHTML = `${capitalizeFirstLetter(newStatusArray[0])} captured a datapoint`;
             messageBox.style.display = "flex";
             setTimeout(function() {
                 messageBox.style.display = "none";
-            },2000);
+            },3500);
         }   
     }
 }
