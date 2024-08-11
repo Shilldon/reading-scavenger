@@ -453,8 +453,6 @@ function centreOnUser() {
         };
 
         //when the location is found hide the 'wait screen'
-        let waitScreen = document.getElementsByClassName("waiting-screen")[0];
-        waitScreen.style.display = "none";
         GeoMarker.position = pos;
         map.setCenter(pos);
       },
