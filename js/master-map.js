@@ -473,6 +473,12 @@ function geoError() {
   console.log("Sorry, no position available.");
 }
 
+var geoOptions = {
+  enableHighAccuracy: true,
+  maximumAge: 30000,
+  timeout: 27000
+};
+
 function updateMarker(markerID, markerStatus) {
   let markerStatusArray = markerStatus.split(",");
   clues[markerID].captured = markerStatusArray;
