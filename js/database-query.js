@@ -19,26 +19,24 @@ function establishLink(keys) {
         console.log("payload ",payload)
             markerID = payload.new.id;
             markerStatus = payload.new.status;
-            markerOldStatus = payload.old.status;
             updateMarker(markerID,markerStatus)
-            displayMessage(markerStatus,markerOldStatus);
+            displayMessage(markerStatus);
         }
     )
     .subscribe()
   
 }
 
-function displayMessage(newStatus,oldStatus) {
+function displayMessage(newStatus) {
     console.log("displaying")
-    console.log(newStatus,oldStatus)
-    let oldStatusFirstEntry = oldStatus.split(",")[0];
-    let newStatusFirstEntry = newStatus.split(",")[0];
-    console.log(newStatusFirstEntry,oldStatusFirstEntry)
+    console.log(newStatus)
+    let newStatusArray = newStatus.split(",");
+    console.log(newStatysArray)
     let team = document.body.getAttribute("data-team");
-    if(oldStatusFirstEntry == "none") {
-        if(team!=newStatusFirstEntry) {
+    if(newStatusArray[1] == "none") {
+        if(team!=newStatusArray[0]) {
             let message = document.getElemebtById("message");
-            message.innerHTML = `${newStatusFirstEntry} captured a datapoint`;
+            message.innerHTML = `${newStatusArray[0]} captured a datapoint`;
             message.style.display = "flex";
             setTimeout(function() {
                 message.style.display = "none";
