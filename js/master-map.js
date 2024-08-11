@@ -468,6 +468,11 @@ function centreOnUser() {
   }
 }
 
+
+function geoError() {
+  console.log("Sorry, no position available.");
+}
+
 function updateMarker(markerID, markerStatus) {
   let markerStatusArray = markerStatus.split(",");
   clues[markerID].captured = markerStatusArray;
