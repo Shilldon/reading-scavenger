@@ -22,6 +22,7 @@ function loadMasterMap(key) {
       // Add other bootstrap parameters as needed, using camel case.
     })
   initMap().then(function (AdvancedMarkerElement) {
+    
     keys = key;
     getCapturedStatus().then(function (captures) {
       let capturesKeys = Object.keys(captures);
@@ -30,7 +31,6 @@ function loadMasterMap(key) {
         clues[i + 1].captured = captureOrder;
       }
       positionClueMarkers(AdvancedMarkerElement);
-      centreOnUser();
       setInterval(function () {
         updateMap();
       }, 250);
@@ -379,7 +379,7 @@ async function initMap() {
   //set up map for first time
   //set initial position
   map = new Map(document.getElementById("master-map"), {
-    center: { lat: -34.397, lng: 150.644 },
+    center: { lat: 51.45810805988329, lng: -0.972069271328189 },
     zoom: 18,
     mapId: "32becf6749a12dee",
     mapTypeControl: false,
@@ -441,41 +441,6 @@ async function initMap() {
   return AdvancedMarkerElement;
 
 }
-
-
-function centreOnUser() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-
-        //when the location is found hide the 'wait screen'
-        GeoMarker.position = pos;
-        map.setCenter(pos);
-      },
-      () => {
-        handleLocationError(true, infoWindow, map.getCenter());
-      }, geoError, geoOptions
-    );
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-}
-
-
-function geoError() {
-  console.log("Sorry, no position available.");
-}
-
-var geoOptions = {
-  enableHighAccuracy: true,
-  maximumAge: 30000,
-  timeout: 27000
-};
 
 function updateMarker(markerID, markerStatus) {
   let markerStatusArray = markerStatus.split(",");
