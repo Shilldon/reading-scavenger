@@ -605,7 +605,7 @@ function updateMarkers() {
         clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
         clueMarkers[i].content.style.borderRadius = "50%";
         if(inRange == "true") {            
-          clueMarkers[i].content.style.border = "4px solid green";
+          clueMarkers[i].content.style.border = "4px solid #00c100";
         }
         else {
           clueMarkers[i].content.style.border = "4px solid red";

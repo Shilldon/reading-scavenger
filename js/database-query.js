@@ -31,7 +31,7 @@ function displayMessage(newStatus) {
     console.log("displaying")
     console.log(newStatus)
     let newStatusArray = newStatus.split(",");
-    console.log(newStatysArray)
+    console.log(newStatusArray)
     let team = document.body.getAttribute("data-team");
     if(newStatusArray[1] == "none") {
         if(team!=newStatusArray[0]) {
