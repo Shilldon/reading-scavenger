@@ -35,7 +35,7 @@ function displayMessage(newStatus) {
     let team = document.body.getAttribute("data-team");
     if(newStatusArray[1] == "none") {
         if(team!=newStatusArray[0]) {
-            let message = document.getElemebtById("message");
+            let message = document.getElementById("message");
             message.innerHTML = `${newStatusArray[0]} captured a datapoint`;
             message.style.display = "flex";
             setTimeout(function() {
