@@ -30,6 +30,7 @@ function loadMasterMap(key) {
         clues[i + 1].captured = captureOrder;
       }
       positionClueMarkers(AdvancedMarkerElement);
+      centreOnUser();
       setInterval(function () {
         updateMap();
       }, 250);
@@ -439,6 +440,32 @@ async function initMap() {
 
   return AdvancedMarkerElement;
 
+}
+
+
+function centreOnUser() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+
+        //when the location is found hide the 'wait screen'
+        let waitScreen = document.getElementsByClassName("waiting-screen")[0];
+        waitScreen.style.display = "none";
+        GeoMarker.position = pos;
+        map.setCenter(pos);
+      },
+      () => {
+        handleLocationError(true, infoWindow, map.getCenter());
+      }, geoError, geoOptions
+    );
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 }
 
 function updateMarker(markerID, markerStatus) {
