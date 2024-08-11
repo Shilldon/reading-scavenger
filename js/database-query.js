@@ -34,6 +34,7 @@ function establishLink(keys) {
         schema: 'public',
       },
       (payload) => {
+        console.log(payload)
             endStatus = payload.new.end_game;
             endGame(endStatus)
         }
