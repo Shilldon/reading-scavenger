@@ -627,12 +627,13 @@ function updateMarkers() {
 
 function checkMarkerRange() {
   console.log("checking range to markers")
- // let team = document.body.getAttribute("data-team");
+  let team = document.body.getAttribute("data-team");
   for (i = 0; i < clueMarkers.length; i++) {
     let markerLat = clueMarkers[i].position.lat;
     let markerLng = clueMarkers[i].position.lng;
     let captureOrder = clues[i + 1].captured;
     let inRange = false;
+    if (!captureOrder.includes(team)) {
     if (getDistanceBetween(markerLat, markerLng) == true) {
       inRange = "true";
       //       console.log(`${team} hasnt captired marker ${i+1} but is in range `);
@@ -668,6 +669,7 @@ function checkMarkerRange() {
       }
     }
   }
+}
 }
 
 /*
