@@ -476,7 +476,7 @@ function updateMap() {
 
 function updateScoreBoxes(score,team) {
   console.log("score update ",team,score)
-   document.getElementsByClassName(`${team}-score-total`).innerHTML = score;
+   document.getElementsByClassName(`${team}-score-total`)[0].innerHTML = score;
 }
 
 //draw all the clue markers on the map and add listeners

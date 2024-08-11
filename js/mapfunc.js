@@ -575,7 +575,7 @@ function updateMarkers() {
     //if we have captured this marker 
     //change to the team color, set non-flashing, remove border and cannot be selected
     if (captureOrder.includes(team)) {
-      console.log(`${team} has captired this marker `);
+      console.log(`${team} has captired marker ${i+1}`);
       clueMarkers[i].content.className = "marker-img";
       clueMarkers[i].content.src = "./icons/captured-" + captureOrder[0] + ".png";
       clueMarkers[i].content.style.border = "none";
@@ -585,7 +585,7 @@ function updateMarkers() {
       let inRange = false;
       if (getDistanceBetween(markerLat, markerLng) == true) {
         inRange = "true";
-        console.log(`${team} hasnt captired this markerbut is in range `);
+        console.log(`${team} hasnt captired marker ${i+1} but is in range `);
 
         clueMarkers[i].content.className = "clue-marker-img"; // flashing
         clueMarkers[i].content.setAttribute("active", "true");
@@ -737,7 +737,10 @@ function getDistanceBetween(lat1, lon1) {
 
 function checkAnswer(answer, location) {
   if (answer == clues[`${location}`].answer) {
-    checkStatus(location, clues);
+    checkStatus(location, clues).then(function(captureOrder) {
+      let captureOrderArray = captureOrder.split(",");
+      clues[`${location}`].captured = captureOrderArray;
+    })
   }
   else {
     document.getElementById("question").innerHTML = "INCORRECT";

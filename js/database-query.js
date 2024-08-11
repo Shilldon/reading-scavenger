@@ -135,6 +135,7 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
     clueMarkers[marker-1].content.src = "./icons/captured-"+winningTeam+".png";
     clueMarkers[marker-1].content.className = "marker-img";
     $('#answer-modal').modal('hide');
+    return captureOrder;
 }
 
 async function checkStatus(marker,clueMarkers) {
