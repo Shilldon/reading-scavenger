@@ -793,7 +793,7 @@ function checkAnswer(answer, location) {
     captureMarker(location).then(function(data) {
       let captureOrderArray = data.captured_order.split(",");
       clues[`${location}`].captured = captureOrderArray; 
-      
+      let position = data.position;
     let team = document.body.getAttribute("data-team");
       addScore(location,team,clues,position,captureOrderArray);     
     })
