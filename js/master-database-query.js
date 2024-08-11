@@ -20,7 +20,7 @@ function establishMasterLink(keys) {
       (payload) => {
         console.log(payload)
             console.log(payload)
-            updateScoreBoxes(endStatus)
+            updateScoreBoxes(payload)
         }
     )
     .subscribe()

@@ -41,23 +41,6 @@ function establishLink(keys) {
     )
     .subscribe()
 
-    const updateScores = database
-    .channel('schema-db-changes')
-    .on(
-      'postgres_changes',
-      {
-        table: 'positions',
-        event: 'UPDATE',
-        schema: 'public',
-      },
-      (payload) => {
-        console.log(payload)
-            console.log(payload)
-            updateScoreBoxes(endStatus)
-        }
-    )
-    .subscribe()
-
 }
 
 function endGameFunc(endStatus) {
