@@ -449,6 +449,7 @@ function updateMarker(markerID, markerStatus) {
 
 
 function updateTeamPositions(team,lat,lng) {
+  console.log("updateing team positions")
  // showTeamPositions().then(function (data) {
     for (i = 0; i < data.length; i++) {
       let pos = {
