@@ -101,7 +101,25 @@ async function showTeamPositions() {
     return res.data;
 }
 
-async function captureMarker(marker, team, clues,position,captureOrder) {
+
+
+async function captureMarker(marker,clueMarkers) {
+    const { data, error } = await database
+        .from('clues')
+        .select('status')
+        .eq('id',marker)
+
+    let captureOrder = data[0].status;
+    let isNotNull = value => value != "none";
+    let filteredArray = captureOrder.filter(isNotNull);
+    let team = document.body.getAttribute("data-team");    
+    return {
+        "position":filteredArray.length+1,
+        "captured-order":captureOrder
+    }
+}
+
+async function addScore(marker,team,clues,position,captureOrder) {
     let points = clues[`${marker}`].points;
     const { data, error } = await database
     .from('positions')
@@ -135,7 +153,44 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
     clueMarkers[marker-1].content.src = "./icons/captured-"+winningTeam+".png";
     clueMarkers[marker-1].content.className = "marker-img";
     $('#answer-modal').modal('hide');
-    return captureOrder;
+
+}
+/*
+async function captureMarker(marker, team, clues,position,captureOrder) {
+    let points = clues[`${marker}`].points;
+    const { data, error } = await database
+    .from('positions')
+    .select('score')
+    .eq("team",team);
+    let multiplier = 1;
+    switch(position) {
+        case 1: multiplier=1.00; break;
+        case 2: multiplier = 0.5; break;
+        case 3: multiplier = 0.25; break;
+    }
+    let amendedPoints = points * multiplier;
+    let award = Math.ceil(amendedPoints);
+    let score = data[0].score;
+    score = score + award;
+    captureOrder[position-1] = team;
+    let captureOrderString = captureOrder.toString();
+    const res = await database
+        .from("clues")
+        .update({status: captureOrderString})
+        .eq("id",marker);
+
+ /*
+    const updatedScore = await database
+    .from("positions")
+    .update({"score": score})
+    .eq("team",team);
+
+    let winningTeam = captureOrder[0];
+    clueMarkers[marker-1].content.setAttribute("captured",winningTeam);
+    clueMarkers[marker-1].content.src = "./icons/captured-"+winningTeam+".png";
+    clueMarkers[marker-1].content.className = "marker-img";
+    $('#answer-modal').modal('hide');
+//    return captureOrder;
 }
 
 async function checkStatus(marker,clueMarkers) {
@@ -150,12 +205,11 @@ async function checkStatus(marker,clueMarkers) {
     let team = document.body.getAttribute("data-team");
     if(!captureOrder.includes(team)) {
         captureMarker(marker,team,clueMarkers,filteredArray.length+1,captureOrder);
-        return captureOrder;
     }
   //  else {
    //     let team = document.body.getAttribute("data-team");
    //     if(data[0].status == team) {
-            captureText="Your team has already captured this data point."
+    //        captureText="Your team has already captured this data point."
    //     }
    //     else {
    //         captureText="Another team has captured this data point."
@@ -166,7 +220,7 @@ async function checkStatus(marker,clueMarkers) {
    //     failCapture(marker, captureText,data[0].status);
    // }
 }
-
+*/
 async function getCapturedStatus() {
 
     const res = await database.from("clues").select()

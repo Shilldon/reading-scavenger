@@ -789,6 +789,16 @@ function getDistanceBetween(lat1, lon1) {
 
 function checkAnswer(answer, location) {
   if (answer == clues[`${location}`].answer) {
+
+    captureMarker(location,clues).then(function(captureOrder) {
+      let captureOrderArray = captureOrder.split(",");
+      clues[`${location}`].captured = captureOrderArray; 
+      
+    let team = document.body.getAttribute("data-team");
+      addScore(location,team,clues,position,captureOrderArray);     
+    })
+
+
     checkStatus(location, clues).then(function(captureOrder) {
       let captureOrderArray = captureOrder.split(",");
       clues[`${location}`].captured = captureOrderArray;
