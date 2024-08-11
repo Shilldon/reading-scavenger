@@ -36,6 +36,7 @@ function establishLink(keys) {
       (payload) => {
         console.log(payload)
             endStatus = payload.new.end_game;
+            console.log(endStatus)
             endGameFunc(endStatus)
         }
     )
