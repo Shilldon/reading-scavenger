@@ -46,7 +46,7 @@ function establishLink(keys) {
 function endGameFunc(endStatus) {
     if(endStatus === "true") {
       console.log("end game")
-      let map = getElementById("map");
+      let map = document.getElementById("map");
       map.style.display = none;
       let endGameBox = document.getElementsByClassName("end-game")[0];
       endGameBox.style.display = "flex";
