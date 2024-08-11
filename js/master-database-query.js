@@ -41,3 +41,10 @@ async function getCapturedStatus() {
 
     return capturedArray;
 }
+
+async function fireEndGame() {
+    const res = await database
+    .from("end_game")
+    .update({"end_game":"true"})
+    .eq("id",1);        
+}
