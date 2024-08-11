@@ -50,15 +50,11 @@ function loadMap(key) {
     GeoMarker = new GeolocationMarker(map);
     centreOnUser();
     getCapturedStatus().then(function (captures) {
-      console.log(captures)
-      console.log(clues)
       let capturesKeys = Object.keys(captures);
       for(i = 0; i<capturesKeys.length;i++) {
         let captureOrder = captures[i+1].split(",");
         clues[i+1].captured = captureOrder;
-        console.log(i+1,":",clues[i+1].captured)
       }
-      console.log(clues)
       positionClueMarkers(AdvancedMarkerElement);
       setInterval(function() {
         updateMarkers();
@@ -521,6 +517,12 @@ var geoOptions = {
 };
 
 
+function endGame(endStatus) {
+  if(endStatus === "true") {
+    console.log("end game")
+  }
+}
+
 function reloadMap() {
   if (document.fullscreenElement) {
     //full screen mode is active so take us out of fullscreen    
@@ -617,6 +619,7 @@ function updateMarkers() {
 
 }
 
+/*
 function follow() {
 
   var win = function (position) {
@@ -624,109 +627,13 @@ function follow() {
     var long = position.coords.longitude;
     let team = document.body.getAttribute("data-team");
     updatePosition(team,lat,long);
-   /* showTeamPositions().then(function(data) {
-      console.log(data)
-      for(i=0; i< data.length;i++) {
-        if(data[i].team!=team) {
-          let pos = {
-            lat: data[i].lat,
-            lng: data[i].lng
-          }
-          console.log(pos)
-          markerDict[data[i].team].position = pos;
-        }  
-        else {
-          console.log("marker is "+team+" - hiding")
-          markerDict[data[i].team].map = null;
-        }
-      }    
-    })    */
 
-   // getCapturedStatus().then(function (captures) {
-/*
-    for (i = 0; i < clueMarkers.length; i++) {
-      let markerLat = clueMarkers[i].position.lat;
-      let markerLng = clueMarkers[i].position.lng;
-      console.log(captures[i+1])
-      //let captureOrder = captures[i+1].split(",");
-      let captureOrder = captures[i+1].captured;
-      console.log(captureOrder);
-    ///new
-      //if we have captured this marker 
-      //change to the team color, set non-flashing, remove border and cannot be selected
-      if(captureOrder.includes(team)) {
-        clueMarkers[i].content.className = "marker-img";
-        clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
-        clueMarkers[i].content.style.border = "none";     
-      }
-      else {
-        //check range and make flash or not as appropriate and set to active/inactive
-        let inRange = false;
-        if (getDistanceBetween(markerLat, markerLng) == true) {
-          inRange = "true";
-          clueMarkers[i].content.className = "clue-marker-img"; // flashing
-          clueMarkers[i].content.setAttribute("active", "true");
-          clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
-        }
-        else {
-          inRange = "false";
-          clueMarkers[i].content.className = "marker-img"; // non-flashing
-          clueMarkers[i].content.setAttribute("active", "false");
-        }
-        //check if anyone captured the marker
-        if(captureOrder[0] == "none") {
-          //if not set to green or red target
-          if(inRange == "true") {            
-            clueMarkers[i].content.src = "./icons/clue-marker-active.png";
-          }
-          else {
-            clueMarkers[i].content.src = "./icons/clue-marker.png";
-          }
-        }
-        else {
-          //if captured set it to the relevant team and give red or green border
-          clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";   
-          clueMarkers[i].content.style.borderRadius = "50%";
-          if(inRange == "true") {            
-            clueMarkers[i].content.style.border = "4px solid green";
-          }
-          else {
-            clueMarkers[i].content.style.border = "4px solid red";
-          }          
-        }
-      }
-    }
-
-
-/*
-      if(captureOrder[0]!="none") {
-        console.log(`marker ${i+1} has been captured `)
-        
-        clueMarkers[i].content.className = "marker-img";
-        clueMarkers[i].content.src = "./icons/captured-"+captureOrder[0]+".png";
-    
-      }
-      else if (getDistanceBetween(markerLat, markerLng) == true) {
-        clueMarkers[i].content.src = "./icons/clue-marker-active.png";
-        clueMarkers[i].content.className = "clue-marker-img";
-        clueMarkers[i].content.setAttribute("active", "true");
-        clueMarkers[i].content.setAttribute("clue", clues[i+1].clue);
-      }
-      else {
-        clueMarkers[i].content.src = "./icons/clue-marker.png";
-        clueMarkers[i].content.className = "marker-img";
-        console.log("Marker " + i + 1 + " out of range ")
-      }
-    }*/
-
-
-  //})
   
   };
 
 
   var watchID = navigator.geolocation.watchPosition(win);
-}
+}*/
 
 //draw all the clue markers on the map and add listeners
 function positionClueMarkers(AdvancedMarkerElement) {
@@ -826,7 +733,6 @@ function getDistanceBetween(lat1, lon1) {
 
 function checkAnswer(answer,location) {
   if(answer == clues[`${location}`].answer) {
-    console.log(location);
     checkStatus(location,clues);
   }
   else {

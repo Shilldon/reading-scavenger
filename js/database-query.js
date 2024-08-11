@@ -6,7 +6,7 @@ function establishLink(keys) {
     const url = keys.site;
     const key = keys.supabase;
     database = supabase.createClient(url,key);
-    const allChanges = database
+    const clueWin = database
     .channel('schema-db-changes')
     .on(
       'postgres_changes',
@@ -16,7 +16,6 @@ function establishLink(keys) {
         schema: 'public',
       },
       (payload) => {
-        console.log("payload ",payload)
             markerID = payload.new.id;
             markerStatus = payload.new.status;
             updateMarker(markerID,markerStatus)
@@ -25,6 +24,22 @@ function establishLink(keys) {
     )
     .subscribe()
   
+    const endGame = database
+    .channel('schema-db-changes')
+    .on(
+      'postgres_changes',
+      {
+        table: 'end_game',
+        event: 'UPDATE',
+        schema: 'public',
+      },
+      (payload) => {
+            endStatus = payload.new.end_game;
+            endGame(endStatus)
+        }
+    )
+    .subscribe()
+
 }
 
 function capitalizeFirstLetter(string) {
@@ -32,14 +47,10 @@ function capitalizeFirstLetter(string) {
 }
 
 function displayMessage(newStatus) {
-    console.log("displaying")
-    console.log(newStatus)
     let newStatusArray = newStatus.split(",");
-    console.log(newStatusArray)
     let team = document.body.getAttribute("data-team");
     if(newStatusArray[1] == "none") {
         if(team!=newStatusArray[0]) {
-            console.log("showing message")
             let message = document.getElementById("message");
             let messageBox = document.getElementsByClassName("message")[0];
             message.innerHTML = `${capitalizeFirstLetter(newStatusArray[0])} captured a datapoint`;
@@ -77,7 +88,6 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
     .select('score')
     .eq("team",team);
     let multiplier = 1;
-    console.log("position ",position)
     switch(position) {
         case 1: multiplier=1.00; break;
         case 2: multiplier = 0.5; break;
@@ -88,7 +98,6 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
     let score = data[0].score;
     score = score + award;
     captureOrder[position-1] = team;
-    console.log("capture order",captureOrder)
     let captureOrderString = captureOrder.toString();
     const res = await database
         .from("clues")
@@ -116,11 +125,8 @@ async function checkStatus(marker,clueMarkers) {
 
     let captureOrder = data[0].status.split(",");
     let isNotNull = value => value != "none";
-    console.log("capture order 1:-", captureOrder)
     let filteredArray = captureOrder.filter(isNotNull);
     let team = document.body.getAttribute("data-team");
-    console.log("filter array ",filteredArray)
-    console.log("capture order ",captureOrder)
     if(!captureOrder.includes(team)) {
         captureMarker(marker,team,clueMarkers,filteredArray.length+1,captureOrder);
     }
