@@ -124,12 +124,12 @@ async function captureMarker(marker, team, clues,position,captureOrder) {
         .update({status: captureOrderString})
         .eq("id",marker);
 
- /*
+ 
     const updatedScore = await database
     .from("positions")
     .update({"score": score})
     .eq("team",team);
-*/
+
     let winningTeam = captureOrder[0];
     clueMarkers[marker-1].content.setAttribute("captured",winningTeam);
     clueMarkers[marker-1].content.src = "./icons/captured-"+winningTeam+".png";
@@ -150,6 +150,7 @@ async function checkStatus(marker,clueMarkers) {
     let team = document.body.getAttribute("data-team");
     if(!captureOrder.includes(team)) {
         captureMarker(marker,team,clueMarkers,filteredArray.length+1,captureOrder);
+        return captureOrder;
     }
   //  else {
    //     let team = document.body.getAttribute("data-team");
